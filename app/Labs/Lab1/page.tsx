@@ -187,7 +187,7 @@ Text documents are often broken up into several sections and subsections. Each s
         <label htmlFor="wd-text-fields-username">Username:</label>
         <input id="wd-text-fields-username" placeholder="jdoe" /> <br />
         <label htmlFor="wd-text-fields-password">Password:</label>
-        <input type="password" id="wd-text-fields-password" value="123@#$asd" />
+        <input type="password" value="123@#$asd" id="wd-text-fields-password" />
         <br />
         <label htmlFor="wd-text-fields-first-name">First name:</label>
         <input type="text" id="wd-text-fields-first-name" title="John" /> <br />
@@ -289,6 +289,17 @@ Text documents are often broken up into several sections and subsections. Each s
             id="wd-text-fields-dob" /><br />
         {/* </form> */}
       </div>
+
+      {/* Anchor tag */}
+      <h4>Anchor tag</h4>
+      Please
+      <a href="https://www.lipsum.com" id="wd-lipsum"> click here</a>
+      {" "}to get dummy text<br />
+      
+      {/* IMPORTANT: You must add your GitHub link here later */}
+      <a href="https://github.com/lwt339/kambaz-next-js-fa25-mon" id="wd-github">
+        My GitHub Repository
+      </a>
 
 
     </div>
