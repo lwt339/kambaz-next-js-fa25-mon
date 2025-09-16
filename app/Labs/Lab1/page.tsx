@@ -70,14 +70,14 @@ Text documents are often broken up into several sections and subsections. Each s
         <ul id="wd-my-books">
           <li>Dune</li>
           <li>Lord of the Rings</li>
-          <li>Ender's Game</li>
+          <li>Ender&apos;s Game</li>
           <li>Red Mars</li>
           <li>The Forever War</li>
         </ul>
         
         Your favorite books (in no particular order)
         <ul id="wd-your-books">
-          <li>Harry Potter and the Sorcerer's Stone</li>
+          <li>Harry Potter and the Sorcerer&apos;s Stone</li>
           <li>The Hunger Games</li>
           <li>To Kill a Mockingbird</li>
           <li>The Great Gatsby</li>
@@ -172,11 +172,12 @@ Text documents are often broken up into several sections and subsections. Each s
         <h4>Image tag</h4>
         Loading an image from the internet: <br />
         <img id="wd-starship" width="400px"
-          src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg" />
+          src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg" 
+          alt="Starship spacecraft" />
         <br />
         Loading a local image:
         <br />
-        <img id="wd-teslabot" src="/images/teslabot.jpg" height="200px" />
+        <img id="wd-teslabot" src="/images/teslabot.jpg" height="200px" alt="Tesla Bot" />
       </div>
 
       {/* FORM ELEMENTS SECTION */}
@@ -187,7 +188,7 @@ Text documents are often broken up into several sections and subsections. Each s
         <label htmlFor="wd-text-fields-username">Username:</label>
         <input id="wd-text-fields-username" placeholder="jdoe" /> <br />
         <label htmlFor="wd-text-fields-password">Password:</label>
-        <input type="password" value="123@#$asd" id="wd-text-fields-password" />
+        <input type="password" defaultValue="123@#$asd" id="wd-text-fields-password" />
         <br />
         <label htmlFor="wd-text-fields-first-name">First name:</label>
         <input type="text" id="wd-text-fields-first-name" title="John" /> <br />
@@ -195,13 +196,13 @@ Text documents are often broken up into several sections and subsections. Each s
         <input type="text" 
                id="wd-text-fields-last-name"
                placeholder="Doe"
-               value="Wonderland" title="The last name" />
+               defaultValue="Wonderland" title="The last name" />
         <br/>
 
         {/* Text boxes */}
         <h5>Text boxes</h5>
         <label>Biography:</label><br/>
-        <textarea id="wd-textarea" cols={30} rows={10}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+        <textarea id="wd-textarea" cols={30} rows={10} defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
         <br/>
 
         {/* Buttons */}
@@ -305,4 +306,3 @@ Text documents are often broken up into several sections and subsections. Each s
     </div>
   );
 }
-

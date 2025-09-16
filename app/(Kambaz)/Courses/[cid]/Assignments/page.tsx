@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Assignments() {
   return (
     <div id="wd-assignments">
@@ -15,9 +17,9 @@ export default function Assignments() {
       
       <ul id="wd-assignment-list">
         <li className="wd-assignment-list-item">
-          <a href="/Courses/5610/Assignments/123" className="wd-assignment-link">
+          <Link href="/Courses/5610/Assignments/123" className="wd-assignment-link">
             A1 - ENV + HTML
-          </a>
+          </Link>
           <br />
           Multiple Modules | Not available until May 6 at 12:00am |
           <br />
@@ -25,9 +27,9 @@ export default function Assignments() {
         </li>
         
         <li className="wd-assignment-list-item">
-          <a href="/Courses/5610/Assignments/124" className="wd-assignment-link">
+          <Link href="/Courses/5610/Assignments/124" className="wd-assignment-link">
             A2 - CSS + BOOTSTRAP
-          </a>
+          </Link>
           <br />
           Multiple Modules | Not available until May 13 at 12:00am |
           <br />
@@ -35,9 +37,9 @@ export default function Assignments() {
         </li>
         
         <li className="wd-assignment-list-item">
-          <a href="/Courses/5610/Assignments/125" className="wd-assignment-link">
+          <Link href="/Courses/5610/Assignments/125" className="wd-assignment-link">
             A3 - JAVASCRIPT + REACT
-          </a>
+          </Link>
           <br />
           Multiple Modules | Not available until May 20 at 12:00am |
           <br />
@@ -48,9 +50,9 @@ export default function Assignments() {
       <h3>QUIZZES 10% of Total</h3>
       <ul>
         <li className="wd-assignment-list-item">
-          <a href="/Courses/5610/Assignments/126" className="wd-assignment-link">
+          <Link href="/Courses/5610/Assignments/126" className="wd-assignment-link">
             Q1 - HTML
-          </a>
+          </Link>
           <br />
           Multiple Choice | 1 Question | 10 pts
           <br />
@@ -58,9 +60,9 @@ export default function Assignments() {
         </li>
         
         <li className="wd-assignment-list-item">
-          <a href="/Courses/5610/Assignments/127" className="wd-assignment-link">
+          <Link href="/Courses/5610/Assignments/127" className="wd-assignment-link">
             Q2 - CSS
-          </a>
+          </Link>
           <br />
           Multiple Choice | 1 Question | 10 pts
           <br />
@@ -71,9 +73,9 @@ export default function Assignments() {
       <h3>EXAMS 15% of Total</h3>
       <ul>
         <li className="wd-assignment-list-item">
-          <a href="/Courses/5610/Assignments/128" className="wd-assignment-link">
+          <Link href="/Courses/5610/Assignments/128" className="wd-assignment-link">
             Midterm Exam
-          </a>
+          </Link>
           <br />
           Multiple Choice | 50 Questions | 100 pts
           <br />
@@ -81,9 +83,9 @@ export default function Assignments() {
         </li>
         
         <li className="wd-assignment-list-item">
-          <a href="/Courses/5610/Assignments/129" className="wd-assignment-link">
+          <Link href="/Courses/5610/Assignments/129" className="wd-assignment-link">
             Final Exam
-          </a>
+          </Link>
           <br />
           Multiple Choice | 50 Questions | 100 pts
           <br />
@@ -94,9 +96,9 @@ export default function Assignments() {
       <h3>PROJECT 35% of Total</h3>
       <ul>
         <li className="wd-assignment-list-item">
-          <a href="/Courses/5610/Assignments/130" className="wd-assignment-link">
+          <Link href="/Courses/5610/Assignments/130" className="wd-assignment-link">
             Final Project
-          </a>
+          </Link>
           <br />
           Group Project | Build a Full Stack Application | 350 pts
           <br />
