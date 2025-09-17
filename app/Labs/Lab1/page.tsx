@@ -58,13 +58,15 @@ Text documents are often broken up into several sections and subsections. Each s
         
         My favorite recipe:
         <ol id="wd-your-favorite-recipe">
-          <li>Preheat oven to 375 degrees</li>
-          <li>Mix flour, sugar, and chocolate chips in a bowl</li>
-          <li>Add eggs, butter, and vanilla extract</li>
-          <li>Stir until combined into cookie dough</li>
-          <li>Drop spoonfuls onto baking sheet</li>
-          <li>Bake for 12 minutes until golden brown</li>
+          <li>Preheat oven to 350 degrees</li>
+          <li>Melt butter and chocolate together</li>
+          <li>Mix in sugar and eggs until smooth</li>
+          <li>Fold in flour and cocoa powder</li>
+          <li>Add vanilla extract and salt</li>
+          <li>Pour into greased baking pan</li>
+          <li>Bake for 25-30 minutes until set</li>
         </ol>
+
         <h5>Unordered List Tag</h5>
         My favorite books (in no particular order)
         <ul id="wd-my-books">
@@ -78,8 +80,9 @@ Text documents are often broken up into several sections and subsections. Each s
         Your favorite books (in no particular order)
         <ul id="wd-your-books">
           <li>Harry Potter and the Sorcerer&apos;s Stone</li>
-          <li>The Hunger Games</li>
-          <li>To Kill a Mockingbird</li>
+          <li>Spirited Away</li>
+          <li>Howl&apos;s Moving Castle</li>
+          <li>Kiki&apos;s Delivery Service</li>
           <li>The Great Gatsby</li>
         </ul>
       </div>
@@ -213,6 +216,9 @@ Text documents are often broken up into several sections and subsections. Each s
           Hello World!
         </button>
 
+        <h5>File upload</h5>
+        <input id="wd-upload" type="file" />
+
 
 
           {/* Radio buttons */}
@@ -297,7 +303,7 @@ Text documents are often broken up into several sections and subsections. Each s
       <a href="https://www.lipsum.com" id="wd-lipsum"> click here</a>
       {" "}to get dummy text<br />
       
-      {/* My github Link */}
+      {/* My github  */}
       <a href="https://github.com/lwt339/kambaz-next-js-fa25-mon" id="wd-github">
         My GitHub Repository
       </a>
