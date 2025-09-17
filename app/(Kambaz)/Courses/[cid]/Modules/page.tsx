@@ -10,7 +10,7 @@ export default function Modules() {
       <ul id="wd-modules-list">
         {/* Lecture 1 */}
         <li className="wd-module">
-          <div className="wd-title">Lecture 1 - Building React User Interfaces with HTML, Assignment 1, Setting Up the Dev...</div>
+          <div className="wd-title">Lecture 1 - Building React User Interfaces with HTML, Assignment 1, Setting Up the Dev</div>
           <ul className="wd-lessons">
             <li className="wd-lesson">
               <span className="wd-title">LEARNING OBJECTIVES</span>
