@@ -1,5 +1,5 @@
-
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Dashboard() {
   return (
@@ -12,7 +12,12 @@ export default function Dashboard() {
         {/* Course 1 */}
         <div className="wd-dashboard-course">
           <Link href="/Courses/5610" className="wd-dashboard-course-link">
-            <img src="/images/webdev.jpg" width={200} height={150} alt="Web Development" />
+            <Image 
+              src="/images/webdev.jpg" 
+              width={200} 
+              height={150} 
+              alt="Web Development" 
+            />
             <div>
               <h5>CS5610 Web Development</h5>
               <p className="wd-dashboard-course-title">
@@ -26,7 +31,12 @@ export default function Dashboard() {
         {/* Course 2 */}
         <div className="wd-dashboard-course">
           <Link href="/Courses/5520" className="wd-dashboard-course-link">
-            <img src="/images/mobileapp.jpg" width={200} height={150} alt="Mobile Application Development" />
+            <Image 
+              src="/images/mobileapp.jpg" 
+              width={200} 
+              height={150} 
+              alt="Mobile Application Development" 
+            />
             <div>
               <h5>CS5520 Mobile Application Development</h5>
               <p className="wd-dashboard-course-title">
@@ -40,7 +50,12 @@ export default function Dashboard() {
         {/* Course 3 */}
         <div className="wd-dashboard-course">
           <Link href="/Courses/5800" className="wd-dashboard-course-link">
-            <img src="/images/Algorithms.jpg" width={200} height={150} alt="Algorithms" />
+            <Image 
+              src="/images/Algorithms.jpg" 
+              width={200} 
+              height={150} 
+              alt="Algorithms" 
+            />
             <div>
               <h5>CS5800 Algorithms</h5>
               <p className="wd-dashboard-course-title">
@@ -54,7 +69,12 @@ export default function Dashboard() {
         {/* Course 4 */}
         <div className="wd-dashboard-course">
           <Link href="/Courses/5150" className="wd-dashboard-course-link">
-            <img src="/images/game.jpg" width={200} height={150} alt="Game Artificial Intelligence" />
+            <Image 
+              src="/images/game.jpg" 
+              width={200} 
+              height={150} 
+              alt="Game Artificial Intelligence" 
+            />
             <div>
               <h5>CS5150 Game Artificial Intelligence</h5>
               <p className="wd-dashboard-course-title">
@@ -68,7 +88,12 @@ export default function Dashboard() {
         {/* Course 5 */}
         <div className="wd-dashboard-course">
           <Link href="/Courses/5200" className="wd-dashboard-course-link">
-            <img src="/images/database.jpg" width={200} height={150} alt="Database Management Systems" />
+            <Image 
+              src="/images/database.jpg" 
+              width={200} 
+              height={150} 
+              alt="Database Management Systems" 
+            />
             <div>
               <h5>CS5200 Database Management Systems</h5>
               <p className="wd-dashboard-course-title">
@@ -82,7 +107,12 @@ export default function Dashboard() {
         {/* Course 6 */}
         <div className="wd-dashboard-course">
           <Link href="/Courses/5600" className="wd-dashboard-course-link">
-            <img src="/images/system.jpg" width={200} height={150} alt="Computer Systems" />
+            <Image 
+              src="/images/system.jpg" 
+              width={200} 
+              height={150} 
+              alt="Computer Systems" 
+            />
             <div>
               <h5>CS5600 Computer Systems</h5>
               <p className="wd-dashboard-course-title">
@@ -96,7 +126,12 @@ export default function Dashboard() {
         {/* Course 7 */}
         <div className="wd-dashboard-course">
           <Link href="/Courses/6510" className="wd-dashboard-course-link">
-            <img src="/images/software.jpg" width={200} height={150} alt="Advanced Software Development" />
+            <Image 
+              src="/images/software.jpg" 
+              width={200} 
+              height={150} 
+              alt="Advanced Software Development" 
+            />
             <div>
               <h5>CS6510 Advanced Software Development</h5>
               <p className="wd-dashboard-course-title">

@@ -489,7 +489,7 @@ export default function Modules() {
             <li className="wd-lesson">
               <span className="wd-title">LEARNING OBJECTIVES</span>
               <ul className="wd-content">
-                <li className="wd-content-item">Learn how to use Cookies to remember a user's identity</li>
+                <li className="wd-content-item">Learn how to use Cookies to remember a user&apos;s identity</li>
                 <li className="wd-content-item">Installing and configuring express session</li>
                 <li className="wd-content-item">Storing and retrieving session data</li>
                 <li className="wd-content-item">Implementing user registration</li>
