@@ -8,7 +8,7 @@ export default function AssignmentEditor() {
       <textarea id="wd-description" cols={50} rows={10} defaultValue={
         `The assignment is available online. Submit a link to the landing page of your Web 
 application running on Netlify. The landing page should include the following: Your 
-full name and section. Links to all relevant source code repositories. The Kanbaz 
+full name and section. Links to all relevant source code repositories. The Kambaz 
 application should include a link to navigate back to the landing page.`
       } />
       <br /><br />
@@ -85,6 +85,40 @@ application should include a link to navigate back to the landing page.`
               <label htmlFor="wd-file-upload"> File Uploads</label>
             </td>
           </tr>
+
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-submission-attempts">Submission Attempts</label>
+            </td>
+            <td>
+              <select id="wd-submission-attempts" defaultValue="Unlimited">
+                <option value="Unlimited">Unlimited</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </td>
+          </tr>
+          
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-group-assignment">Group Assignment</label>
+            </td>
+            <td>
+              <input type="checkbox" id="wd-group-assignment" />
+              <label htmlFor="wd-group-assignment"> This is a Group Assignment</label>
+            </td>
+          </tr>
+          
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-peer-reviews">Peer Reviews</label>
+            </td>
+            <td>
+              <input type="checkbox" id="wd-peer-reviews" />
+              <label htmlFor="wd-peer-reviews"> Require Peer Reviews</label>
+            </td>
+          </tr>
           
           <tr>
             <td align="right" valign="top">
@@ -100,7 +134,7 @@ application should include a link to navigate back to the landing page.`
               <label htmlFor="wd-due-date">Due</label>
             </td>
             <td>
-              <input type="date" id="wd-due-date" defaultValue="2024-05-13" />
+              <input type="date" id="wd-due-date" defaultValue="2025-09-22" />
             </td>
           </tr>
           
@@ -109,7 +143,7 @@ application should include a link to navigate back to the landing page.`
               <label htmlFor="wd-available-from">Available from</label>
             </td>
             <td>
-              <input type="date" id="wd-available-from" defaultValue="2024-05-06" />
+              <input type="date" id="wd-available-from" defaultValue="2025-09-08" />
             </td>
           </tr>
           
@@ -118,7 +152,7 @@ application should include a link to navigate back to the landing page.`
               <label htmlFor="wd-available-until">Until</label>
             </td>
             <td>
-              <input type="date" id="wd-available-until" defaultValue="2024-05-20" />
+              <input type="date" id="wd-available-until" defaultValue="2025-09-23" />
             </td>
           </tr>
         </tbody>

@@ -297,7 +297,7 @@ Text documents are often broken up into several sections and subsections. Each s
       <a href="https://www.lipsum.com" id="wd-lipsum"> click here</a>
       {" "}to get dummy text<br />
       
-      {/* IMPORTANT: You must add your GitHub link here later */}
+      {/* My github Link */}
       <a href="https://github.com/lwt339/kambaz-next-js-fa25-mon" id="wd-github">
         My GitHub Repository
       </a>
