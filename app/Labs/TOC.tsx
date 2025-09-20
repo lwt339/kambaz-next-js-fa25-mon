@@ -16,5 +16,14 @@ export default function TOC() {
          Lab 3 </Link> </li>
     <li>
        <Link href="/Kambaz" id="wd-lab3-link">
-         Kambaz </Link> </li> </ul>
-);}
+         Kambaz </Link> </li> 
+    <li>
+        <Link 
+          id="wd-github" 
+          href="https://github.com/lwt339/kambaz-next-js-fa25-mon">
+          My GitHub Repository 
+        </Link>
+      </li>
+    </ul>
+  );
+}
