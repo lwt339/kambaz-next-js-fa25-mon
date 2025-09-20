@@ -3,7 +3,7 @@
 export default function Lab1() {
   return (
     <div id="wd-lab1">
-      <h1>Weiting Liu CS5610 Fall 2025 04 </h1>
+      <h1>Weiting Liu CS5610 Fall 2025 Section 04 </h1>
       <h2>Lab 1</h2>
       <h3>HTML</h3>
       {/* HEADING TAGS SECTION */}
@@ -104,61 +104,61 @@ Text documents are often broken up into several sections and subsections. Each s
             <tr>
               <td>Q1</td>
               <td>HTML</td>
-              <td>2/3/21</td>
+              <td>9/29/25</td>
               <td>85</td>
             </tr>
             <tr>
               <td>Q2</td>
               <td>CSS</td>
-              <td>2/10/21</td>
+              <td>10/6/25</td>
               <td>90</td>
             </tr>
             <tr>
               <td>Q3</td>
-              <td>JavaScript</td>
-              <td>2/17/21</td>
+              <td>CSS</td>
+              <td>10/13/25</td>
               <td>95</td>
             </tr>
             <tr>
               <td>Q4</td>
-              <td>React</td>
-              <td>2/24/21</td>
+              <td>JS</td>
+              <td>10/20/25</td>
               <td>88</td>
             </tr>
             <tr>
               <td>Q5</td>
-              <td>Node.js</td>
-              <td>3/3/21</td>
+              <td>JS</td>
+              <td>10/27/25</td>
               <td>92</td>
             </tr>
             <tr>
               <td>Q6</td>
-              <td>MongoDB</td>
-              <td>3/10/21</td>
+              <td>Redux</td>
+              <td>11/10/25</td>
               <td>87</td>
             </tr>
             <tr>
               <td>Q7</td>
-              <td>Express</td>
-              <td>3/17/21</td>
+              <td>Redux</td>
+              <td>11/17/25</td>
               <td>91</td>
             </tr>
             <tr>
               <td>Q8</td>
-              <td>REST APIs</td>
-              <td>3/24/21</td>
+              <td>Node</td>
+              <td>11/24/25</td>
               <td>89</td>
             </tr>
             <tr>
               <td>Q9</td>
-              <td>Security</td>
-              <td>3/31/21</td>
+              <td>Node</td>
+              <td>12/1/25</td>
               <td>93</td>
             </tr>
             <tr>
               <td>Q10</td>
-              <td>Testing</td>
-              <td>4/7/21</td>
+              <td>Mango</td>
+              <td>12/8/25</td>
               <td>94</td>
             </tr>
           </tbody>
