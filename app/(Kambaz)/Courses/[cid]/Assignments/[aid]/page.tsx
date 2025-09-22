@@ -6,10 +6,8 @@ export default function AssignmentEditor() {
       <input id="wd-name" defaultValue="A1 - ENV + HTML" /><br /><br />
       
       <textarea id="wd-description" cols={50} rows={10} defaultValue={
-        `The assignment is available online. Submit a link to the landing page of your Web 
-application running on Netlify. The landing page should include the following: Your 
-full name and section. Links to all relevant source code repositories. The Kambaz 
-application should include a link to navigate back to the landing page.`
+        `Submit a link to the landing page of your Web 
+application.`
       } />
       <br /><br />
       

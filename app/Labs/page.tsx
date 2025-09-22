@@ -14,6 +14,13 @@ export default function Labs() {
        <li>
          <Link href="/Labs/Lab3" id="wd-lab3-link">
            Lab 3: JavaScript Fundamentals </Link> </li>
+           <li>
+        <Link 
+          id="wd-github" 
+          href="https://github.com/lwt339/kambaz-next-js-fa25-mon">
+          My GitHub Repository 
+        </Link>
+      </li>
      </ul>
    </div>
  );}
