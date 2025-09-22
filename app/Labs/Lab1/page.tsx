@@ -105,13 +105,13 @@ Text documents are often broken up into several sections and subsections. Each s
               <td>Q1</td>
               <td>HTML</td>
               <td>9/29/25</td>
-              <td>85</td>
+              <td>90</td>
             </tr>
             <tr>
               <td>Q2</td>
               <td>CSS</td>
               <td>10/6/25</td>
-              <td>90</td>
+              <td>93</td>
             </tr>
             <tr>
               <td>Q3</td>
@@ -123,7 +123,7 @@ Text documents are often broken up into several sections and subsections. Each s
               <td>Q4</td>
               <td>JS</td>
               <td>10/20/25</td>
-              <td>88</td>
+              <td>89</td>
             </tr>
             <tr>
               <td>Q5</td>
@@ -135,7 +135,7 @@ Text documents are often broken up into several sections and subsections. Each s
               <td>Q6</td>
               <td>Redux</td>
               <td>11/10/25</td>
-              <td>87</td>
+              <td>88</td>
             </tr>
             <tr>
               <td>Q7</td>
@@ -147,7 +147,7 @@ Text documents are often broken up into several sections and subsections. Each s
               <td>Q8</td>
               <td>Node</td>
               <td>11/24/25</td>
-              <td>89</td>
+              <td>100</td>
             </tr>
             <tr>
               <td>Q9</td>
@@ -159,13 +159,13 @@ Text documents are often broken up into several sections and subsections. Each s
               <td>Q10</td>
               <td>Mango</td>
               <td>12/8/25</td>
-              <td>94</td>
+              <td>99</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <td colSpan={3}>Average</td>
-              <td>90</td>
+              <td>93</td>
             </tr>
           </tfoot>
         </table>
@@ -190,16 +190,16 @@ Text documents are often broken up into several sections and subsections. Each s
         {/* <form id="wd-text-fields"> */}
         <h5>Text Fields</h5>
         <label htmlFor="wd-text-fields-username">Username:</label>
-        <input id="wd-text-fields-username" placeholder="jdoe" /> <br />
+        <input id="wd-text-fields-username" placeholder="wliu" /> <br />
         <label htmlFor="wd-text-fields-password">Password:</label>
         <input type="password" defaultValue="123@#$asd" id="wd-text-fields-password" />
         <br />
         <label htmlFor="wd-text-fields-first-name">First name:</label>
-        <input type="text" id="wd-text-fields-first-name" title="John" /> <br />
+        <input type="text" id="wd-text-fields-first-name" title="Weiting" /> <br />
         <label htmlFor="wd-text-fields-last-name">Last name:</label>
         <input type="text" 
                id="wd-text-fields-last-name"
-               placeholder="Doe"
+               placeholder="Liu"
                defaultValue="Wonderland" title="The last name" />
         <br/>
 
@@ -278,7 +278,7 @@ Text documents are often broken up into several sections and subsections. Each s
           <h4>Other HTML field types</h4>
           <label htmlFor="wd-text-fields-email"> Email: </label>
           <input type="email"
-            placeholder="jdoe@somewhere.com"
+            placeholder="Weiting@somewhere.com"
             id="wd-text-fields-email" /><br />
           <label htmlFor="wd-text-fields-salary-start"> Starting salary:</label>
           <input type="number"
@@ -289,7 +289,7 @@ Text documents are often broken up into several sections and subsections. Each s
           <input type="range"
             defaultValue="4"
             max="5"
-            placeholder="Doe"
+            placeholder="Weiting"
             id="wd-text-fields-rating" /><br />
           <label htmlFor="wd-text-fields-dob"> Date of birth: </label>
           <input type="date"
