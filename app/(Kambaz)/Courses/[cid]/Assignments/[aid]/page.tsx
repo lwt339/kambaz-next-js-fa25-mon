@@ -3,7 +3,7 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import { useParams, useRouter } from "next/navigation";
 
 export default function AssignmentEditor() {
-    const { cid, aid } = useParams();
+    const { cid } = useParams();
     const router = useRouter();
 
     return (

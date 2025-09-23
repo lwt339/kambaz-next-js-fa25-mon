@@ -32,7 +32,7 @@ export default function BootstrapLists() {
             2001 A Space Odyssey
           </ListGroupItem>
           <ListGroupItem action disabled href="https://en.wikipedia.org/wiki/Ender%27s_Game">
-            Ender's Game
+              Ender&apos;s Game
           </ListGroupItem>
         </ListGroup>
       </div>
