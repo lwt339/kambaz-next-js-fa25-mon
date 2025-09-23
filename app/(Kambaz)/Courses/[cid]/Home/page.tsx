@@ -1,10 +1,14 @@
 "use client";
+import { use } from "react";
 import Modules from "../Modules/page";
 import CourseStatus from "./Status";
 
-// For dynamic routes, you can access params
-export default function Home({ params }: { params: { cid: string } }) {
-    console.log("Course ID:", params.cid);
+// Solution 1: Using React.use() hook (recommended for client components)
+export default function Home({ params }: { params: Promise<{ cid: string }> }) {
+    // Unwrap the params Promise using React.use()
+    const { cid } = use(params);
+
+    console.log("Course ID:", cid);
 
     return (
         <div className="d-flex" id="wd-home">
