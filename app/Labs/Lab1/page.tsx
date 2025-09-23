@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 
 export default function Lab1() {
   return (
@@ -172,17 +173,27 @@ Text documents are often broken up into several sections and subsections. Each s
       </div>
 
       {/* IMAGE TAGS SECTION */}
-      <div id="wd-images">
-        <h4>Image tag</h4>
-        Loading an image from the internet: <br />
-        <img id="wd-starship" width="400px"
-          src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg" 
-          alt="Starship spacecraft" />
-        <br />
-        Loading a local image:
-        <br />
-        <img id="wd-teslabot" src="/images/teslabot.jpg" height="200px" alt="Tesla Bot" />
-      </div>
+        <div id="wd-images">
+            <h4>Image tag</h4>
+            Loading an image from the internet: <br />
+            <Image
+                id="wd-starship"
+                width={400}
+                height={267}
+                src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg"
+                alt="Starship spacecraft"
+            />
+            <br />
+            Loading a local image:
+            <br />
+            <Image
+                id="wd-teslabot"
+                src="/images/teslabot.jpg"
+                width={300}
+                height={200}
+                alt="Tesla Bot"
+            />
+        </div>
 
       {/* FORM ELEMENTS SECTION */}
       <div id="wd-forms">
