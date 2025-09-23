@@ -1,18 +1,35 @@
+"use client";
 import Link from "next/link";
+import { useParams, usePathname } from "next/navigation";
 
 export default function CourseNavigation() {
-  return (
-    <div id="wd-courses-navigation">
-      <Link href="/Courses/5610/Home" id="wd-course-home-link">Home</Link><br/>
-      <Link href="/Courses/5610/Modules" id="wd-course-modules-link">Modules</Link><br/>
-      <Link href="/Courses/5610/Piazza" id="wd-course-piazza-link">Piazza</Link><br/>
-      <Link href="/Courses/5610/Zoom" id="wd-course-zoom-link">Zoom</Link><br/>
-      <Link href="/Courses/5610/Assignments" id="wd-course-assignments-link">
-        Assignments
-      </Link><br/>
-      <Link href="/Courses/5610/Quizzes" id="wd-course-quizzes-link">Quizzes</Link><br/>
-      <Link href="/Courses/5610/Grades" id="wd-course-grades-link">Grades</Link><br/>
-      <Link href="/Courses/5610/People" id="wd-course-people-link">People</Link><br/>
-    </div>
-  );
+    const { cid } = useParams();
+    const pathname = usePathname();
+
+    // REQUIRED: All these navigation links
+    const links = [
+        { name: "Home", path: `/Courses/${cid}/Home` },
+        { name: "Modules", path: `/Courses/${cid}/Modules` },
+        { name: "Piazza", path: `/Courses/${cid}/Piazza` },
+        { name: "Zoom", path: `/Courses/${cid}/Zoom` },
+        { name: "Assignments", path: `/Courses/${cid}/Assignments` },
+        { name: "Quizzes", path: `/Courses/${cid}/Quizzes` },
+        { name: "Grades", path: `/Courses/${cid}/Grades` },
+        { name: "People", path: `/Courses/${cid}/People` },
+    ];
+
+    return (
+        <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
+            {links.map((link) => (
+                <Link
+                    key={link.name}
+                    href={link.path}
+                    className={`list-group-item border-0 ${
+                        pathname === link.path ? 'active' : 'text-danger'
+                    }`}>
+                    {link.name}
+                </Link>
+            ))}
+        </div>
+    );
 }

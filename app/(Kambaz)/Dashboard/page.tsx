@@ -1,147 +1,103 @@
+"use client";
 import Link from "next/link";
-import Image from "next/image";
+import { Card, CardBody, CardText, CardTitle, Button, Row, Col } from "react-bootstrap";
 
 export default function Dashboard() {
-  return (
-    <div id="wd-dashboard">
-      <h1 id="wd-dashboard-title">Dashboard</h1>
-      <hr />
-      <h2 id="wd-dashboard-published">Published Courses (7)</h2>
-      <hr />
-      <div id="wd-dashboard-courses">
-        {/* Course 1 */}
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/5610" className="wd-dashboard-course-link">
-            <Image 
-              src="/images/webdev.jpg" 
-              width={200} 
-              height={150} 
-              alt="Web Development" 
-            />
-            <div>
-              <h5>CS5610 Web Development</h5>
-              <p className="wd-dashboard-course-title">
-                Sites that are dynamic, data driven, and interactive. 
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
+    // REQUIRED: At least 7 courses
+    const courses = [
+        {
+            id: "CS5610",
+            name: "Web Development",
+            semester: "Summer 2 2024",
+            color: "#0073e6",
+            description: "Full Stack software development with MERN stack"
+        },
+        {
+            id: "CS5200",
+            name: "Database Management Systems",
+            semester: "Summer 2 2024",
+            color: "#28a745",
+            description: "Relational databases and SQL programming"
+        },
+        {
+            id: "CS5800",
+            name: "Algorithms",
+            semester: "Summer 2 2024",
+            color: "#dc3545",
+            description: "Advanced algorithms and data structures"
+        },
+        {
+            id: "CS5520",
+            name: "Mobile Application Development",
+            semester: "Fall 2024",
+            color: "#ffc107",
+            description: "Mobile phone or related platform"
+        },
+        {
+            id: "CS5150",
+            name: "Game Artificial Intelligence",
+            semester: "Fall 2024",
+            color: "#17a2b8",
+            description: "Classical and modern approaches to artificial intelligence in digital games"
+        },
+        {
+            id: "CS5600",
+            name: "Computer Systems",
+            semester: "Fall 2024",
+            color: "#6610f2",
+            description: "Structure, components, design, implementation, and internal operation of computer systems"
+        },
+        {
+            id: "CS6510",
+            name: "Advanced Software Development",
+            semester: "Spring 2025",
+            color: "#e83e8c",
+            description: "Academic concepts and practical experience of software design"
+        },
+    ];
+
+    return (
+        <div id="wd-dashboard">
+            <h1 id="wd-dashboard-title">Dashboard</h1>
+            <hr />
+            <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2>
+            <hr />
+
+            {/* Course Cards Grid - Responsive */}
+            <Row id="wd-dashboard-courses" className="row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+                {courses.map((course) => (
+                    <Col key={course.id} className="wd-dashboard-course mb-4">
+                        <Card style={{ width: "270px" }}>
+                            <Link
+                                href={`/Kambaz/Courses/${course.id}/Home`}
+                                className="text-decoration-none text-dark">
+                                {/* Colored top section - REQUIRED */}
+                                <div style={{
+                                    height: "160px",
+                                    backgroundColor: course.color,
+                                    borderTopLeftRadius: "0.375rem",
+                                    borderTopRightRadius: "0.375rem"
+                                }}></div>
+
+                                <CardBody>
+                                    <CardTitle className="wd-dashboard-course-title">
+                                        {course.id} {course.name}
+                                    </CardTitle>
+                                    <CardText className="wd-dashboard-course-semester text-muted">
+                                        {course.semester}
+                                    </CardText>
+                                    <CardText
+                                        className="wd-dashboard-course-description overflow-hidden"
+                                        style={{ height: "100px" }}>
+                                        {course.description}
+                                    </CardText>
+                                    <Button variant="primary">Go</Button>
+                                </CardBody>
+                            </Link>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
         </div>
-        
-        {/* Course 2 */}
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/5520" className="wd-dashboard-course-link">
-            <Image 
-              src="/images/mobileapp.jpg" 
-              width={200} 
-              height={150} 
-              alt="Mobile Application Development" 
-            />
-            <div>
-              <h5>CS5520 Mobile Application Development</h5>
-              <p className="wd-dashboard-course-title">
-                 Mobile phone or related platform.
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
-        
-        {/* Course 3 */}
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/5800" className="wd-dashboard-course-link">
-            <Image 
-              src="/images/Algorithms.jpg" 
-              width={200} 
-              height={150} 
-              alt="Algorithms" 
-            />
-            <div>
-              <h5>CS5800 Algorithms</h5>
-              <p className="wd-dashboard-course-title">
-                Presents the mathematical techniques used for the design and analysis of computer algorithms.
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
-        
-        {/* Course 4 */}
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/5150" className="wd-dashboard-course-link">
-            <Image 
-              src="/images/game.jpg" 
-              width={200} 
-              height={150} 
-              alt="Game Artificial Intelligence" 
-            />
-            <div>
-              <h5>CS5150 Game Artificial Intelligence</h5>
-              <p className="wd-dashboard-course-title">
-                Classical and modern approaches to artificial intelligence in digital games.
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
-        
-        {/* Course 5 */}
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/5200" className="wd-dashboard-course-link">
-            <Image 
-              src="/images/database.jpg" 
-              width={200} 
-              height={150} 
-              alt="Database Management Systems" 
-            />
-            <div>
-              <h5>CS5200 Database Management Systems</h5>
-              <p className="wd-dashboard-course-title">
-                SQL and NoSQL Databases
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
-        
-        {/* Course 6 */}
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/5600" className="wd-dashboard-course-link">
-            <Image 
-              src="/images/system.jpg" 
-              width={200} 
-              height={150} 
-              alt="Computer Systems" 
-            />
-            <div>
-              <h5>CS5600 Computer Systems</h5>
-              <p className="wd-dashboard-course-title">
-                Structure, components, design, implementation, and internal operation of computer systems
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
-        
-        {/* Course 7 */}
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/6510" className="wd-dashboard-course-link">
-            <Image 
-              src="/images/software.jpg" 
-              width={200} 
-              height={150} 
-              alt="Advanced Software Development" 
-            />
-            <div>
-              <h5>CS6510 Advanced Software Development</h5>
-              <p className="wd-dashboard-course-title">
-                 Academic concepts and practical experience of software design
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }

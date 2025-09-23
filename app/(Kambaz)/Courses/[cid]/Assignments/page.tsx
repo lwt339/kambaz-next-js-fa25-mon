@@ -1,220 +1,353 @@
+"use client";
+
+import { ListGroup, ListGroupItem } from "react-bootstrap";
+import { BsGripVertical } from "react-icons/bs";
+import { FaCaretDown } from "react-icons/fa";
+import { MdAssignment } from "react-icons/md";
+import { GrNotes } from "react-icons/gr";
+import { FaRegFileAlt } from "react-icons/fa";
+import { PiProjectorScreenChartBold } from "react-icons/pi";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import AssignmentsControls from "./AssignmentsControls";
+import AssignmentControlButtons from "./AssignmentControlButtons";
 
 export default function Assignments() {
-  return (
-    <div id="wd-assignments">
-      <input 
-        placeholder="Search for Assignments" 
-        id="wd-search-assignment" 
-      />
-      <button id="wd-add-assignment-group">+ Group</button>
-      <button id="wd-add-assignment">+ Assignment</button>
-      <br /><br />
-      
-      <h3 id="wd-assignments-title">
-        ASSIGNMENTS 40% of Total <button>+</button>
-      </h3>
-      
-      <ul id="wd-assignment-list">
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/123" className="wd-assignment-link">
-            A1 - ENV + HTML
-          </Link>
-          <br />
-          Multiple Modules | Submitting a website url |
-          <br />
-          Due Sep 22 at 11:59pm | 100 pts
-        </li>
-        
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/124" className="wd-assignment-link">
-            A2 - CSS + BOOTSTRAP
-          </Link>
-          <br />
-          Multiple Modules | Submitting a website url |
-          <br />
-          Due Oct 6 at 11:59pm | 100 pts
-        </li>
-        
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/125" className="wd-assignment-link">
-            A3 - JAVASCRIPT + REACT + Routing
-          </Link>
-          <br />
-          Multiple Modules | Not available until Sep 20 at 12:00am | Submitting a website url
-          <br />
-          Due Oct 20 at 11:59pm | 100 pts
-        </li>
+    const { cid } = useParams();
 
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/126" className="wd-assignment-link">
-            A4 - State + Redux 
-          </Link>
-          <br />
-          Multiple Modules | Submitting a website url
-          <br />
-          Due Nov 3 at 11:59pm | 100 pts
-        </li>
+    const assignments = [
+        {
+            id: "123",
+            title: "A1 - ENV + HTML",
+            modules: "Multiple Modules",
+            submissionType: "Submitting a website url",
+            dueDate: "Sep 22 at 11:59pm",
+            points: "100 pts"
+        },
+        {
+            id: "124",
+            title: "A2 - CSS + BOOTSTRAP",
+            modules: "Multiple Modules",
+            submissionType: "Submitting a website url",
+            dueDate: "Oct 6 at 11:59pm",
+            points: "100 pts"
+        },
+        {
+            id: "125",
+            title: "A3 - JAVASCRIPT + REACT + Routing",
+            modules: "Multiple Modules",
+            availability: "Not available until Sep 20 at 12:00am",
+            submissionType: "Submitting a website url",
+            dueDate: "Oct 20 at 11:59pm",
+            points: "100 pts"
+        },
+        {
+            id: "126",
+            title: "A4 - State + Redux",
+            modules: "Multiple Modules",
+            submissionType: "Submitting a website url",
+            dueDate: "Nov 3 at 11:59pm",
+            points: "100 pts"
+        },
+        {
+            id: "127",
+            title: "A5 - Node + Session",
+            modules: "Multiple Modules",
+            submissionType: "Submitting a website url",
+            dueDate: "Nov 17 at 11:59pm",
+            points: "100 pts"
+        },
+        {
+            id: "128",
+            title: "A6 - MongoDB + Mongoose",
+            modules: "Multiple Modules",
+            submissionType: "Submitting a website url",
+            dueDate: "Dec 1 at 11:59pm",
+            points: "100 pts"
+        }
+    ];
 
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/127" className="wd-assignment-link">
-            A5 - Node + Session
-          </Link>
-          <br />
-          Multiple Modules | Submitting a website url
-          <br />
-          Due Nov 17 at 11:59pm | 100 pts
-        </li>
+    const quizzes = [
+        {
+            id: "129",
+            title: "Q1 - HTML",
+            type: "Multiple Choice",
+            questions: "11 Question",
+            availability: "Not available until Sep 22 at 12:00am",
+            timeLimit: "Time Limit 20 Minutes",
+            dueDate: "Sep 29 at 11:59pm",
+            points: "29 pts"
+        },
+        {
+            id: "130",
+            title: "Q2 - CSS",
+            type: "Multiple Choice",
+            questions: "6 Question",
+            availability: "Not available until Sep 29 at 12:00am",
+            timeLimit: "Time Limit 20 Minutes",
+            dueDate: "Oct 6 at 11:59pm",
+            points: "23 pts"
+        },
+        {
+            id: "132",
+            title: "Q3 - CSS",
+            type: "Multiple Choice",
+            questions: "7 Question",
+            availability: "Not available until Oct 6 at 12:00am",
+            timeLimit: "Time Limit 20 Minutes",
+            dueDate: "Oct 13 at 11:59pm",
+            points: "32 pts"
+        },
+        {
+            id: "134",
+            title: "Q4 - JS",
+            type: "Multiple Choice",
+            questions: "3 Question",
+            availability: "Not available until Oct 13 at 12:00am",
+            timeLimit: "Time Limit 20 Minutes",
+            dueDate: "Oct 20 at 11:59pm",
+            points: "17 pts"
+        },
+        {
+            id: "135",
+            title: "Q5 - JS",
+            type: "Multiple Choice",
+            questions: "8 Question",
+            availability: "Not available until Oct 20 at 12:00am",
+            timeLimit: "Time Limit 20 Minutes",
+            dueDate: "Oct 27 at 11:59pm",
+            points: "31 pts"
+        },
+        {
+            id: "136",
+            title: "Q6 - Redux",
+            type: "Multiple Choice",
+            questions: "3 Question",
+            availability: "Not available until Nov 3 at 12:00am",
+            timeLimit: "Time Limit 20 Minutes",
+            dueDate: "Nov 10 at 11:59pm",
+            points: "18 pts"
+        },
+        {
+            id: "137",
+            title: "Q7 - Redux",
+            type: "Multiple Choice",
+            questions: "1 Question",
+            availability: "Not available until Nov 10 at 12:00am",
+            timeLimit: "Time Limit 20 Minutes",
+            dueDate: "Nov 17 at 11:59pm",
+            points: "20 pts"
+        },
+        {
+            id: "138",
+            title: "Q8 - Node",
+            type: "Multiple Choice",
+            questions: "4 Question",
+            availability: "Not available until Nov 17 at 12:00am",
+            timeLimit: "Time Limit 20 Minutes",
+            dueDate: "Nov 24 at 11:59pm",
+            points: "25 pts"
+        },
+        {
+            id: "139",
+            title: "Q9 - Node",
+            type: "Multiple Choice",
+            questions: "10 Question",
+            availability: "Not available until Nov 24 at 12:00am",
+            timeLimit: "Time Limit 20 Minutes",
+            dueDate: "Dec 1 at 11:59pm",
+            points: "38 pts"
+        },
+        {
+            id: "140",
+            title: "Q10 - Mongo",
+            type: "Multiple Choice",
+            questions: "2 Question",
+            availability: "Not available until Dec 1 at 12:00am",
+            timeLimit: "Time Limit 20 Minutes",
+            dueDate: "Dec 8 at 11:59pm",
+            points: "20 pts"
+        }
+    ];
 
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/128" className="wd-assignment-link">
-            A6 - MongoDB + Mongoose
-          </Link>
-          <br />
-          Multiple Modules | Submitting a website url
-          <br />
-          Due Dec 1 at 11:59pm | 100 pts
-        </li>
-      </ul>
-      
-      <h3>QUIZZES 10% of Total</h3>
-      <ul>
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/129" className="wd-assignment-link">
-            Q1 - HTML
-          </Link>
-          <br />
-          Multiple Choice | 11 Question | Not available until Sep 22 at 12:00am | Time Limit 20 Minutes
-          <br />
-          Due Sep 29 at 11:59pm | 29 pts
-        </li>
-        
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/130" className="wd-assignment-link">
-            Q2 - CSS
-          </Link>
-          <br />
-          Multiple Choice | 6 Question | Not available until Sep 29 at 12:00am | Time Limit 20 Minutes
-          <br />
-          Due Oct 6 at 11:59pm | 23 pts
-        </li>
+    const exams = [
+        {
+            id: "151",
+            title: "Exam 1 - A1-A3",
+            type: "Multiple Choice",
+            questions: "15 Questions",
+            availability: "Not available until Oct 27 at 12:00am",
+            timeLimit: "Time Limit 100 Minutes",
+            dueDate: "Nov 3 at 11:59pm",
+            points: "100 pts"
+        },
+        {
+            id: "152",
+            title: "Exam 2 - A4-A6",
+            type: "Multiple Choice",
+            questions: "18 Questions",
+            availability: "Not available until Dec 1 at 12:00am",
+            timeLimit: "Time Limit 100 Minutes",
+            dueDate: "Dec 8 at 11:59pm",
+            points: "103 pts"
+        }
+    ];
 
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/132" className="wd-assignment-link">
-            Q3 - CSS
-          </Link>
-          <br />
-          Multiple Choice | 7 Question | Not available until Oct 6 at 12:00am | Time Limit 20 Minutes
-          <br />
-          Due Oct 13 at 11:59pm | 32 pts
-        </li>
+    const project = {
+        id: "160",
+        title: "Final Project",
+        description: "Group Project",
+        options: "Kambaz Quizzes or Kambaz Pazza or Social Network",
+        submissionType: "Submitting a text entry box or a website url",
+        dueDate: "Dec 7 at 11:59pm",
+        points: "350 pts"
+    };
 
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/134" className="wd-assignment-link">
-            Q4 - JS
-          </Link>
-          <br />
-          Multiple Choice | 3 Question | Not available until Oct 13 at 12:00am | Time Limit 20 Minutes
-          <br />
-          Due Oct 20 at 11:59pm | 17 pts
-        </li>
+    return (
+        <div id="wd-assignments">
+            <AssignmentsControls />
 
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/135" className="wd-assignment-link">
-            Q5 - JS
-          </Link>
-          <br />
-          Multiple Choice | 8 Question | Not available until Oct 20 at 12:00am | Time Limit 20 Minutes
-          <br />
-          Due Oct 27 at 11:59pm | 31 pts
-        </li>
+            {/* ASSIGNMENTS Section */}
+            <ListGroup className="rounded-0">
+                <ListGroupItem className="p-0 mb-5 fs-5 border-gray">
+                    <div className="wd-title p-3 ps-2 bg-secondary">
+                        <BsGripVertical className="me-2 fs-3" />
+                        <FaCaretDown className="me-2" />
+                        ASSIGNMENTS 40% of Total
+                        <AssignmentControlButtons />
+                    </div>
 
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/136" className="wd-assignment-link">
-            Q6 - Redux
-          </Link>
-          <br />
-          Multiple Choice | 3 Question | Not available until Nov 3 at 12:00am | Time Limit 20 Minutes
-          <br />
-          Due Nov 10 at 11:59pm | 18 pts
-        </li>
+                    <ListGroup className="rounded-0">
+                        {assignments.map((assignment) => (
+                            <ListGroupItem key={assignment.id} className="wd-assignment-list-item p-3 ps-1">
+                                <div className="d-flex align-items-center">
+                                    <BsGripVertical className="me-2 fs-3" />
+                                    <MdAssignment className="me-3 fs-3 text-success" />
+                                    <div className="flex-fill">
+                                        <Link
+                                            href={`/Courses/5610/Assignments/${assignment.id}`}
+                                            className="wd-assignment-link text-decoration-none text-dark">
+                                            <div className="fw-bold">{assignment.title}</div>
+                                        </Link>
+                                        <div className="text-muted small">
+                                            {assignment.modules} | {assignment.availability ? `${assignment.availability} | ` : ''}{assignment.submissionType}
+                                            <br />
+                                            <strong>Due</strong> {assignment.dueDate} | {assignment.points}
+                                        </div>
+                                    </div>
+                                    <AssignmentControlButtons />
+                                </div>
+                            </ListGroupItem>
+                        ))}
+                    </ListGroup>
+                </ListGroupItem>
+            </ListGroup>
 
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/137" className="wd-assignment-link">
-            Q7 - Redux
-          </Link>
-          <br />
-          Multiple Choice | 1 Question | Not available until Nov 10 at 12:00am | Time Limit 20 Minutes
-          <br />
-          Due Nov 17 at 11:59pm | 20 pts
-        </li>
+            {/* QUIZZES Section */}
+            <ListGroup className="rounded-0">
+                <ListGroupItem className="p-0 mb-5 fs-5 border-gray">
+                    <div className="wd-title p-3 ps-2 bg-secondary">
+                        <BsGripVertical className="me-2 fs-3" />
+                        <FaCaretDown className="me-2" />
+                        QUIZZES 10% of Total
+                        <AssignmentControlButtons />
+                    </div>
 
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/138" className="wd-assignment-link">
-            Q8 - Node
-          </Link>
-          <br />
-          Multiple Choice | 4 Question | Not available until Nov 17 at 12:00am | Time Limit 20 Minutes
-          <br />
-          Due Nov 24 at 11:59pm | 25 pts
-        </li>
+                    <ListGroup className="rounded-0">
+                        {quizzes.map((quiz) => (
+                            <ListGroupItem key={quiz.id} className="wd-assignment-list-item p-3 ps-1">
+                                <div className="d-flex align-items-center">
+                                    <BsGripVertical className="me-2 fs-3" />
+                                    <GrNotes className="me-3 fs-3 text-success" />
+                                    <div className="flex-fill">
+                                        <Link
+                                            href={`/Courses/5610/Assignments/${quiz.id}`}
+                                            className="wd-assignment-link text-decoration-none text-dark">
+                                            <div className="fw-bold">{quiz.title}</div>
+                                        </Link>
+                                        <div className="text-muted small">
+                                            {quiz.type} | {quiz.questions} | {quiz.availability} | {quiz.timeLimit}
+                                            <br />
+                                            <strong>Due</strong> {quiz.dueDate} | {quiz.points}
+                                        </div>
+                                    </div>
+                                    <AssignmentControlButtons />
+                                </div>
+                            </ListGroupItem>
+                        ))}
+                    </ListGroup>
+                </ListGroupItem>
+            </ListGroup>
 
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/139" className="wd-assignment-link">
-            Q9 - Node
-          </Link>
-          <br />
-          Multiple Choice | 10 Question | Not available until Nov 24 at 12:00am | Time Limit 20 Minutes
-          <br />
-          Due Dec 1 at 11:59pm | 38 pts
-        </li>
+            {/* EXAMS Section */}
+            <ListGroup className="rounded-0">
+                <ListGroupItem className="p-0 mb-5 fs-5 border-gray">
+                    <div className="wd-title p-3 ps-2 bg-secondary">
+                        <BsGripVertical className="me-2 fs-3" />
+                        <FaCaretDown className="me-2" />
+                        EXAMS 20% of Total
+                        <AssignmentControlButtons />
+                    </div>
 
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/140" className="wd-assignment-link">
-            Q10 - Mongo
-          </Link>
-          <br />
-          Multiple Choice | 2 Question | Not available until Dec 1 at 12:00am | Time Limit 20 Minutes
-          <br />
-          Due Dec 8 at 11:59pm | 20 pts
-        </li>
-      </ul>
-      
-      <h3>EXAMS 20% of Total</h3>
-      <ul>
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/151" className="wd-assignment-link">
-            Exam 1 - A1-A3
-          </Link>
-          <br />
-          Multiple Choice | 15 Questions | Not available until Oct 27 at 12:00am | Time Limit 100 Minutes
-          <br />
-          Due Nov 3 at 11:59pm | 100 pts
-        </li>
-        
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/152" className="wd-assignment-link">
-            Exam 2 - A4-A6
-          </Link>
-          <br />
-          Multiple Choice | 18 Questions | Not available until Dec 1 at 12:00am | Time Limit 100 Minutes
-          <br />
-          Due Dec 8 at 11:59pm | 103 pts
-        </li>
-      </ul>
-      
-      <h3>PROJECT 30% of Total</h3>
-      <ul>
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/5610/Assignments/160" className="wd-assignment-link">
-            Final Project
-          </Link>
-          <br />
-          Group Project | Kambaz Quizzes or Kambaz Pazza or Social Network | Submitting a text entry box or a website url
-          <br />
-          Due Dec 7 at 11:59pm | 350 pts
-        </li>
-      </ul>
-    </div>
-  );
+                    <ListGroup className="rounded-0">
+                        {exams.map((exam) => (
+                            <ListGroupItem key={exam.id} className="wd-assignment-list-item p-3 ps-1">
+                                <div className="d-flex align-items-center">
+                                    <BsGripVertical className="me-2 fs-3" />
+                                    <FaRegFileAlt className="me-3 fs-3 text-success" />
+                                    <div className="flex-fill">
+                                        <Link
+                                            href={`/Courses/5610/Assignments/${exam.id}`}
+                                            className="wd-assignment-link text-decoration-none text-dark">
+                                            <div className="fw-bold">{exam.title}</div>
+                                        </Link>
+                                        <div className="text-muted small">
+                                            {exam.type} | {exam.questions} | {exam.availability} | {exam.timeLimit}
+                                            <br />
+                                            <strong>Due</strong> {exam.dueDate} | {exam.points}
+                                        </div>
+                                    </div>
+                                    <AssignmentControlButtons />
+                                </div>
+                            </ListGroupItem>
+                        ))}
+                    </ListGroup>
+                </ListGroupItem>
+            </ListGroup>
+
+            {/* PROJECT Section */}
+            <ListGroup className="rounded-0">
+                <ListGroupItem className="p-0 mb-5 fs-5 border-gray">
+                    <div className="wd-title p-3 ps-2 bg-secondary">
+                        <BsGripVertical className="me-2 fs-3" />
+                        <FaCaretDown className="me-2" />
+                        PROJECT 30% of Total
+                        <AssignmentControlButtons />
+                    </div>
+
+                    <ListGroup className="rounded-0">
+                        <ListGroupItem className="wd-assignment-list-item p-3 ps-1">
+                            <div className="d-flex align-items-center">
+                                <BsGripVertical className="me-2 fs-3" />
+                                <PiProjectorScreenChartBold className="me-3 fs-3 text-success" />
+                                <div className="flex-fill">
+                                    <Link
+                                        href={`/Courses/5610/Assignments/${project.id}`}
+                                        className="wd-assignment-link text-decoration-none text-dark">
+                                        <div className="fw-bold">{project.title}</div>
+                                    </Link>
+                                    <div className="text-muted small">
+                                        {project.description} | {project.options} | {project.submissionType}
+                                        <br />
+                                        <strong>Due</strong> {project.dueDate} | {project.points}
+                                    </div>
+                                </div>
+                                <AssignmentControlButtons />
+                            </div>
+                        </ListGroupItem>
+                    </ListGroup>
+                </ListGroupItem>
+            </ListGroup>
+        </div>
+    );
 }
