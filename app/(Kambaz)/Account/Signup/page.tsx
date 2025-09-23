@@ -37,15 +37,13 @@ export default function Signup() {
 
                 <Button
                     variant="danger"
-                    className="w-100"
-                    as={Link}
-                    href="/Kambaz/Account/Profile">
+                    className="w-100">
                     Sign up
                 </Button>
             </Form>
 
             <div className="mt-3">
-                <Link href="/Kambaz/Account/Signin">Sign in</Link>
+                <Link href="/Account/Signin">Sign in</Link>
             </div>
         </div>
     );

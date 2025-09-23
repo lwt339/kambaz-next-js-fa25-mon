@@ -28,9 +28,7 @@ export default function Signin() {
 
                 <Button
                     variant="danger"
-                    className="w-100"
-                    as={Link}
-                    href="/Dashboard">
+                    className="w-100">
                     Sign in
                 </Button>
             </Form>

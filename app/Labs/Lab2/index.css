@@ -151,7 +151,7 @@ p#wd-id-selector-2 {
 
 /* Different radius for each corner */
 .wd-rounded-corners-inline {
-  border-radius: 30px 0px 20px 50px;
+  border-radius: 30px 0 20px 50px;
 }
 
 /* ========================================
@@ -217,7 +217,7 @@ p#wd-id-selector-2 {
 /* Fixed positioning - stays in viewport */
 .wd-pos-fixed {
   position: fixed;
-  right: 0px;
+  right: 0;
   bottom: 50%;
 }
 
