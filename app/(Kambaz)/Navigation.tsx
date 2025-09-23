@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
@@ -23,7 +24,7 @@ export default function KambazNavigation() {
                 target="_blank"
                 href="https://www.northeastern.edu/"
                 id="wd-neu-link">
-                <img src="/images/NEU.png" width="75px" alt="Northeastern University" />
+                <Image src="/images/NEU.png" width={75} height={75} alt="Northeastern University" />
             </ListGroupItem>
             <br />
 

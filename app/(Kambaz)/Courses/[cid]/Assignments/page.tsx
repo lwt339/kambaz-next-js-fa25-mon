@@ -225,7 +225,7 @@ export default function Assignments() {
                                     <MdAssignment className="me-3 fs-3 text-success" />
                                     <div className="flex-fill">
                                         <Link
-                                            href={`/Courses/5610/Assignments/${assignment.id}`}
+                                            href={`/Courses/${cid}/Assignments/${assignment.id}`}
                                             className="wd-assignment-link text-decoration-none text-dark">
                                             <div className="fw-bold">{assignment.title}</div>
                                         </Link>
@@ -261,7 +261,7 @@ export default function Assignments() {
                                     <GrNotes className="me-3 fs-3 text-success" />
                                     <div className="flex-fill">
                                         <Link
-                                            href={`/Courses/5610/Assignments/${quiz.id}`}
+                                            href={`/Courses/${cid}/Assignments/${quiz.id}`}
                                             className="wd-assignment-link text-decoration-none text-dark">
                                             <div className="fw-bold">{quiz.title}</div>
                                         </Link>
@@ -297,7 +297,7 @@ export default function Assignments() {
                                     <FaRegFileAlt className="me-3 fs-3 text-success" />
                                     <div className="flex-fill">
                                         <Link
-                                            href={`/Courses/5610/Assignments/${exam.id}`}
+                                            href={`/Courses/${cid}/Assignments/${exam.id}`}
                                             className="wd-assignment-link text-decoration-none text-dark">
                                             <div className="fw-bold">{exam.title}</div>
                                         </Link>
@@ -332,7 +332,7 @@ export default function Assignments() {
                                 <PiProjectorScreenChartBold className="me-3 fs-3 text-success" />
                                 <div className="flex-fill">
                                     <Link
-                                        href={`/Courses/5610/Assignments/${project.id}`}
+                                        href={`/Courses/${cid}/Assignments/${project.id}`}
                                         className="wd-assignment-link text-decoration-none text-dark">
                                         <div className="fw-bold">{project.title}</div>
                                     </Link>
