@@ -1,18 +1,38 @@
+import { Button } from "react-bootstrap";
+import { MdDoNotDisturbAlt } from "react-icons/md";
+import { FaCheckCircle } from "react-icons/fa";
+import { BiImport } from "react-icons/bi";
+import { LiaFileImportSolid } from "react-icons/lia";
+
 export default function CourseStatus() {
-  return (
-    <div id="wd-course-status">
-      <h2>Course Status</h2>
-      <button id="wd-course-unpublish-btn">Unpublish</button>
-      <button id="wd-course-publish-btn">Publish</button>
-      <br /><br />
-      
-      <button id="wd-course-import-existing-btn">Import Existing Content</button><br />
-      <button id="wd-course-import-commons-btn">Import from Commons</button><br />
-      <button id="wd-course-choose-home-btn">Choose Home Page</button><br />
-      <button id="wd-course-view-stream-btn">View Course Stream</button><br />
-      <button id="wd-course-new-announcement-btn">New Announcement</button><br />
-      <button id="wd-course-new-analytics-btn">New Analytics</button><br />
-      <button id="wd-course-view-notifications-btn">View Course Notifications</button>
-    </div>
-  );
+    return (
+        <div style={{ width: "300px" }}>
+            <h2>Course Status</h2>
+            <div className="d-flex">
+                <div className="w-50 pe-1">
+                    <Button variant="secondary" className="w-100 text-nowrap">
+                        <MdDoNotDisturbAlt className="me-2 fs-5" />
+                        Unpublish
+                    </Button>
+                </div>
+                <div className="w-50 ps-1">
+                    <Button variant="success" className="w-100">
+                        <FaCheckCircle className="me-2 fs-5" />
+                        Publish
+                    </Button>
+                </div>
+            </div>
+            <br />
+            <Button variant="secondary" className="w-100 text-start">
+                <BiImport className="me-2 fs-5" />
+                Import Existing Content
+            </Button>
+            <br />
+            <Button variant="secondary" className="w-100 text-start">
+                <LiaFileImportSolid className="me-2 fs-5" />
+                Import from Commons
+            </Button>
+            {/* Add more buttons as needed */}
+        </div>
+    );
 }

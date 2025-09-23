@@ -69,7 +69,7 @@ export default function Dashboard() {
                     <Col key={course.id} className="wd-dashboard-course mb-4">
                         <Card style={{ width: "270px" }}>
                             <Link
-                                href={`/Kambaz/Courses/${course.id}/Home`}
+                                href={`/Courses/${course.id}/Home`}
                                 className="text-decoration-none text-dark">
                                 {/* Colored top section - REQUIRED */}
                                 <div style={{
