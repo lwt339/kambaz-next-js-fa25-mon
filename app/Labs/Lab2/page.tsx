@@ -35,7 +35,7 @@ export default function Lab2() {
             {/* Screen Size Indicator - REQUIRED for responsive testing */}
             <ScreenSizeLabel />
 
-            <h2>Lab 2 - Cascading Style Sheets</h2>
+            <h2>Lab 2 1- Cascading Style Sheets</h2>
 
             {/* SECTION 1: Inline Styles */}
             <h3>Styling with the STYLE attribute</h3>
