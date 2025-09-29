@@ -6,7 +6,12 @@ export default function CourseNavigation() {
     const { cid } = useParams();
     const pathname = usePathname();
 
-    // REQUIRED: All these navigation links
+    // Helper function for checking active state
+    const isActive = (path: string) => {
+        return pathname.includes(path);
+    };
+
+    // REQUIRED: All these navigation links for Assignment 2
     const links = [
         { name: "Home", path: `/Courses/${cid}/Home` },
         { name: "Modules", path: `/Courses/${cid}/Modules` },
@@ -19,14 +24,25 @@ export default function CourseNavigation() {
     ];
 
     return (
-        <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
+        <div
+            id="wd-courses-navigation"
+            className="wd list-group fs-5 rounded-0"
+            style={{ width: "150px" }}
+        >
             {links.map((link) => (
                 <Link
                     key={link.name}
                     href={link.path}
                     className={`list-group-item border-0 ${
-                        pathname === link.path ? 'active' : 'text-danger'
-                    }`}>
+                        isActive(link.path)
+                            ? 'active text-black border-start border-4 border-black'
+                            : 'text-danger'
+                    }`}
+                    style={{
+                        backgroundColor: isActive(link.path) ? 'white' : 'transparent',
+                        paddingLeft: isActive(link.path) ? '12px' : '16px'
+                    }}
+                >
                     {link.name}
                 </Link>
             ))}

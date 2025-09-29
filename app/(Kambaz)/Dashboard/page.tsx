@@ -1,164 +1,204 @@
 "use client";
-import { Row, Col, Card, Button } from "react-bootstrap";
+
 import Link from "next/link";
-import { FaFileAlt, FaClipboardList, FaChartLine } from "react-icons/fa";
-import { BsThreeDotsVertical } from "react-icons/bs";
+import { useState, type CSSProperties } from "react";
+import {
+    Row,
+    Col,
+    Card,
+    CardImg,
+    CardBody,
+    CardTitle,
+    CardText,
+    Button,
+} from "react-bootstrap";
+import {
+    BsMegaphone,
+    BsCardChecklist,
+    BsChatDots,
+    BsFolder,
+    BsThreeDotsVertical,
+} from "react-icons/bs";
+
+// Chapter 2: all courses navigate to the SAME course screen
+const COURSE_HOME = "/Courses/5610/Home";
+
+type Course = {
+    id: string;          // e.g., "CS5610"
+    title: string;       // shown in course color
+    section: string;     // e.g., "CS5610.18616.202610" (styled #5C6B73)
+    image: string;       // path in /public/images
+    description: string; // gray blurb
+    color: string;       // per-course accent + overlay tint
+};
+
+const COURSES: Course[] = [
+    {
+        id: "CS5610",
+        title: "CS5610 Web Development",
+        section: "CS5610.18616.202610",
+        image: "/images/cs5610.jpg",
+        description: "Fall 2025 Semester Full Term",
+        color: "#e35d86",
+    },
+    {
+        id: "CS5520",
+        title: "CS5520 Mobile Application Development",
+        section: "CS5520.18606.202610",
+        image: "/images/cs5520.jpg",
+        description: "Fall 2025 Semester Full Term",
+        color: "#FE4E00",
+    },
+    {
+        id: "CS5800",
+        title: "CS5800 Algorithms SEC 01",
+        section: "CS5800.53170.202550",
+        image: "/images/cs5800.jpg",
+        description: "Summer Full 2025 Semester",
+        color: "#7b3fb9",
+    },
+    {
+        id: "CS5004",
+        title: "CS5004 Spring 2025 Boston All Modules",
+        section: "CS5004.SP2025.BOSTON.ALL",
+        image: "/images/cs5004.jpg",
+        description: "Spring 2025 Semester Full Term",
+        color: "#2E86AB",
+    },
+    {
+        id: "CS5008",
+        title: "CS5008 MERGED Spring 2025",
+        section: "CS5008.40215.MERGED.40250",
+        image: "/images/cs5008.jpg",
+        description: "Spring 2025 Semester Full Term",
+        color: "#FF579F",
+    },
+    {
+        id: "CS5001",
+        title: "CS 5001 Intensive Foundations of CS",
+        section: "CS5001.FALL2024.BOSTON.01",
+        image: "/images/cs5001.jpg",
+        description: "Fall 2024 Semester Full Term",
+        color: "#5D2E46",
+    },
+    {
+        id: "CS5002",
+        title: "CS5002 Discrete Structures [Section 02]",
+        section: "CS5002.02.FALL2024",
+        image: "/images/cs5002.jpg",
+        description: "Fall 2024 Semester Full Term",
+        color: "#6457A6",
+    },
+];
 
 export default function Dashboard() {
-    const courses = [
-        {
-            id: "CS5001",
-            name: "CS5001 Intensive Foundations",
-            section: "01",
-            semester: "Fall 2024",
-            color: "#dc3545", // red
-            image: "/images/cs5001.jpg" // Using placeholder image
-        },
-        {
-            id: "CS5002",
-            name: "CS5002 Discrete Structures",
-            section: "01",
-            semester: "Fall 2024",
-            color: "#0d6efd", // blue
-            image: "/images/cs5002.jpg" // Using placeholder image
-        },
-        {
-            id: "CS5004",
-            name: "CS5004 Object-Oriented Design",
-            section: "02",
-            semester: "Spring 2025",
-            color: "#198754", // green
-            image: "/images/cs5004.jpg" // Using placeholder image
-        },
-        {
-            id: "CS5008",
-            name: "CS5008 Data Structures & Algorithms",
-            section: "01",
-            semester: "Spring 2025",
-            color: "#ffc107", // yellow
-            image: "/images/cs5008.jpg" // Using placeholder image
-        },
-        {
-            id: "CS5800",
-            name: "CS5800 Algorithms",
-            section: "03",
-            semester: "Fall 2025",
-            color: "#6f42c1", // purple
-            image: "/images/cs5800.jpg" // Using placeholder image
-        },
-        {
-            id: "CS5520",
-            name: "CS5520 Mobile App Development",
-            section: "03",
-            semester: "Fall 2025",
-            color: "#fd7e14", // orange
-            image: "/images/cs5520.jpg" // Using placeholder image
-        },
-        {
-            id: "CS5610",
-            name: "CS5610 Web Development",
-            section: "04",
-            semester: "Fall 2025",
-            color: "#20c997", // teal
-            image: "/images/cs5610.jpg" // Using placeholder image
-        }
-    ];
+    const [imgError, setImgError] = useState<Record<string, boolean>>({});
+    const onImgErr = (id: string) => setImgError((s) => ({ ...s, [id]: true }));
 
     return (
-        <div className="p-4">
+        <div id="wd-dashboard" className="p-3">
             <h1 id="wd-dashboard-title">Dashboard</h1>
             <hr />
-
-            <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2>
+            <h2 id="wd-dashboard-published">Published Courses ({COURSES.length})</h2>
             <hr />
 
-            <Row id="wd-dashboard-courses" className="g-4">
-                {courses.map((course) => (
-                    <Col key={course.id} xs={12} sm={6} md={4} lg={3}>
-                        <Card className="wd-course-card h-100 shadow-sm">
-                            {/* Course Image with Color Overlay */}
-                            <div style={{ position: "relative", height: "160px", overflow: "hidden" }}>
-                                {/* Background Image */}
-                                <div
-                                    style={{
-                                        backgroundImage: `url(${course.image})`,
-                                        backgroundSize: "cover",
-                                        backgroundPosition: "center",
-                                        height: "100%",
-                                        width: "100%",
-                                        position: "absolute"
-                                    }}
-                                />
-                                {/* Color Overlay */}
-                                <div
-                                    style={{
-                                        backgroundColor: course.color,
-                                        opacity: 0.7,
-                                        height: "100%",
-                                        width: "100%",
-                                        position: "absolute"
-                                    }}
-                                />
-                                {/* Three Dots Menu */}
-                                <BsThreeDotsVertical
-                                    className="text-white position-absolute"
-                                    style={{ top: 10, right: 10, fontSize: "1.5rem", cursor: "pointer", zIndex: 10 }}
-                                />
-                            </div>
-
-                            <Card.Body className="d-flex flex-column">
+            <div id="wd-dashboard-courses">
+                <Row
+                    xs={1}
+                    md={5}
+                    className="g-0 wd-dashboard-grid"
+                    style={{} as CSSProperties}
+                >
+                    {COURSES.map((c) => (
+                        <Col key={c.id} className="wd-course-col">
+                            <Card className="h-100 shadow-sm wd-card-translucent">
                                 <Link
-                                    href={`/Courses/${course.id}/Home`}
-                                    className="text-decoration-none text-dark"
+                                    href={COURSE_HOME}
+                                    className="wd-dashboard-course-link text-decoration-none text-dark"
                                 >
-                                    <Card.Title className="fw-bold" style={{ minHeight: "48px" }}>
-                                        {course.name}
-                                    </Card.Title>
-                                </Link>
+                                    {/* ===== Header image with transparent color overlay ===== */}
+                                    <div className="wd-img-wrap">
+                                        {!imgError[c.id] ? (
+                                            <CardImg
+                                                variant="top"
+                                                src={c.image}
+                                                alt={`${c.title} cover`}
+                                                className="wd-card-img"
+                                                onError={() => onImgErr(c.id)}
+                                            />
+                                        ) : (
+                                            <div className="wd-card-img" style={{ backgroundColor: c.color }} />
+                                        )}
 
-                                <Card.Text className="text-muted small mb-3">
-                                    {course.id}.{course.section} | {course.semester}
-                                </Card.Text>
+                                        {/* Transparent tint overlay using per-course color */}
+                                        <div
+                                            className="wd-color-overlay"
+                                            style={{ backgroundColor: c.color }}
+                                            aria-hidden="true"
+                                        />
 
-                                {/* Icons Row */}
-                                <div className="d-flex justify-content-between align-items-center mb-3">
-                                    <div className="d-flex gap-3">
-                                        <Link
-                                            href={`/Courses/${course.id}/Assignments`}
-                                            className="text-muted"
-                                            title="Assignments"
-                                        >
-                                            <FaClipboardList size={20} />
-                                        </Link>
-                                        <Link
-                                            href={`/Courses/${course.id}/Modules`}
-                                            className="text-muted"
-                                            title="Modules"
-                                        >
-                                            <FaFileAlt size={20} />
-                                        </Link>
-                                        <Link
-                                            href={`/Courses/${course.id}/Grades`}
-                                            className="text-muted"
-                                            title="Grades"
-                                        >
-                                            <FaChartLine size={20} />
-                                        </Link>
+                                        {/* Optional bottom gradient for contrast */}
+                                        <div className="wd-bottom-gradient" aria-hidden="true" />
+
+                                        {/* 3-dots icon above overlays */}
+                                        <BsThreeDotsVertical
+                                            className="wd-img-actions text-white"
+                                            size={18}
+                                            title="More"
+                                        />
                                     </div>
-                                </div>
+                                    {/* ======================================================= */}
 
-                                {/* Go Button */}
-                                <Link
-                                    href={`/Courses/${course.id}/Home`}
-                                    className="btn btn-primary btn-sm mt-auto"
-                                >
-                                    Go →
+                                    <CardBody className="wd-card-body">
+                                        {/* Title — single line with ellipsis, tinted to course color */}
+                                        <CardTitle
+                                            className="wd-course-title text-nowrap overflow-hidden"
+                                            style={{ color: c.color }}
+                                            title={c.title}
+                                        >
+                                            {c.title}
+                                        </CardTitle>
+
+                                        {/* Section/code — single line with ellipsis (color via CSS #5C6B73) */}
+                                        <div
+                                            className="wd-course-section text-nowrap overflow-hidden"
+                                            title={c.section}
+                                        >
+                                            {c.section}
+                                        </div>
+
+                                        {/* Description — gray, 2-line clamp with ellipsis */}
+                                        <CardText className="wd-course-desc text-secondary" title={c.description}>
+                                            {c.description}
+                                        </CardText>
+
+                                        <Button variant="primary" className="mb-2">Go</Button>
+
+                                        {/* Mini icons (gray → red on hover/touch) */}
+                                        <div
+                                            className="wd-mini-icons d-flex justify-content-between align-items-center px-2 pt-2"
+                                            onClick={(e) => e.preventDefault()}
+                                        >
+                                            <button type="button" className="icon-btn" aria-label="Announcements" title="Announcements">
+                                                <BsMegaphone />
+                                            </button>
+                                            <button type="button" className="icon-btn" aria-label="Assignments" title="Assignments">
+                                                <BsCardChecklist />
+                                            </button>
+                                            <button type="button" className="icon-btn" aria-label="Discussions" title="Discussions">
+                                                <BsChatDots />
+                                            </button>
+                                            <button type="button" className="icon-btn" aria-label="Files" title="Files">
+                                                <BsFolder />
+                                            </button>
+                                        </div>
+                                    </CardBody>
                                 </Link>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                ))}
-            </Row>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>
+            </div>
         </div>
     );
 }

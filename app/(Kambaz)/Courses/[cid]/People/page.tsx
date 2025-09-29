@@ -1,7 +1,7 @@
 import { Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 
-export default function People() {
+export default function PeopleTable() {
     const users = [
         {
             firstName: "Tony",
@@ -18,26 +18,26 @@ export default function People() {
             loginId: "001234562S",
             section: "S101",
             role: "STUDENT",
-            lastActivity: "2020-10-02",
-            totalActivity: "08:15:45"
+            lastActivity: "2020-11-02",
+            totalActivity: "15:32:43"
         },
         {
             firstName: "Steve",
             lastName: "Rogers",
             loginId: "001234563S",
-            section: "S102",
+            section: "S101",
             role: "STUDENT",
-            lastActivity: "2020-09-30",
-            totalActivity: "09:45:21"
+            lastActivity: "2020-10-02",
+            totalActivity: "23:32:43"
         },
         {
             firstName: "Natasha",
             lastName: "Romanoff",
             loginId: "001234564S",
-            section: "S102",
-            role: "STUDENT",
-            lastActivity: "2020-10-01",
-            totalActivity: "11:30:15"
+            section: "S101",
+            role: "TA",
+            lastActivity: "2020-11-05",
+            totalActivity: "13:23:34"
         }
     ];
 

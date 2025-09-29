@@ -1,21 +1,16 @@
-"use client";
-import { use } from "react";
 import Modules from "../Modules/page";
 import CourseStatus from "./Status";
 
-// Solution 1: Using React.use() hook (recommended for client components)
-export default function Home({ params }: { params: Promise<{ cid: string }> }) {
-    // Unwrap the params Promise using React.use()
-    const { cid } = use(params);
-
-    console.log("Course ID:", cid);
-
+export default function Home() {
     return (
-        <div className="d-flex" id="wd-home">
-            <div className="flex-fill me-3">
-                <Modules/>
+        <div id="wd-home" className="d-flex">
+            {/* Modules take full width on mobile, share on desktop */}
+            <div className="flex-fill">
+                <Modules />
             </div>
-            <div className="d-none d-xl-block">
+
+            {/* Course Status - Hidden on screens smaller than XL */}
+            <div className="d-none d-xl-block ms-4" style={{ width: "350px" }}>
                 <CourseStatus />
             </div>
         </div>

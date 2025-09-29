@@ -31,7 +31,7 @@ import ScreenSizeLabel from "./ScreenSizeLabel";
 
 export default function Lab2() {
     return (
-        <Container fluid >
+        <Container>
             {/* Screen Size Indicator */}
             <ScreenSizeLabel />
 

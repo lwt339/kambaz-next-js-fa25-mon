@@ -1,108 +1,127 @@
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
-import { AiOutlineDashboard } from "react-icons/ai";
-import { IoCalendarOutline } from "react-icons/io5";
-import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
-import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
-import { HiOutlineUserGroup } from "react-icons/hi";
-// import { BiHistory } from "react-icons/bi";
-// import { MdOutlineOndemandVideo } from "react-icons/md";
-// import { IoMdHelpCircleOutline } from "react-icons/io";
-import { FaFlask } from "react-icons/fa";
 
-// Navigation items defined outside component for better performance
-const NAV_ITEMS = [
-    { href: "/Account",    label: "Account",    icon: FaRegCircleUser },
-    { href: "/Dashboard",  label: "Dashboard",  icon: AiOutlineDashboard },
-    { href: "/Courses/5610/Home", label: "Courses", icon: LiaBookSolid },
-   // { href: "/Groups",     label: "Groups",     icon: HiOutlineUserGroup },
-    { href: "/Calendar",   label: "Calendar",   icon: IoCalendarOutline },
-    { href: "/Inbox",      label: "Inbox",      icon: FaInbox },
-   // { href: "/History",    label: "History",    icon: BiHistory },
-  //  { href: "/Studio",     label: "Studio",     icon: MdOutlineOndemandVideo },
-   // { href: "/Help",       label: "Help",       icon: IoMdHelpCircleOutline },
-    { href: "/Labs",       label: "Labs",       icon: FaFlask },
-    { href: "/Settings",   label: "Settings",   icon: LiaCogSolid },
-] as const;
+// Icons
+import { FaRegCircleUser, FaInbox } from "react-icons/fa6";
+import { AiOutlineDashboard } from "react-icons/ai";
+import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
+import { IoCalendarOutline } from "react-icons/io5";
+
+type NavItem = {
+    id: string;
+    href: string;
+    label: string;
+    Icon: React.ComponentType<{ className?: string }>;
+};
+
+// Order matches the screenshot/rubric
+const NAV: NavItem[] = [
+    { id: "account",   href: "/Account",   label: "Account",   Icon: FaRegCircleUser },
+    { id: "dashboard", href: "/Dashboard", label: "Dashboard", Icon: AiOutlineDashboard },
+    { id: "courses",   href: "/Courses",   label: "Courses",   Icon: LiaBookSolid },
+    { id: "calendar",  href: "/Calendar",  label: "Calendar",  Icon: IoCalendarOutline },
+    { id: "inbox",     href: "/Inbox",     label: "Inbox",     Icon: FaInbox },
+    { id: "labs",      href: "/Labs",      label: "Labs",      Icon: LiaCogSolid },
+];
 
 export default function KambazNavigation() {
     const pathname = usePathname();
 
-    // navigation item is active
-    const isActive = (href: string): boolean => {
-        const mainPath = href.split('/')[1];
-        return pathname.includes(mainPath);
-    };
-
-    // icon color
-    const getIconColor = (label: string, active: boolean): string => {
-        if (label === 'Account') {
-            return active ? 'text-black' : 'text-white';
-        }
-        return 'text-danger';
-    };
-
-    // text color based on item and active state
-    const getTextColor = (label: string, active: boolean): string => {
-        if (label === 'Account') {
-            return active ? 'text-black' : 'text-white';
-        }
-        return active ? 'text-danger' : 'text-white';
-    };
-
     return (
         <ListGroup
+            id="wd-kambaz-navigation"
             className="rounded-0 position-fixed bottom-0 top-0 d-none d-md-block bg-black z-2"
-            style={{ width: 80 }}
-            id="wd-kambaz-navigation">
-
-            {/* NEU Logo - REQUIRED */}
+            style={{ width: 110 }}  // ~110px (+/-5px requirement)
+        >
+            {/* Northeastern logo */}
             <ListGroupItem
-                className="bg-black border-0 text-center py-1"
-                style={{ paddingLeft: '5px', paddingRight: '5px' }}
                 as="a"
                 target="_blank"
                 href="https://www.northeastern.edu/"
-                id="wd-neu-link">
-                <Image
+                id="wd-neu-link"
+                className="bg-black border-0 text-center"
+            >
+                <img
                     src="/images/NEU.png"
-                    width={75}
+                    width="75"
                     height={75}
                     alt="Northeastern University"
-                    priority
                 />
             </ListGroupItem>
 
-            {/* Navigation Items */}
-            {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
-                const active = isActive(href);
-                const iconColor = getIconColor(label, active);
-                const textColor = getTextColor(label, active);
+            <br />
+
+            {NAV.map(({ id, href, label, Icon }) => {
+                // Check if this nav item is active
+                let active = false;
+                if (id === "courses") {
+                    // Courses is active if we're on ANY course page
+                    active = pathname?.includes("/Courses/");
+                } else {
+                    // For other links, check if pathname starts with the href
+                    active = pathname?.startsWith(href);
+                }
+
+                // Per Assignment 2 requirements:
+                // - All navigation items follow the same pattern:
+                //   - Active: white bg, red text, red icon
+                //   - Inactive: black bg, white text, white icon
+                // - EXCEPT the icon color pattern differs:
+                //   - Account icon: white when inactive, RED when active
+                //   - Other icons: always red
+
+                const bgColor = active ? "bg-white" : "bg-black";
+                const textColor = active ? "text-danger" : "text-white";
+
+                // Icon colors: Account follows text color, others always red
+                const iconColor = id === "account"
+                    ? (active ? "text-danger" : "text-white")  // Account icon changes with active state
+                    : "text-danger";  // All other icons always red
+
+                // Determine the actual href to use for navigation
+                let linkHref = href;
+                if (id === "courses") {
+                    // Always navigate to a specific course page
+                    if (pathname?.includes("/Courses/")) {
+                        // If already in a course, extract the course ID
+                        const match = pathname.match(/\/Courses\/([^\/]+)/);
+                        linkHref = match ? `/Courses/${match[1]}/Home` : "/Courses/5610/Home";
+                    } else {
+                        // Default course
+                        linkHref = "/Courses/5610/Home";
+                    }
+                }
 
                 return (
                     <ListGroupItem
-                        key={href}
-                        className={`border-0 text-center py-1.2 ${
-                            active ? 'bg-white' : 'bg-black'
-                        }`}>
+                        key={id}
+                        className={`${bgColor} border-0 text-center`}
+                    >
                         <Link
-                            href={href}
-                            id={`wd-${label.toLowerCase()}-link`}
-                            className="text-decoration-none d-flex flex-column align-items-center">
-                            <Icon className={`${
-                                label === 'Labs' || label === 'Inbox' ? 'fs-3' : 'fs-2'
-                            } ${iconColor}`} />
-                            <span
-                                className={`small mt-1 ${textColor}`}
-                                style={{ fontSize: '12px' }}>
-                                {label}
-                            </span>
+                            href={linkHref}
+                            id={
+                                id === "account"   ? "wd-account-link"   :
+                                    id === "dashboard" ? "wd-dashboard-link" :
+                                        id === "courses"   ? "wd-course-link"    :
+                                            id === "calendar"  ? "wd-calendar-link"  :
+                                                id === "inbox"     ? "wd-inbox-link"     :
+                                                    /* labs */           "wd-labs-link"
+                            }
+                            className={`${textColor} text-decoration-none`}
+                            aria-current={active ? "page" : undefined}
+                        >
+                            <Icon className={`fs-1 ${iconColor}`} />
+                            <br />
+                            {label}
                         </Link>
                     </ListGroupItem>
                 );
             })}
+
+            <br />
         </ListGroup>
     );
 }

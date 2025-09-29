@@ -1,21 +1,18 @@
 /* ========================================
-   KAMBAZ GLOBAL STYLES
+   GLOBAL RESETS
    ======================================== */
-/* Reset default browser styles */
 body {
     margin: 0;
     padding: 0;
 }
 
-/* Set global font */
 body * {
     font-family: Arial, Helvetica, sans-serif;
 }
 
 /* ========================================
-   MAIN CONTENT OFFSET FOR FIXED SIDEBAR
+   MAIN CONTENT OFFSET
    ======================================== */
-/* Only apply padding when screen is >= 768px (when sidebar is visible) */
 @media (min-width: 768px) {
     #wd-kambaz .wd-main-content-offset {
         padding-left: 140px !important;
@@ -23,28 +20,417 @@ body * {
 }
 
 /* ========================================
-   COURSE NAVIGATION ACTIVE STATE
+   NAVIGATION ACTIVE STATES
    ======================================== */
+/* Course Navigation Active State */
 .list-group.wd > .list-group-item.active {
-    color: black;
-    background-color: white;
+    color: black !important;
+    background-color: white !important;
     border-left: 3px solid black !important;
 }
 
 /* ========================================
-   MODULES STYLING
+   BUTTON OVERRIDES
    ======================================== */
-/* Module title background color */
-.bg-secondary {
-    --bs-secondary-rgb: 199, 205, 209;
+.btn-secondary {
+    --bs-btn-color: #000 !important;
+    --bs-btn-bg: #c7cdd1 !important;
+    --bs-btn-border-color: #c7cdd1 !important;
+    --bs-btn-hover-color: #fff !important;
+    --bs-btn-hover-bg: #a8b2ba !important;
+    --bs-btn-hover-border-color: #a8b2ba !important;
 }
 
-/* Module list item borders */
+.btn-danger {
+    --bs-btn-color: #fff !important;
+    --bs-btn-bg: #dc3545 !important;
+    --bs-btn-border-color: #dc3545 !important;
+    --bs-btn-hover-color: #fff !important;
+    --bs-btn-hover-bg: #c82333 !important;
+    --bs-btn-hover-border-color: #bd2130 !important;
+}
+
+/* ========================================
+   MODULE STYLING
+   ======================================== */
+.bg-secondary {
+    --bs-secondary-rgb: 199, 205, 209;
+    background-color: rgb(199, 205, 209) !important;
+}
+
 .list-group-item {
     --bs-list-group-border-color: gray;
 }
 
-/* Lesson green left border - REQUIRED */
+.border-gray {
+    border: 1px solid #c7cdd1 !important;
+}
+
+/* LESSON GREEN BORDER - CRITICAL */
 .wd-lesson {
     border-left: 3px solid green !important;
+}
+
+.wd-module {
+    border: 1px solid #dee2e6;
+    border-radius: 0;
+}
+
+.wd-title {
+    cursor: pointer;
+    user-select: none;
+}
+
+#wd-modules-controls::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ========================================
+   ASSIGNMENT LIST STYLING - CRITICAL
+   ======================================== */
+/* CRITICAL: Green border for ALL assignment items - MUST HAVE */
+.wd-assignment-list-item,
+.wd-assignment-list-item.list-group-item {
+    border-left: 4px solid #198754 !important;  /* Green border */
+}
+
+/* Search styling - magnifying glass and left alignment */
+#wd-assignments-controls .input-group {
+    max-width: 300px;
+}
+
+#wd-assignments-controls .input-group-text {
+    background-color: white;
+    border-right: none !important;
+    border-color: #ced4da;
+}
+
+#wd-assignments-controls .form-control {
+    border-left: none !important;
+    border-color: #ced4da;
+}
+
+#wd-assignments-controls .form-control:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+}
+
+/* Module header styling */
+.wd-title {
+    background-color: #c7cdd1 !important;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Assignment link hover effect */
+.wd-assignment-link:hover {
+    text-decoration: underline !important;
+}
+
+/* Assignment link styling */
+.wd-assignment-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.wd-assignment-link:hover {
+    text-decoration: underline !important;
+}
+
+/* Assignment controls search styling */
+#wd-assignments-controls .input-group-text {
+    background-color: white;
+    border-right: none;
+}
+
+#wd-assignments-controls .form-control {
+    border-left: none;
+}
+
+#wd-assignments-controls .form-control:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+}
+
+/* ========================================
+   COURSE STATUS
+   ======================================== */
+#wd-course-status {
+    padding: 1rem;
+}
+
+#wd-course-status h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+/* ========================================
+   PEOPLE TABLE
+   ======================================== */
+#wd-people-table {
+    padding: 1rem;
+}
+
+#wd-people-table .table {
+    margin-top: 1rem;
+}
+
+#wd-people-table .wd-full-name {
+    display: flex;
+    align-items: center;
+}
+
+/* ========================================
+   ACCOUNT SCREENS SPECIFIC STYLING
+   ======================================== */
+
+/* Account Navigation Active State - CRITICAL */
+#wd-account-navigation .list-group-item.active {
+    color: black !important;
+    background-color: white !important;
+    border-left: 3px solid black !important;
+}
+
+/* Account Navigation Inactive State */
+#wd-account-navigation .list-group-item:not(.active) {
+    background-color: transparent !important;
+    color: #dc3545 !important; /* Bootstrap danger/red color for links */
+}
+
+/* Account Navigation Hover State */
+#wd-account-navigation .list-group-item:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Sign in/Sign up Screen Styling */
+#wd-signin-screen h1,
+#wd-signup-screen h1 {
+    font-size: 2rem;
+    font-weight: normal;
+    color: #333;
+}
+
+/* Form Control Styling */
+#wd-signin-screen .form-control,
+#wd-signup-screen .form-control,
+#wd-profile-screen .form-control,
+#wd-profile-screen .form-select {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+/* Sign in/Sign up Link Styling */
+#wd-signin-link,
+#wd-signup-link {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+#wd-signin-link:hover,
+#wd-signup-link:hover {
+    color: #0056b3;
+}
+
+/* Profile Screen Specific */
+#wd-profile-screen h1 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin-bottom: 2rem;
+}
+
+#wd-profile-screen .form-label {
+    font-weight: normal;
+    margin-bottom: 0;
+    padding-top: 0.375rem;
+}
+
+/* Sign out Button */
+#wd-signout-btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+/* Account Screen Container */
+#wd-account-screen {
+    padding: 1rem;
+}
+
+#wd-account-screen > h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    #wd-account-navigation {
+        width: 100% !important;
+        margin-bottom: 1rem;
+    }
+
+    #wd-profile-screen .col-sm-2 {
+        text-align: left !important;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Button Styling Override for Account Pages */
+#wd-signin-btn.btn-primary,
+#wd-signup-btn.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+#wd-signin-btn.btn-primary:hover,
+#wd-signup-btn.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+#wd-signout-btn.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+#wd-signout-btn.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* ========================================
+   HOME SCREEN RESPONSIVE
+   ======================================== */
+@media (max-width: 1199px) {
+    #wd-home .flex-fill {
+        width: 100%;
+    }
+}
+
+@media (min-width: 1200px) {
+    #wd-home {
+        gap: 2rem;
+    }
+
+    #wd-home .flex-fill {
+        max-width: calc(100% - 370px);
+    }
+}
+
+/* ========================================
+   DASHBOARD CARDS
+   ======================================== */
+#wd-dashboard .wd-dashboard-grid {
+    --bs-gutter-x: 2rem;
+    --bs-gutter-y: 2rem;
+}
+
+#wd-dashboard .wd-course-col {
+    width: 270px;
+    flex: 0 0 auto;
+}
+
+#wd-dashboard .wd-card-translucent {
+    background-color: rgba(255, 255, 255, 0.68) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: saturate(120%) blur(1px);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#wd-dashboard .wd-card-translucent:hover {
+    background-color: rgba(255, 255, 255, 0.78) !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08) !important;
+}
+
+#wd-dashboard .wd-img-wrap {
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+#wd-dashboard .wd-card-img {
+    height: 160px;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+#wd-dashboard .wd-color-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+#wd-dashboard .wd-bottom-gradient {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 52px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 100%);
+    pointer-events: none;
+}
+
+#wd-dashboard .wd-img-actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.75rem;
+    z-index: 2;
+}
+
+#wd-dashboard .wd-card-body {
+    padding-top: 0.5rem;
+    padding-bottom: 0.8rem;
+}
+
+#wd-dashboard .wd-course-title {
+    font-weight: 500;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    margin-bottom: 0.25rem;
+}
+
+#wd-dashboard .wd-course-section {
+    color: #5C6B73;
+    font-weight: 500;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    margin-bottom: 0.2rem;
+}
+
+#wd-dashboard .wd-course-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+    min-height: 2.6em;
+    font-size: 0.75rem;
+}
+
+#wd-dashboard .wd-mini-icons .icon-btn {
+    background: transparent;
+    border: none;
+    padding: 0.25rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #6c757d;
+    font-size: 1.125rem;
+}
+
+#wd-dashboard .wd-mini-icons .icon-btn:hover,
+#wd-dashboard .wd-mini-icons .icon-btn:focus-visible,
+#wd-dashboard .wd-mini-icons .icon-btn:active {
+    color: #dc3545;
+    outline: none;
 }

@@ -1,13 +1,11 @@
-/* ========================================
-   SECTION 1: ID SELECTORS (REQUIRED)
-   ======================================== */
-/* ID selector for first paragraph - white text on red background */
+/* ID SELECTORS */
+
 p#wd-id-selector-1 {
   background-color: red;
   color: white;
 }
 
-/* ID selector for second paragraph - black text on yellow background */
+
 p#wd-id-selector-2 {
   background-color: yellow;
   color: black;
