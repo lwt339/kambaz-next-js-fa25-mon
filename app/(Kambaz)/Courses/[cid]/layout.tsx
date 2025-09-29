@@ -4,7 +4,7 @@ import CourseNavigation from "./Navigation";
 import { FaAlignJustify, FaBars } from "react-icons/fa";
 import { FaRegCircleUser, FaInbox } from "react-icons/fa6";
 import { AiOutlineDashboard } from "react-icons/ai";
-import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
+import { LiaBookSolid } from "react-icons/lia";
 import { IoCalendarOutline, IoChevronForward } from "react-icons/io5";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { BiHistory, BiHelpCircle } from "react-icons/bi";

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
@@ -44,9 +45,9 @@ export default function KambazNavigation() {
                 id="wd-neu-link"
                 className="bg-black border-0 text-center"
             >
-                <img
+                <Image
                     src="/images/NEU.png"
-                    width="75"
+                    width={75}
                     height={75}
                     alt="Northeastern University"
                 />
@@ -56,13 +57,13 @@ export default function KambazNavigation() {
 
             {NAV.map(({ id, href, label, Icon }) => {
                 // Check if this nav item is active
-                let active = false;
+                let active: boolean;
                 if (id === "courses") {
                     // Courses is active if we're on ANY course page
-                    active = pathname?.includes("/Courses/");
+                    active = pathname?.includes("/Courses/") || false;
                 } else {
                     // For other links, check if pathname starts with the href
-                    active = pathname?.startsWith(href);
+                    active = pathname?.startsWith(href) || false;
                 }
 
                 // Per Assignment 2 requirements:
