@@ -6,7 +6,7 @@ import GreenCheckmark from "./GreenCheckmark";
 export default function ModulesControls() {
     return (
         <div id="wd-modules-controls" className="text-nowrap d-flex flex-wrap justify-content-end gap-2">
-            {/* Collapse All button - leftmost */}
+            {/* Collapse All button*/}
             <Button
                 variant="secondary"
                 size="lg"
@@ -54,7 +54,7 @@ export default function ModulesControls() {
                 </Dropdown.Menu>
             </Dropdown>
 
-            {/* Red Module button - rightmost */}
+            {/*Module button */}
             <Button
                 variant="danger"
                 size="lg"

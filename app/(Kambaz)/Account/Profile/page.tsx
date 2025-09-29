@@ -17,7 +17,7 @@ export default function Profile() {
                         <Form.Control
                             id="wd-username"
                             type="text"
-                            defaultValue="alice"
+                            defaultValue="Weiting"
                             className="form-control"
                         />
                     </Col>
@@ -32,7 +32,7 @@ export default function Profile() {
                         <Form.Control
                             id="wd-password"
                             type="password"
-                            defaultValue="123"
+                            defaultValue="Happy"
                             className="form-control"
                         />
                     </Col>
@@ -47,7 +47,7 @@ export default function Profile() {
                         <Form.Control
                             id="wd-firstname"
                             type="text"
-                            defaultValue="Alice"
+                            defaultValue="Weiting"
                             className="form-control"
                         />
                     </Col>
@@ -62,7 +62,7 @@ export default function Profile() {
                         <Form.Control
                             id="wd-lastname"
                             type="text"
-                            defaultValue="Wonderland"
+                            defaultValue="Liu"
                             className="form-control"
                         />
                     </Col>
@@ -92,7 +92,7 @@ export default function Profile() {
                         <Form.Control
                             id="wd-email"
                             type="email"
-                            defaultValue="alice@wonderland.com"
+                            defaultValue="weiliu@northeastern.com"
                             className="form-control"
                         />
                     </Col>

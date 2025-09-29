@@ -18,7 +18,7 @@ type NavItem = {
     Icon: React.ComponentType<{ className?: string }>;
 };
 
-// Order matches the screenshot/rubric
+// Order
 const NAV: NavItem[] = [
     { id: "account",   href: "/Account",   label: "Account",   Icon: FaRegCircleUser },
     { id: "dashboard", href: "/Dashboard", label: "Dashboard", Icon: AiOutlineDashboard },
@@ -37,7 +37,7 @@ export default function KambazNavigation() {
             className="rounded-0 position-fixed bottom-0 top-0 d-none d-md-block bg-black z-2"
             style={{ width: 110 }}  // ~110px (+/-5px requirement)
         >
-            {/* Northeastern logo */}
+            {/* logo */}
             <ListGroupItem
                 as="a"
                 target="_blank"
@@ -56,33 +56,26 @@ export default function KambazNavigation() {
             <br />
 
             {NAV.map(({ id, href, label, Icon }) => {
-                // Check if this nav item is active
+                // nav item active
                 let active: boolean;
                 if (id === "courses") {
-                    // Courses is active if we're on ANY course page
+                    // Courses is active
                     active = pathname?.includes("/Courses/") || false;
                 } else {
-                    // For other links, check if pathname starts with the href
+                    // pathname starts with the href
                     active = pathname?.startsWith(href) || false;
                 }
 
-                // Per Assignment 2 requirements:
-                // - All navigation items follow the same pattern:
-                //   - Active: white bg, red text, red icon
-                //   - Inactive: black bg, white text, white icon
-                // - EXCEPT the icon color pattern differs:
-                //   - Account icon: white when inactive, RED when active
-                //   - Other icons: always red
 
                 const bgColor = active ? "bg-white" : "bg-black";
                 const textColor = active ? "text-danger" : "text-white";
 
-                // Icon colors: Account follows text color, others always red
+                // Icon colorsd
                 const iconColor = id === "account"
-                    ? (active ? "text-danger" : "text-white")  // Account icon changes with active state
-                    : "text-danger";  // All other icons always red
+                    ? (active ? "text-danger" : "text-white")  // Account icon
+                    : "text-danger";  // All other icon
 
-                // Determine the actual href to use for navigation
+                // href to use for navigation
                 let linkHref = href;
                 if (id === "courses") {
                     // Always navigate to a specific course page

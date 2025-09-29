@@ -22,7 +22,7 @@ export default function CourseLayout({
     const { cid } = use(params);
     const pathname = usePathname();
 
-    // State for controlling offcanvas menus
+    // offcanvas menus
     const [showKambazNav, setShowKambazNav] = useState(false);
     const [showCourseNav, setShowCourseNav] = useState(false);
 
@@ -40,9 +40,9 @@ export default function CourseLayout({
 
     return (
         <div id="wd-courses">
-            {/* Course header with hamburger menus */}
+            {/* menus */}
             <div className="d-flex align-items-center justify-content-between p-2">
-                {/* Left hamburger - Canvas-style menu */}
+                {/* Left top icon */}
                 <div className="d-flex align-items-center">
                     <button
                         className="btn btn-link text-danger d-md-none p-0 me-3"
@@ -59,7 +59,7 @@ export default function CourseLayout({
                     </h2>
                 </div>
 
-                {/* Right hamburger - Shows Course Navigation on mobile */}
+                {/* Right icon */}
                 <button
                     className="btn btn-link text-secondary d-md-none p-0"
                     onClick={() => setShowCourseNav(true)}

@@ -27,14 +27,6 @@ export default function Signup() {
                             />
                         </div>
 
-                        <div className="mb-3">
-                            <Form.Control
-                                id="wd-password-verify"
-                                type="password"
-                                placeholder="password"
-                                className="form-control"
-                            />
-                        </div>
 
                         <Link
                             id="wd-signup-btn"
