@@ -62,7 +62,7 @@ export default function Assignments() {
 
     const toggle = (key: SectionKey) => setOpen((o) => ({ ...o, [key]: !o[key] }));
 
-    /** Green Checkmark Component - Layered Design */
+    /** Green Checkmark Component */
     const GreenCheckmark = () => (
         <span className="me-2 position-relative">
             <FaCheckCircle
@@ -73,7 +73,7 @@ export default function Assignments() {
         </span>
     );
 
-    /** CRITICAL: Assignment Controls for Rubric Compliance */
+    /** Assignment Controls */
     const AssignmentControlButtons = () => (
         <div className="float-end d-flex align-items-center">
             <GreenCheckmark />
@@ -114,7 +114,7 @@ export default function Assignments() {
         </div>
     );
 
-    /** CRITICAL: Green Border Applied Here with enhanced styling */
+    /** Green Border Applied Here with enhanced styling */
     const RowAssignment = (a: typeof ASSIGNMENTS[number]) => (
         <li
             key={a.id}
@@ -141,9 +141,8 @@ export default function Assignments() {
                         <strong>Due</strong> {a.dueDate} | {a.points}
                     </div>
                 </div>
-                <div className="d-flex align-items-center ms-3">
-                    <GreenCheckmark />
-                    <IoEllipsisVertical className="fs-5 text-muted" />
+                <div className="ms-3">
+                    <AssignmentControlButtons />
                 </div>
             </div>
         </li>
@@ -175,9 +174,8 @@ export default function Assignments() {
                         <strong>Due</strong> {q.dueDate} | {q.points}
                     </div>
                 </div>
-                <div className="d-flex align-items-center ms-3">
-                    <GreenCheckmark />
-                    <IoEllipsisVertical className="fs-5 text-muted" />
+                <div className="ms-3">
+                    <AssignmentControlButtons />
                 </div>
             </div>
         </li>
@@ -209,9 +207,8 @@ export default function Assignments() {
                         <strong>Due</strong> {e.dueDate} | {e.points}
                     </div>
                 </div>
-                <div className="d-flex align-items-center ms-3">
-                    <GreenCheckmark />
-                    <IoEllipsisVertical className="fs-5 text-muted" />
+                <div className="ms-3">
+                    <AssignmentControlButtons />
                 </div>
             </div>
         </li>
@@ -240,9 +237,8 @@ export default function Assignments() {
                         <strong>Due</strong> {PROJECT.dueDate} | {PROJECT.points}
                     </div>
                 </div>
-                <div className="d-flex align-items-center ms-3">
-                    <GreenCheckmark />
-                    <IoEllipsisVertical className="fs-5 text-muted" />
+                <div className="ms-3">
+                    <AssignmentControlButtons />
                 </div>
             </div>
         </li>
