@@ -1,4 +1,4 @@
-import { Form, FormGroup, FormLabel, FormControl, FormSelect, Col, Row, Button } from "react-bootstrap";
+import { Form, FormCheck,FormGroup, FormLabel, FormControl, InputGroup, FormSelect, Col, Row, Button } from "react-bootstrap";
 
 export default function BootstrapForms() {
   return (
@@ -15,35 +15,51 @@ export default function BootstrapForms() {
           <FormControl as="textarea" rows={3} />
         </FormGroup>
       </div>
-      
+
       {/* FORM 2: Dropdowns - REQUIRED */}
-      <div id="wd-css-styling-dropdowns">
-        <h3>Dropdowns</h3>
-        <FormSelect>
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </FormSelect>
-      </div>
+        <div id="wd-css-styling-dropdowns">
+            <h3>Dropdowns</h3>
+            <FormSelect>
+                <option value="0" defaultChecked>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </FormSelect>
+        </div>
       
-      {/* FORM 3: Switches - REQUIRED */}
-      <div id="wd-css-styling-switches" className="mt-3">
-        <h3>Switches</h3>
-        <Form.Check type="switch" label="Unchecked switch checkbox input"/>
-        <Form.Check type="switch" checked label="Checked switch checkbox input" readOnly/>
-        <Form.Check type="switch" label="Unchecked disabled switch checkbox input" disabled/>
-        <Form.Check type="switch" checked label="Checked disabled switch checkbox input" disabled readOnly/>
-      </div>
-      
-      {/* FORM 4: Sliders - REQUIRED */}
-      <div id="wd-css-styling-sliders" className="mt-3">
-        <h3>Sliders</h3>
-        <FormLabel>Example Range</FormLabel>
-        <Form.Range />
-      </div>
-      
-      {/* FORM 5: Responsive Forms 1 - REQUIRED */}
+      {/* FORM 3: Switches*/}
+        <div id="wd-css-styling-switches">
+            <h3>Switches</h3>
+            <FormCheck type="switch" defaultChecked={false} label="Unchecked switch checkbox input"/>
+            <FormCheck type="switch" defaultChecked={true}  label="Checked switch checkbox input"/>
+            <FormCheck type="switch" defaultChecked={false} label="Unchecked disabled switch checkbox input" disabled/>
+            <FormCheck type="switch" defaultChecked={true}  label="Checked disabled switch checkbox input"   disabled/>
+        </div>
+
+      {/* Sliders*/}
+        <div id="wd-css-styling-range-and-sliders">
+            <h3>Range</h3>
+            <FormLabel>Example range</FormLabel>
+            <Form.Range min="0" max="5" step="0.5" />
+        </div>
+
+        <div id="wd-css-styling-addons">
+            <h3>Addons</h3>
+            <InputGroup className="mb-3">
+                <InputGroup.Text>$</InputGroup.Text>
+                <InputGroup.Text>0.00</InputGroup.Text>
+                <FormControl />
+            </InputGroup>
+            <InputGroup>
+                <FormControl />
+                <InputGroup.Text>$</InputGroup.Text>
+                <InputGroup.Text>0.00</InputGroup.Text>
+            </InputGroup>
+        </div>
+
+
+
+        {/* Responsive Forms*/}
       <div id="wd-css-responsive-forms-1" className="mt-4">
         <h3>Responsive forms</h3>
         <Form.Group as={Row} className="mb-3" controlId="email1">
@@ -65,8 +81,8 @@ export default function BootstrapForms() {
           </Col>
         </Form.Group>
       </div>
-      
-      {/* FORM 6: Responsive Forms 2 - REQUIRED */}
+
+      {/* Responsive Forms */}
       <div id="wd-css-responsive-forms-2" className="mt-4">
         <h3>Responsive forms</h3>
         <Form>

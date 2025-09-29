@@ -1,17 +1,11 @@
-import { ReactNode } from "react";
-import TOC from "./TOC";
-
-export default function LabsLayout({ children }:
-  Readonly<{ children: ReactNode }>) {
- return (
-   <table>
-     <tbody>
-       <tr>
-         <td valign="top" width="100px">
-           <TOC />
-         </td>
-         <td valign="top">{children}</td>
-       </tr>
-     </tbody>
-   </table>
-);}
+import type { ReactNode } from "react";
+import TOC from "./Navigation";
+// import "./globals.css";
+export default function LabsLayout({ children }: Readonly<{ children: ReactNode }>) {
+    return (
+        <div className="d-flex p-2">
+            <div style={{minWidth:220}}><TOC/></div>
+            <div className="flex-fill p-2">{children}</div>
+        </div>
+    );
+}

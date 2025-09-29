@@ -3,10 +3,10 @@ import { Row, Col } from "react-bootstrap";
 export default function BootstrapGrids() {
   return (
     <>
-      {/* GRID 1: Basic Grid System - REQUIRED */}
+      {/* GRID 1:*/}
       <div id="wd-bs-grid-system">
         <h2>Grid system</h2>
-        {/* Row 1: Two equal halves */}
+
         <Row>
           <Col className="bg-danger text-white">
             <h3>Left half</h3>
@@ -15,7 +15,7 @@ export default function BootstrapGrids() {
             <h3>Right half</h3>
           </Col>
         </Row>
-        {/* Row 2: One third and two thirds */}
+
         <Row>
           <Col xs={4} className="bg-warning">
             <h3>One third</h3>
@@ -24,7 +24,7 @@ export default function BootstrapGrids() {
             <h3>Two thirds</h3>
           </Col>
         </Row>
-        {/* Row 3: Sidebar - Main - Sidebar */}
+
         <Row>
           <Col xs={2} className="bg-black text-white">
             <h3>Sidebar</h3>
@@ -38,7 +38,7 @@ export default function BootstrapGrids() {
         </Row>
       </div>
       
-      {/* GRID 2: Responsive Grid System - REQUIRED */}
+      {/* GRID 2: Responsive Grid*/}
       <div id="wd-bs-responsive-grids">
         <h2>Responsive grid system</h2>
         <Row>
@@ -61,7 +61,7 @@ export default function BootstrapGrids() {
         </Row>
       </div>
       
-      {/* GRID 3: Dramatic Responsive Grid (1-12) - REQUIRED */}
+      {/* GRID 3: Dramatic Responsive Grid*/}
       <div id="wd-bs-responsive-dramatic">
         <h2>Responsive grid system</h2>
         <Row>

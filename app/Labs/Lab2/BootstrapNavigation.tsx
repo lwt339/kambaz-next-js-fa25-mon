@@ -3,43 +3,31 @@ import { Nav, NavItem, NavLink, Card, CardImg, CardBody, CardTitle, CardText, Bu
 export default function BootstrapNavigation() {
     return (
         <>
-            {/* Tabs - Page 65 */}
+            {/* Tabs */}
             <div id="wd-css-navigating-with-tabs">
                 <h2>Tabs</h2>
                 <Nav variant="tabs">
                     <NavItem>
-                        <NavLink href="#" active>Active</NavLink>
+                        <NavLink href="#/Labs/Lab2/Active">Active</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="#">Link</NavLink>
+                        <NavLink href="#/Labs/Lab2/Link1">Link 1</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="#" disabled>Disabled</NavLink>
+                        <NavLink href="#/Labs/Lab2/Link2">Link 2</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="#/Labs/Lab2/Disabled" disabled>Disabled</NavLink>
                     </NavItem>
                 </Nav>
             </div>
 
-            {/* Pills - Page 65 */}
-            <div id="wd-css-navigating-with-pills" className="mt-3">
-                <h2>Pills</h2>
-                <Nav variant="pills">
-                    <NavItem>
-                        <NavLink active href="#">Active</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="#">Link</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="#" disabled>Disabled</NavLink>
-                    </NavItem>
-                </Nav>
-            </div>
 
-            {/* Cards - Page 66 - EXACTLY as textbook */}
-            <div id="wd-css-navigating-with-cards" className="mt-4">
-                <h2>Cards</h2>
+            {/* Cards*/}
+            <div id="wd-css-navigating-with-cards">
+                <h2> Cards </h2>
                 <Card style={{ width: "18rem" }}>
-                    <CardImg variant="top" src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg" />
+                    <CardImg variant="top" src="/images/stacked.jpg" />
                     <CardBody>
                         <CardTitle>Stacking Starship</CardTitle>
                         <CardText>

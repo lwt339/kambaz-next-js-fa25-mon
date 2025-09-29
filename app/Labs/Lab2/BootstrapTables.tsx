@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap";
 export default function BootstrapTables() {
   return (
     <>
-      {/* TABLE 1: Styled Table - REQUIRED */}
+      {/* TABLE 1: Styled Table*/}
       <div id="wd-css-styling-tables">
         <h2>Tables</h2>
         <Table>
@@ -44,7 +44,7 @@ export default function BootstrapTables() {
         </Table>
       </div>
       
-      {/* TABLE 2: Responsive Table - REQUIRED */}
+      {/* TABLE 2: */}
       <div id="wd-css-responsive-tables">
         <h2>Responsive tables</h2>
         <Table responsive>

@@ -1,6 +1,6 @@
 "use client";
 import "./index.css";
-import { Container } from "react-bootstrap";
+import Container from 'react-bootstrap/Container';
 
 // Import all CSS components
 import ForegroundColors from "./ForegroundColors";
@@ -31,13 +31,13 @@ import ScreenSizeLabel from "./ScreenSizeLabel";
 
 export default function Lab2() {
     return (
-        <Container>
-            {/* Screen Size Indicator - REQUIRED for responsive testing */}
+        <Container fluid >
+            {/* Screen Size Indicator */}
             <ScreenSizeLabel />
 
             <h2>Lab 2 - Cascading Style Sheets</h2>
 
-            {/* SECTION 1: Inline Styles */}
+            {/* Inline Styles */}
             <h3>Styling with the STYLE attribute</h3>
             <p style={{ backgroundColor: "yellow", color: "red" }}>
                 Style attribute allows configuring look and feel
@@ -47,7 +47,7 @@ export default function Lab2() {
 
             </p>
 
-            {/* SECTION 2: ID Selectors*/}
+            {/* ID Selectors*/}
             <div id="wd-css-id-selectors">
                 <h3>ID selectors</h3>
                 <p id="wd-id-selector-1">
@@ -60,7 +60,7 @@ export default function Lab2() {
                 </p>
             </div>
 
-            {/* SECTION 3: Class Selectors */}
+            {/* Class Selectors */}
             <div id="wd-css-class-selectors">
                 <h3>Class selectors</h3>
                 <p className="wd-class-selector">
@@ -71,7 +71,7 @@ export default function Lab2() {
                 </h4>
             </div>
 
-            {/* SECTION 4: Document Structure Selectors */}
+            {/* Document Structure Selectors */}
             <div id="wd-css-document-structure">
                 <div className="wd-selector-1">
                     <h3>Document structure selectors</h3>
@@ -108,7 +108,7 @@ export default function Lab2() {
             <Flex />
             <ReactIconsSampler />
 
-            {/* Bootstrap Section - ALL REQUIRED */}
+            {/* Bootstrap Section*/}
             <h2>Bootstrap</h2>
             <BootstrapGrids />
             <BootstrapTables />

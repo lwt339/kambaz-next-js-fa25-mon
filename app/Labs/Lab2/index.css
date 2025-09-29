@@ -13,62 +13,47 @@ p#wd-id-selector-2 {
   color: black;
 }
 
-/* ========================================
-   SECTION 2: CLASS SELECTORS (REQUIRED)
-   ======================================== */
-/* Class selector - blue text on yellow background */
+/* CLASS SELECTORS */
+
 .wd-class-selector {
   background-color: yellow;
   color: blue;
 }
 
-/* ========================================
-   SECTION 3: DOCUMENT STRUCTURE SELECTORS
-   ======================================== */
-/* Descendant selector - any .wd-selector-3 inside .wd-selector-1 */
+/* DOCUMENT STRUCTURE */
 .wd-selector-1 .wd-selector-3 {
   background-color: red;
   color: white;
 }
 
-/* Direct child selector - .wd-selector-4 directly inside .wd-selector-3 directly inside .wd-selector-2 */
 .wd-selector-2 > .wd-selector-3 > .wd-selector-4 {
   background-color: yellow;
   color: blue;
 }
 
-/* ========================================
-   SECTION 4: FOREGROUND COLORS (REQUIRED)
-   ======================================== */
+/* FOREGROUND */
 .wd-fg-color-black { color: black; }
 .wd-fg-color-white { color: white; }
 .wd-fg-color-blue { color: #7070ff; }
 .wd-fg-color-red { color: #ff7070; }
 .wd-fg-color-green { color: green; }
 
-/* ========================================
-   SECTION 5: BACKGROUND COLORS (REQUIRED)
-   ======================================== */
+/* BACKGROUND */
 .wd-bg-color-yellow { background-color: #ffff07; }
 .wd-bg-color-blue { background-color: #7070ff; }
 .wd-bg-color-red { background-color: #ff7070; }
 .wd-bg-color-green { background-color: green; }
 .wd-bg-color-gray { background-color: lightgray; }
 
-/* ========================================
-   SECTION 6: BORDERS (REQUIRED)
-   ======================================== */
-/* Fat border - 20px top/bottom, 30px left/right */
+/* BORDERS */
 .wd-border-fat { 
   border-width: 20px 30px 20px 30px;
 }
 
-/* Thin border - 4px all around */
 .wd-border-thin { 
   border-width: 4px;
 }
 
-/* Border styles */
 .wd-border-solid { 
   border-style: solid;
 }
@@ -77,7 +62,7 @@ p#wd-id-selector-2 {
   border-style: dashed;
 }
 
-/* Border colors */
+
 .wd-border-yellow { 
   border-color: #ffff07;
 }
@@ -90,95 +75,82 @@ p#wd-id-selector-2 {
   border-color: #7070ff;
 }
 
-/* ========================================
-   SECTION 7: PADDING (REQUIRED)
-   ======================================== */
-/* Padding only top and left */
+/* PADDING */
+
 .wd-padded-top-left {
   padding-top: 50px;
   padding-left: 50px;
 }
 
-/* Padding only bottom and right */
+
 .wd-padded-bottom-right {
   padding-bottom: 50px;
   padding-right: 50px;
 }
 
-/* Fat padding all around */
+
 .wd-padding-fat {
   padding: 50px;
 }
 
-/* ========================================
-   SECTION 8: MARGINS (REQUIRED)
-   ======================================== */
-/* Margin only at bottom */
+/* MARGINS*/
+
 .wd-margin-bottom {
   margin-bottom: 50px;
 }
 
-/* Margin left and right (centers element) */
+
 .wd-margin-right-left {
   margin-left: 50px;
   margin-right: 50px;
 }
 
-/* Margin all around */
+
 .wd-margin-all-around {
   margin: 30px;
 }
 
-/* ========================================
-   SECTION 9: ROUNDED CORNERS (REQUIRED)
-   ======================================== */
-/* Round only top corners */
+/* ROUNDED CORNERS */
+
 .wd-rounded-corners-top {
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
 }
 
-/* Round only bottom corners */
 .wd-rounded-corners-bottom {
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
 }
 
-/* Round all corners equally */
 .wd-rounded-corners-all-around {
   border-radius: 50px;
 }
 
-/* Different radius for each corner */
 .wd-rounded-corners-inline {
   border-radius: 30px 0 20px 50px;
 }
 
-/* ========================================
-   SECTION 10: DIMENSIONS (REQUIRED)
-   ======================================== */
-/* Portrait - taller than wide */
+/*  DIMENSIONS */
+
 .wd-dimension-portrait {
   width: 75px;
   height: 100px;
 }
 
-/* Landscape - wider than tall */
+
 .wd-dimension-landscape {
   width: 100px;
   height: 75px;
 }
 
-/* Square - equal dimensions */
+
 .wd-dimension-square {
   width: 75px;
   height: 75px;
 }
 
-/* ========================================
-   SECTION 11: POSITIONING (REQUIRED)
-   ======================================== */
-/* Relative positioning - moves from normal position */
+/*  POSITIONING  */
+
 .wd-pos-relative-nudge-up-right {
   position: relative;
   bottom: 30px;
@@ -195,7 +167,7 @@ p#wd-id-selector-2 {
   position: relative;
 }
 
-/* Absolute positioning - positioned relative to parent */
+/* Absolute positioning*/
 .wd-pos-absolute-10-10 {
   position: absolute;
   top: 10px;
@@ -214,25 +186,21 @@ p#wd-id-selector-2 {
   left: 120px;
 }
 
-/* Fixed positioning - stays in viewport */
+/* Fixed positioning */
 .wd-pos-fixed {
   position: fixed;
   right: 0;
   bottom: 50%;
 }
 
-/* ========================================
-   SECTION 12: Z-INDEX (REQUIRED)
-   ======================================== */
+/* Z-INDEX */
 .wd-zindex-bring-to-front {
   z-index: 10;
 }
 
-/* ========================================
-   SECTION 13: FLOAT (REQUIRED)
-   ======================================== */
+/* FLOAT */
 .wd-float-left {
-  float: left;
+    float: left;
 }
 
 .wd-float-right {
@@ -244,32 +212,30 @@ p#wd-id-selector-2 {
   clear: both;
 }
 
-/* ========================================
-   SECTION 14: GRID LAYOUT (REQUIRED)
-   ======================================== */
+/* GRID LAYOUT  */
 .wd-grid-row {
   clear: both;
 }
 
-/* Half page columns */
+
 .wd-grid-col-half-page {
   width: 50%;
   float: left;
 }
 
-/* One third column */
+
 .wd-grid-col-third-page {
   width: 33%;
   float: left;
 }
 
-/* Two thirds column */
+
 .wd-grid-col-two-thirds-page {
   width: 67%;
   float: left;
 }
 
-/* Sidebar columns */
+
 .wd-grid-col-left-sidebar {
   width: 20%;
   float: left;
@@ -285,9 +251,7 @@ p#wd-id-selector-2 {
   float: left;
 }
 
-/* ========================================
-   SECTION 15: FLEXBOX (REQUIRED)
-   ======================================== */
+/* FLEXBOX */
 .wd-flex-row-container {
   display: flex;
   flex-direction: row;
@@ -301,9 +265,33 @@ p#wd-id-selector-2 {
   width: 75px;
 }
 
-/* ========================================
-   SECTION 16: SCREEN SIZE LABEL (REQUIRED)
-   ======================================== */
+.flex-container {
+    border-width: 5px;
+    border-color: black;
+    border-style: solid;
+    display: flex;
+}
+
+.flex-box {
+    border: 5px gray solid;
+    margin: 10px;
+    padding: 10px;
+}
+.flex-box-1 {
+    background-color: yellow;
+}
+.flex-box-2 {
+    background-color: blue;
+    color: white;
+}
+.flex-box-3 {
+    background-color: red;
+    color: white;
+}
+
+
+/* SCREEN SIZE LABEL
+  */
 #wd-screen-size-label {
   position: fixed;
   top: 0;
