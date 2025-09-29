@@ -9,8 +9,8 @@ export default function BootstrapLists() {
         <ListGroup>
           <ListGroupItem active>My Neighbor Totoro</ListGroupItem>
           <ListGroupItem>Spirited Away</ListGroupItem>
-          <ListGroupItem>Kiki's Delivery Service </ListGroupItem>
-          <ListGroupItem>Howl's Moving Castle </ListGroupItem>
+          <ListGroupItem>Kiki&apos;s Delivery Service </ListGroupItem>
+          <ListGroupItem>Howl&apos;s Moving Castle </ListGroupItem>
           <ListGroupItem disabled> Princess Mononoke  </ListGroupItem>
         </ListGroup>
       </div>
