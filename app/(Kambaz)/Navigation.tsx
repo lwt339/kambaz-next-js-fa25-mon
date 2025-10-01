@@ -8,8 +8,9 @@ import { ListGroup, ListGroupItem } from "react-bootstrap";
 // Icons
 import { FaRegCircleUser, FaInbox } from "react-icons/fa6";
 import { AiOutlineDashboard } from "react-icons/ai";
-import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
+import { LiaBookSolid} from "react-icons/lia";
 import { IoCalendarOutline } from "react-icons/io5";
+import { FaFlask } from "react-icons/fa";
 
 type NavItem = {
     id: string;
@@ -25,7 +26,7 @@ const NAV: NavItem[] = [
     { id: "courses",   href: "/Courses",   label: "Courses",   Icon: LiaBookSolid },
     { id: "calendar",  href: "/Calendar",  label: "Calendar",  Icon: IoCalendarOutline },
     { id: "inbox",     href: "/Inbox",     label: "Inbox",     Icon: FaInbox },
-    { id: "labs",      href: "/Labs",      label: "Labs",      Icon: LiaCogSolid },
+    { id: "labs",      href: "/Labs",      label: "Labs",      Icon: FaFlask },
 ];
 
 export default function KambazNavigation() {
@@ -35,7 +36,7 @@ export default function KambazNavigation() {
         <ListGroup
             id="wd-kambaz-navigation"
             className="rounded-0 position-fixed bottom-0 top-0 d-none d-md-block bg-black z-2"
-            style={{ width: 110 }}  // ~110px (+/-5px requirement)
+            style={{ width: 110 }}  // ~110px
         >
             {/* logo */}
             <ListGroupItem

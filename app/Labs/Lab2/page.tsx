@@ -2,7 +2,7 @@
 import "./index.css";
 import Container from 'react-bootstrap/Container';
 
-// Import all CSS components
+// CSS
 import ForegroundColors from "./ForegroundColors";
 import BackgroundColors from "./BackgroundColors";
 import Borders from "./Borders";
@@ -16,17 +16,17 @@ import Float from "./Float";
 import GridLayout from "./GridLayout";
 import Flex from "./Flex";
 
-// Import React Icons component
+// React Icons
 import ReactIconsSampler from "./ReactIcons";
 
-// Import Bootstrap components
+// Bootstrap
 import BootstrapGrids from "./BootstrapGrids";
 import BootstrapTables from "./BootstrapTables";
 import BootstrapLists from "./BootstrapLists";
 import BootstrapForms from "./BootstrapForms";
 import BootstrapNavigation from "./BootstrapNavigation";
 
-// Import screen size label
+// screen size label
 import ScreenSizeLabel from "./ScreenSizeLabel";
 
 export default function Lab2() {
@@ -93,7 +93,7 @@ export default function Lab2() {
                 </div>
             </div>
 
-            {/* Import all CSS example components */}
+            {/* CSS components */}
             <ForegroundColors />
             <BackgroundColors />
             <Borders />

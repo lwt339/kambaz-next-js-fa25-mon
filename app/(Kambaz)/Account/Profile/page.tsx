@@ -18,7 +18,6 @@ export default function Profile() {
                             id="wd-username"
                             type="text"
                             defaultValue="Weiting"
-                            className="form-control"
                         />
                     </Col>
                 </Row>
@@ -33,7 +32,7 @@ export default function Profile() {
                             id="wd-password"
                             type="password"
                             defaultValue="Happy"
-                            className="form-control"
+
                         />
                     </Col>
                 </Row>
@@ -48,7 +47,7 @@ export default function Profile() {
                             id="wd-firstname"
                             type="text"
                             defaultValue="Weiting"
-                            className="form-control"
+
                         />
                     </Col>
                 </Row>
@@ -63,7 +62,7 @@ export default function Profile() {
                             id="wd-lastname"
                             type="text"
                             defaultValue="Liu"
-                            className="form-control"
+
                         />
                     </Col>
                 </Row>
@@ -78,7 +77,7 @@ export default function Profile() {
                             id="wd-dob"
                             type="date"
                             defaultValue="2000-01-01"
-                            className="form-control"
+
                         />
                     </Col>
                 </Row>
@@ -93,7 +92,7 @@ export default function Profile() {
                             id="wd-email"
                             type="email"
                             defaultValue="weiliu@northeastern.com"
-                            className="form-control"
+
                         />
                     </Col>
                 </Row>

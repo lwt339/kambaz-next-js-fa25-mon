@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type CSSProperties } from "react";
+import { useState } from "react";
 import {
     Row,
     Col,
@@ -20,16 +20,15 @@ import {
     BsThreeDotsVertical,
 } from "react-icons/bs";
 
-// Chapter 2: all courses navigate to the SAME course screen
 const COURSE_HOME = "/Courses/5610/Home";
 
 type Course = {
-    id: string;          // e.g., "CS5610"
-    title: string;       // shown in course color
-    section: string;     // e.g., "CS5610.18616.202610" (styled #5C6B73)
-    image: string;       // path in /public/images
-    description: string; // gray blurb
-    color: string;       // per-course accent + overlay tint
+    id: string;
+    title: string;
+    section: string;
+    image: string;
+    description: string;
+    color: string;
 };
 
 const COURSES: Course[] = [
@@ -96,105 +95,165 @@ export default function Dashboard() {
     const onImgErr = (id: string) => setImgError((s) => ({ ...s, [id]: true }));
 
     return (
-        <div id="wd-dashboard" className="p-3">
+        <div id="wd-dashboard" className="p-4">
             <h1 id="wd-dashboard-title">Dashboard</h1>
             <hr />
             <h2 id="wd-dashboard-published">Published Courses ({COURSES.length})</h2>
             <hr />
 
             <div id="wd-dashboard-courses">
-                <Row
-                    xs={1}
-                    md={5}
-                    className="g-0 wd-dashboard-grid"
-                    style={{} as CSSProperties}
-                >
+                {/*  g-4 (24px) with additional p-1 on columns for 32px tota */}
+                <Row xs={1} md={5} className="g-4">
                     {COURSES.map((c) => (
-                        <Col key={c.id} className="wd-course-col">
-                            <Card className="h-100 shadow-sm wd-card-translucent">
-                                <Link
-                                    href={COURSE_HOME}
-                                    className="wd-dashboard-course-link text-decoration-none text-dark"
-                                >
-                                    {/* ===== Header image with transparent color overlay ===== */}
-                                    <div className="wd-img-wrap">
-                                        {!imgError[c.id] ? (
-                                            <CardImg
-                                                variant="top"
-                                                src={c.image}
-                                                alt={`${c.title} cover`}
-                                                className="wd-card-img"
-                                                onError={() => onImgErr(c.id)}
+                        <Col
+                            key={c.id}
+                            className="wd-course-col"
+                            style={{
+                                width: "270px",  // Fixed width
+                                flex: "0 0 auto"
+                            }}
+                        >
+                            {/*24px (g-4) + 8px (p-1) = 32px total */}
+                            <div className="p-1">
+                                <Card className="h-100 shadow-sm wd-card-translucent">
+                                    <Link
+                                        href={COURSE_HOME}
+                                        className="wd-dashboard-course-link text-decoration-none text-dark"
+                                    >
+                                        <div className="wd-img-wrap position-relative">
+                                            {!imgError[c.id] ? (
+                                                <CardImg
+                                                    variant="top"
+                                                    src={c.image}
+                                                    alt={`${c.title} cover`}
+                                                    className="wd-card-img"
+                                                    onError={() => onImgErr(c.id)}
+                                                    style={{ height: "160px", objectFit: "cover" }}
+                                                />
+                                            ) : (
+                                                <div
+                                                    className="wd-card-img"
+                                                    style={{
+                                                        backgroundColor: c.color,
+                                                        height: "160px"
+                                                    }}
+                                                />
+                                            )}
+
+                                            {/* Color overlay */}
+                                            <div
+                                                className="position-absolute top-0 start-0 w-100 h-100"
+                                                style={{
+                                                    backgroundColor: c.color,
+                                                    opacity: 0.35,
+                                                    mixBlendMode: "multiply",
+                                                    pointerEvents: "none"
+                                                }}
+                                                aria-hidden="true"
                                             />
-                                        ) : (
-                                            <div className="wd-card-img" style={{ backgroundColor: c.color }} />
-                                        )}
 
-                                        {/* Transparent tint overlay using per-course color */}
-                                        <div
-                                            className="wd-color-overlay"
-                                            style={{ backgroundColor: c.color }}
-                                            aria-hidden="true"
-                                        />
+                                            {/* Bottom gradient for readability */}
+                                            <div
+                                                className="position-absolute bottom-0 start-0 w-100"
+                                                style={{
+                                                    height: "52px",
+                                                    background: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 100%)",
+                                                    pointerEvents: "none"
+                                                }}
+                                                aria-hidden="true"
+                                            />
 
-                                        {/* Optional bottom gradient for contrast */}
-                                        <div className="wd-bottom-gradient" aria-hidden="true" />
-
-                                        {/* 3-dots icon above overlays */}
-                                        <BsThreeDotsVertical
-                                            className="wd-img-actions text-white"
-                                            size={18}
-                                            title="More"
-                                        />
-                                    </div>
-                                    {/* ======================================================= */}
-
-                                    <CardBody className="wd-card-body">
-                                        {/* Title — single line with ellipsis, tinted to course color */}
-                                        <CardTitle
-                                            className="wd-course-title text-nowrap overflow-hidden"
-                                            style={{ color: c.color }}
-                                            title={c.title}
-                                        >
-                                            {c.title}
-                                        </CardTitle>
-
-                                        {/* Section/code — single line with ellipsis (color via CSS #5C6B73) */}
-                                        <div
-                                            className="wd-course-section text-nowrap overflow-hidden"
-                                            title={c.section}
-                                        >
-                                            {c.section}
+                                            {/* Three dots menu with Bootstrap positioning */}
+                                            <BsThreeDotsVertical
+                                                className="position-absolute top-0 end-0 m-2 text-white"
+                                                size={18}
+                                                title="More"
+                                            />
                                         </div>
 
-                                        {/* Description — gray, 2-line clamp with ellipsis */}
-                                        <CardText className="wd-course-desc text-secondary" title={c.description}>
-                                            {c.description}
-                                        </CardText>
+                                        <CardBody className="p-3">
+                                            {/* Course title */}
+                                            <CardTitle
+                                                className="text-nowrap overflow-hidden mb-1"
+                                                style={{
+                                                    color: c.color,
+                                                    textOverflow: "ellipsis"
+                                                }}
+                                                title={c.title}
+                                            >
+                                                {c.title}
+                                            </CardTitle>
 
-                                        <Button variant="primary" className="mb-2">Go</Button>
+                                            {/* Course section */}
+                                            <div
+                                                className="text-nowrap overflow-hidden text-muted small mb-2"
+                                                style={{ textOverflow: "ellipsis" }}
+                                                title={c.section}
+                                            >
+                                                {c.section}
+                                            </div>
 
-                                        {/* Mini icons (gray → red on hover/touch) */}
-                                        <div
-                                            className="wd-mini-icons d-flex justify-content-between align-items-center px-2 pt-2"
-                                            onClick={(e) => e.preventDefault()}
-                                        >
-                                            <button type="button" className="icon-btn" aria-label="Announcements" title="Announcements">
-                                                <BsMegaphone />
-                                            </button>
-                                            <button type="button" className="icon-btn" aria-label="Assignments" title="Assignments">
-                                                <BsCardChecklist />
-                                            </button>
-                                            <button type="button" className="icon-btn" aria-label="Discussions" title="Discussions">
-                                                <BsChatDots />
-                                            </button>
-                                            <button type="button" className="icon-btn" aria-label="Files" title="Files">
-                                                <BsFolder />
-                                            </button>
-                                        </div>
-                                    </CardBody>
-                                </Link>
-                            </Card>
+                                            {/* Course description */}
+                                            <CardText
+                                                className="text-secondary small"
+                                                style={{
+                                                    display: "-webkit-box",
+                                                    WebkitLineClamp: 2,
+                                                    WebkitBoxOrient: "vertical",
+                                                    overflow: "hidden",
+                                                    textOverflow: "ellipsis",
+                                                    lineHeight: 1.3,
+                                                    minHeight: "2.6em"
+                                                }}
+                                                title={c.description}
+                                            >
+                                                {c.description}
+                                            </CardText>
+
+                                            <Button variant="primary" className="mb-2">Go</Button>
+
+                                            {/* Mini icons using Bootstrap spacing utilities */}
+                                            <div
+                                                className="d-flex justify-content-between align-items-center px-2 pt-2"
+                                                onClick={(e) => e.preventDefault()}
+                                            >
+                                                <button
+                                                    type="button"
+                                                    className="btn btn-link p-1 text-muted"
+                                                    aria-label="Announcements"
+                                                    title="Announcements"
+                                                >
+                                                    <BsMegaphone />
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    className="btn btn-link p-1 text-muted"
+                                                    aria-label="Assignments"
+                                                    title="Assignments"
+                                                >
+                                                    <BsCardChecklist />
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    className="btn btn-link p-1 text-muted"
+                                                    aria-label="Discussions"
+                                                    title="Discussions"
+                                                >
+                                                    <BsChatDots />
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    className="btn btn-link p-1 text-muted"
+                                                    aria-label="Files"
+                                                    title="Files"
+                                                >
+                                                    <BsFolder />
+                                                </button>
+                                            </div>
+                                        </CardBody>
+                                    </Link>
+                                </Card>
+                            </div>
                         </Col>
                     ))}
                 </Row>

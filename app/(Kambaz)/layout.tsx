@@ -9,7 +9,7 @@ export default function KambazLayout({ children }: { children: ReactNode }) {
                 <div>
                     <KambazNavigation />
                 </div>
-                {/* Offset only when sidebar is visible (via CSS @media) */}
+                {/* Offset*/}
                 <div className="wd-main-content-offset p-3 flex-fill">
                     {children}
                 </div>

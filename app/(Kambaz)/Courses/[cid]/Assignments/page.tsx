@@ -11,7 +11,7 @@ import { GrNotes } from "react-icons/gr";
 import { PiProjectorScreenChartBold } from "react-icons/pi";
 import { IoEllipsisVertical } from "react-icons/io5";
 
-/** Your data - keeping exactly as you have it */
+
 const ASSIGNMENTS = [
     { id: "123", title: "A1 - ENV + HTML", modules: "Multiple Modules", availability: "Not available until Sep 8 at 12:00am", submissionType: "Submitting a website url", dueDate: "Sep 22 at 11:59pm", points: "100 pts" },
     { id: "124", title: "A2 - CSS + BOOTSTRAP", modules: "Multiple Modules", availability: "Not available until Sep 22 at 12:00am", submissionType: "Submitting a website url", dueDate: "Oct 6 at 11:59pm", points: "100 pts" },
@@ -62,7 +62,7 @@ export default function Assignments() {
 
     const toggle = (key: SectionKey) => setOpen((o) => ({ ...o, [key]: !o[key] }));
 
-    /** Green Checkmark Component */
+    /** Green Checkmark*/
     const GreenCheckmark = () => (
         <span className="me-2 position-relative">
             <FaCheckCircle
@@ -73,7 +73,7 @@ export default function Assignments() {
         </span>
     );
 
-    /** Assignment Controls */
+    /** Assignment*/
     const AssignmentControlButtons = () => (
         <div className="float-end d-flex align-items-center">
             <GreenCheckmark />
@@ -114,15 +114,11 @@ export default function Assignments() {
         </div>
     );
 
-    /** Green Border Applied Here with enhanced styling */
+    /** Green Border*/
     const RowAssignment = (a: typeof ASSIGNMENTS[number]) => (
         <li
             key={a.id}
             className="wd-assignment-list-item list-group-item p-3 ps-2 border-start-0 border-end-0"
-            style={{
-                borderLeft: "5px solid #28a745",
-                borderBottom: "1px solid #dee2e6"
-            }}
         >
             <div className="d-flex align-items-start">
                 <BsGripVertical className="me-2 fs-4 text-muted mt-1" />
@@ -152,10 +148,7 @@ export default function Assignments() {
         <li
             key={q.id}
             className="wd-assignment-list-item list-group-item p-3 ps-2 border-start-0 border-end-0"
-            style={{
-                borderLeft: "5px solid #28a745",
-                borderBottom: "1px solid #dee2e6"
-            }}
+
         >
             <div className="d-flex align-items-start">
                 <BsGripVertical className="me-2 fs-4 text-muted mt-1" />
@@ -185,10 +178,7 @@ export default function Assignments() {
         <li
             key={e.id}
             className="wd-assignment-list-item list-group-item p-3 ps-2 border-start-0 border-end-0"
-            style={{
-                borderLeft: "5px solid #28a745",
-                borderBottom: "1px solid #dee2e6"
-            }}
+
         >
             <div className="d-flex align-items-start">
                 <BsGripVertical className="me-2 fs-4 text-muted mt-1" />
@@ -218,7 +208,7 @@ export default function Assignments() {
         <li
             className="wd-assignment-list-item list-group-item p-3 ps-2 border-start-0 border-end-0 border-bottom-0"
             style={{
-                borderLeft: "5px solid #28a745"
+                borderLeft: "4px solid #198754"
             }}
         >
             <div className="d-flex align-items-start">
@@ -246,9 +236,9 @@ export default function Assignments() {
 
     return (
         <div id="wd-assignments">
-            {/* CRITICAL RUBRIC REQUIREMENT: Search LEFT, Buttons RIGHT */}
+            {/* Search LEFT, Buttons RIGHT */}
             <div id="wd-assignments-controls" className="d-flex justify-content-between align-items-center mb-4">
-                {/* Search Bar - LEFT with Magnifying Glass */}
+                {/* Search Bar */}
                 <InputGroup style={{ width: "300px" }}>
                     <InputGroup.Text className="bg-white border-end-0">
                         <FaSearch className="text-muted" style={{ fontSize: "14px" }} />
@@ -262,7 +252,7 @@ export default function Assignments() {
                     />
                 </InputGroup>
 
-                {/* Buttons - RIGHT with Plus Icons */}
+                {/* Buttons */}
                 <div>
                     <Button
                         variant="light"
@@ -281,12 +271,12 @@ export default function Assignments() {
                 </div>
             </div>
 
-            {/* Hidden title for rubric compliance */}
+            {/* Hidden title*/}
             <h3 id="wd-assignments-title" className="d-none">
                 ASSIGNMENTS 40% of Total
             </h3>
 
-            {/* ASSIGNMENTS Section */}
+            {/* ASSIGNMENTS*/}
             <ul id="wd-assignment-list" className="list-unstyled p-0">
                 <ListGroup className="rounded-0 mb-4 border">
                     <ListGroupItem className="p-0 border-0">
@@ -299,7 +289,7 @@ export default function Assignments() {
                     </ListGroupItem>
                 </ListGroup>
 
-                {/* QUIZZES Section */}
+                {/* QUIZZES*/}
                 <ListGroup className="rounded-0 mb-4 border">
                     <ListGroupItem className="p-0 border-0">
                         <Header label="QUIZZES" percentage="10%" isOpen={open.QUIZZES} onToggle={() => toggle("QUIZZES")} />
@@ -311,7 +301,7 @@ export default function Assignments() {
                     </ListGroupItem>
                 </ListGroup>
 
-                {/* EXAMS Section */}
+                {/* EXAMS*/}
                 <ListGroup className="rounded-0 mb-4 border">
                     <ListGroupItem className="p-0 border-0">
                         <Header label="EXAMS" percentage="20%" isOpen={open.EXAMS} onToggle={() => toggle("EXAMS")} />
@@ -323,7 +313,7 @@ export default function Assignments() {
                     </ListGroupItem>
                 </ListGroup>
 
-                {/* PROJECT Section */}
+                {/* PROJECT*/}
                 <ListGroup className="rounded-0 mb-4 border">
                     <ListGroupItem className="p-0 border-0">
                         <Header label="PROJECT" percentage="30%" isOpen={open.PROJECT} onToggle={() => toggle("PROJECT")} />

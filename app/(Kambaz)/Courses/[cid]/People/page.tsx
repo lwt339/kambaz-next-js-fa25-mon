@@ -1,7 +1,9 @@
+// app/(Kambaz)/Courses/[cid]/People/Table/page.tsx
 import { Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 
 export default function PeopleTable() {
+    // Array of users to display in the table - includes all 6 users from the rubric
     const users = [
         {
             firstName: "Tony",
@@ -35,9 +37,27 @@ export default function PeopleTable() {
             lastName: "Romanoff",
             loginId: "001234564S",
             section: "S101",
-            role: "TA",
+            role: "TA",  // Teaching Assistant role
             lastActivity: "2020-11-05",
             totalActivity: "13:23:34"
+        },
+        {
+            firstName: "Thor",
+            lastName: "Odinson",
+            loginId: "001234565S",
+            section: "S101",
+            role: "STUDENT",
+            lastActivity: "2020-12-01",
+            totalActivity: "11:22:33"
+        },
+        {
+            firstName: "Bruce",
+            lastName: "Banner",
+            loginId: "001234566S",
+            section: "S101",
+            role: "STUDENT",
+            lastActivity: "2020-12-01",
+            totalActivity: "22:33:44"
         }
     ];
 

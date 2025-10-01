@@ -6,12 +6,12 @@ export default function CourseNavigation() {
     const { cid } = useParams();
     const pathname = usePathname();
 
-    // Helper function for checking active state
+    // checking active state
     const isActive = (path: string) => {
         return pathname.includes(path);
     };
 
-    // REQUIRED: All these navigation links for Assignment 2
+    // navigation links
     const links = [
         { name: "Home", path: `/Courses/${cid}/Home` },
         { name: "Modules", path: `/Courses/${cid}/Modules` },
@@ -26,7 +26,7 @@ export default function CourseNavigation() {
     return (
         <div
             id="wd-courses-navigation"
-            className="wd list-group fs-5 rounded-0"
+            className="wd list-group fs-5 rounded-0 bg-white"
             style={{ width: "150px" }}
         >
             {links.map((link) => (

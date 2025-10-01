@@ -11,6 +11,7 @@ import { BiHistory, BiHelpCircle } from "react-icons/bi";
 import { Offcanvas, ListGroup } from "react-bootstrap";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Breadcrumb from "./Breadcrumb";
 
 export default function CourseLayout({
                                          children,
@@ -22,11 +23,19 @@ export default function CourseLayout({
     const { cid } = use(params);
     const pathname = usePathname();
 
-    // offcanvas menus
+
     const [showKambazNav, setShowKambazNav] = useState(false);
     const [showCourseNav, setShowCourseNav] = useState(false);
 
-    // Canvas-style navigation items
+
+    const course = {
+        _id: cid,
+        // Format the course name
+        name: `CS${cid} `
+
+    };
+
+    // Canvas-style navigation items for the main drawer
     const canvasNavItems = [
         { id: "dashboard", label: "Dashboard", href: "/Dashboard", icon: AiOutlineDashboard },
         { id: "account", label: "Account", href: "/Account", icon: FaRegCircleUser },
@@ -40,9 +49,9 @@ export default function CourseLayout({
 
     return (
         <div id="wd-courses">
-            {/* menus */}
+            {/* Course header with navigation controls and breadcrumb */}
             <div className="d-flex align-items-center justify-content-between p-2">
-                {/* Left top icon */}
+                {/* Left side: mobile menu button and course title */}
                 <div className="d-flex align-items-center">
                     <button
                         className="btn btn-link text-danger d-md-none p-0 me-3"
@@ -52,14 +61,16 @@ export default function CourseLayout({
                         <FaAlignJustify className="fs-3" />
                     </button>
 
-                    {/* Course title */}
+                    {/*
+                        Course title with breadcrumb
+                    */}
                     <h2 className="text-danger mb-0">
                         <FaAlignJustify className="me-4 fs-4 mb-1 d-none d-md-inline" />
-                        Course {cid}
+                        Course {course.name} <Breadcrumb course={course} />
                     </h2>
                 </div>
 
-                {/* Right icon */}
+                {/* Right side: course navigation */}
                 <button
                     className="btn btn-link text-secondary d-md-none p-0"
                     onClick={() => setShowCourseNav(true)}
@@ -69,21 +80,22 @@ export default function CourseLayout({
                 </button>
             </div>
 
-            <hr />
+            <hr className="my-2" />
 
+            {/* Main content layout with sidebar and content area */}
             <div className="d-flex">
-                {/* Course Navigation - Hidden on small screens */}
+                {/* Course Navigation*/}
                 <div className="d-none d-md-block">
                     <CourseNavigation />
                 </div>
 
-                {/* Main content area */}
+                {/* Bootstrap padding */}
                 <div className="flex-fill p-3">
                     {children}
                 </div>
             </div>
 
-            {/* Canvas-Style Navigation Offcanvas (mobile) */}
+            {/* Main Kambaz mobile */}
             <Offcanvas
                 show={showKambazNav}
                 onHide={() => setShowKambazNav(false)}
@@ -92,7 +104,7 @@ export default function CourseLayout({
                 style={{ width: '320px' }}
             >
                 <Offcanvas.Header className="border-bottom pb-3">
-                    {/* Canvas Logo */}
+                    {/* Kambaz Logo */}
                     <div className="d-flex align-items-center">
                         <div className="text-danger me-2">
                             <svg width="40" height="40" viewBox="0 0 40 40" fill="currentColor">
@@ -126,14 +138,18 @@ export default function CourseLayout({
                                     href={item.href}
                                     action
                                     className={`border-0 py-3 px-4 d-flex align-items-center justify-content-between 
-                              ${isActive ? 'bg-light' : ''}`}
+                                        ${isActive ? 'bg-light' : ''}`}
                                     onClick={() => setShowKambazNav(false)}
                                 >
                                     <div className="d-flex align-items-center">
-                                        <item.icon className={`fs-5 me-3 ${item.id === "dashboard" || item.id === "courses" ? 'text-danger' : 'text-secondary'}`} />
+                                        <item.icon className={`fs-5 me-3 ${
+                                            item.id === "dashboard" || item.id === "courses"
+                                                ? 'text-danger'
+                                                : 'text-secondary'
+                                        }`} />
                                         <span className={`${isActive ? 'text-danger fw-semibold' : 'text-dark'}`}>
-                      {item.label}
-                    </span>
+                                            {item.label}
+                                        </span>
                                     </div>
                                     <IoChevronForward className="text-secondary" />
                                 </ListGroup.Item>
@@ -143,7 +159,7 @@ export default function CourseLayout({
                 </Offcanvas.Body>
             </Offcanvas>
 
-            {/* Course Navigation Offcanvas (mobile) */}
+            {/* mobile */}
             <Offcanvas
                 show={showCourseNav}
                 onHide={() => setShowCourseNav(false)}

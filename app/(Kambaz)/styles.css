@@ -1,6 +1,4 @@
-/* ========================================
-   GLOBAL RESETS
-   ======================================== */
+/* GLOBAL */
 body {
     margin: 0;
     padding: 0;
@@ -10,28 +8,22 @@ body * {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ========================================
-   MAIN CONTENT OFFSET
-   ======================================== */
+/* MAIN CONTENT */
 @media (min-width: 768px) {
     #wd-kambaz .wd-main-content-offset {
         padding-left: 140px !important;
     }
 }
 
-/* ========================================
-   NAVIGATION ACTIVE STATES
-   ======================================== */
-/* Course Navigation Active State */
+/* NAVIGATION */
+/* Active State */
 .list-group.wd > .list-group-item.active {
     color: black !important;
     background-color: white !important;
     border-left: 3px solid black !important;
 }
 
-/* ========================================
-   BUTTON OVERRIDES
-   ======================================== */
+/* BUTTON */
 .btn-secondary {
     --bs-btn-color: #000 !important;
     --bs-btn-bg: #c7cdd1 !important;
@@ -50,9 +42,7 @@ body * {
     --bs-btn-hover-border-color: #bd2130 !important;
 }
 
-/* ========================================
-   MODULE STYLING
-   ======================================== */
+/* MODULE */
 .bg-secondary {
     --bs-secondary-rgb: 199, 205, 209;
     background-color: rgb(199, 205, 209) !important;
@@ -66,7 +56,7 @@ body * {
     border: 1px solid #c7cdd1 !important;
 }
 
-/* LESSON GREEN BORDER - CRITICAL */
+/* LESSON GREEN BORDER*/
 .wd-lesson {
     border-left: 3px solid green !important;
 }
@@ -80,6 +70,9 @@ body * {
     cursor: pointer;
     user-select: none;
 }
+.wd-title:hover {
+    background-color: #b8bec2 !important;
+}
 
 #wd-modules-controls::after {
     content: "";
@@ -87,16 +80,14 @@ body * {
     clear: both;
 }
 
-/* ========================================
-   ASSIGNMENT LIST STYLING - CRITICAL
-   ======================================== */
-/* CRITICAL: Green border for ALL assignment items - MUST HAVE */
+/* ASSIGNMENT LIST */
 .wd-assignment-list-item,
 .wd-assignment-list-item.list-group-item {
     border-left: 4px solid #198754 !important;  /* Green border */
+    border-bottom: 1px solid #dee2e6 !important;
 }
 
-/* Search styling - magnifying glass and left alignment */
+/* Search*/
 #wd-assignments-controls .input-group {
     max-width: 300px;
 }
@@ -117,14 +108,14 @@ body * {
     border-color: #ced4da;
 }
 
-/* Module header styling */
+/* Module header*/
 .wd-title {
     background-color: #c7cdd1 !important;
     cursor: pointer;
     user-select: none;
 }
 
-/* Assignment link hover effect */
+/* Assignment link*/
 .wd-assignment-link:hover {
     text-decoration: underline !important;
 }
@@ -139,7 +130,7 @@ body * {
     text-decoration: underline !important;
 }
 
-/* Assignment controls search styling */
+/* Assignment controls search*/
 #wd-assignments-controls .input-group-text {
     background-color: white;
     border-right: none;
@@ -154,9 +145,7 @@ body * {
     border-color: #ced4da;
 }
 
-/* ========================================
-   COURSE STATUS
-   ======================================== */
+/* COURSE */
 #wd-course-status {
     padding: 1rem;
 }
@@ -167,9 +156,7 @@ body * {
     font-weight: 500;
 }
 
-/* ========================================
-   PEOPLE TABLE
-   ======================================== */
+/* PEOPLE TABLE */
 #wd-people-table {
     padding: 1rem;
 }
@@ -183,29 +170,27 @@ body * {
     align-items: center;
 }
 
-/* ========================================
-   ACCOUNT SCREENS SPECIFIC STYLING
-   ======================================== */
+/* ACCOUNT SCREENS */
 
-/* Account Navigation Active State - CRITICAL */
+/* Active State*/
 #wd-account-navigation .list-group-item.active {
     color: black !important;
     background-color: white !important;
     border-left: 3px solid black !important;
 }
 
-/* Account Navigation Inactive State */
+/*Navigation Inactive State */
 #wd-account-navigation .list-group-item:not(.active) {
     background-color: transparent !important;
     color: #dc3545 !important; /* Bootstrap danger/red color for links */
 }
 
-/* Account Navigation Hover State */
+/*Hover State */
 #wd-account-navigation .list-group-item:hover {
     background-color: rgba(0, 0, 0, 0.05) !important;
 }
 
-/* Sign in/Sign up Screen Styling */
+/* Sign in/Sign up Screen */
 #wd-signin-screen h1,
 #wd-signup-screen h1 {
     font-size: 2rem;
@@ -213,7 +198,7 @@ body * {
     color: #333;
 }
 
-/* Form Control Styling */
+/* Form Control*/
 #wd-signin-screen .form-control,
 #wd-signup-screen .form-control,
 #wd-profile-screen .form-control,
@@ -222,7 +207,7 @@ body * {
     border-radius: 0.25rem;
 }
 
-/* Sign in/Sign up Link Styling */
+/*Link*/
 #wd-signin-link,
 #wd-signup-link {
     color: #007bff;
@@ -234,7 +219,7 @@ body * {
     color: #0056b3;
 }
 
-/* Profile Screen Specific */
+/* Profile*/
 #wd-profile-screen h1 {
     font-size: 2rem;
     font-weight: normal;
@@ -247,7 +232,7 @@ body * {
     padding-top: 0.375rem;
 }
 
-/* Sign out Button */
+/* Sign out*/
 #wd-signout-btn {
     font-size: 1rem;
     padding: 0.5rem 1rem;
@@ -263,7 +248,7 @@ body * {
     margin-bottom: 1rem;
 }
 
-/* Responsive adjustments */
+/* Responsive*/
 @media (max-width: 767px) {
     #wd-account-navigation {
         width: 100% !important;
@@ -276,7 +261,7 @@ body * {
     }
 }
 
-/* Button Styling Override for Account Pages */
+/* Button for Account Pages */
 #wd-signin-btn.btn-primary,
 #wd-signup-btn.btn-primary {
     background-color: #007bff;
@@ -299,9 +284,7 @@ body * {
     border-color: #bd2130;
 }
 
-/* ========================================
-   HOME SCREEN RESPONSIVE
-   ======================================== */
+/* HOME SCREEN */
 @media (max-width: 1199px) {
     #wd-home .flex-fill {
         width: 100%;
@@ -318,18 +301,8 @@ body * {
     }
 }
 
-/* ========================================
-   DASHBOARD CARDS
-   ======================================== */
-#wd-dashboard .wd-dashboard-grid {
-    --bs-gutter-x: 2rem;
-    --bs-gutter-y: 2rem;
-}
+/* DASHBOARD CARDS */
 
-#wd-dashboard .wd-course-col {
-    width: 270px;
-    flex: 0 0 auto;
-}
 
 #wd-dashboard .wd-card-translucent {
     background-color: rgba(255, 255, 255, 0.68) !important;
