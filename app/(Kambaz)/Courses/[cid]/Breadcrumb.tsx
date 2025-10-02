@@ -9,7 +9,7 @@ interface BreadcrumbProps {
     } | undefined;
 }
 
-export default function Breadcrumb({ course }: BreadcrumbProps) {
+export default function Breadcrumb({ course: _course }: BreadcrumbProps) { // Prefix with underscore to indicate intentionally unused
     const pathname = usePathname();
 
     if (!pathname) return null;

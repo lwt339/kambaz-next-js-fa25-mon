@@ -6,7 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import AssignToInput from "./AssignToInput";
 
 export default function AssignmentEditor() {
-    const { cid, aid } = useParams();
+    const { cid, aid: _aid } = useParams(); // Prefix with underscore to indicate intentionally unused
     const router = useRouter();
 
     const [assignedTo, setAssignedTo] = useState<string[]>(['Everyone']);
