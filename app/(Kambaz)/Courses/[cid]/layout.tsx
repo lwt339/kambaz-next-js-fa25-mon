@@ -1,3 +1,11 @@
+/**
+ * Course Layout - Data-Driven Version
+ * Location: app/(Kambaz)/Courses/[cid]/layout.tsx
+ *
+ * Now gets the actual course name from the database instead of creating a fake object.
+ * Keeps all your mobile navigation and styling.
+ */
+
 "use client";
 import { ReactNode, use, useState } from "react";
 import CourseNavigation from "./Navigation";
@@ -12,6 +20,8 @@ import { Offcanvas, ListGroup } from "react-bootstrap";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Breadcrumb from "./Breadcrumb";
+// Import courses from database
+import { courses } from "../../Database";
 
 export default function CourseLayout({
                                          children,
@@ -23,17 +33,15 @@ export default function CourseLayout({
     const { cid } = use(params);
     const pathname = usePathname();
 
-
+    // State for mobile navigation drawers
     const [showKambazNav, setShowKambazNav] = useState(false);
     const [showCourseNav, setShowCourseNav] = useState(false);
 
-
-    const course = {
-        _id: cid,
-        // Format the course name
-        name: `CS${cid} `
-
-    };
+    /**
+     * Find the actual course from the database
+     * This replaces the fake course object with real data
+     */
+    const course = courses.find((c) => c._id === cid);
 
     // Canvas-style navigation items for the main drawer
     const canvasNavItems = [
@@ -61,16 +69,19 @@ export default function CourseLayout({
                         <FaAlignJustify className="fs-3" />
                     </button>
 
-                    {/*
-                        Course title with breadcrumb
-                    */}
+                    {/**
+                     * Course title with breadcrumb
+                     * Now displays the REAL course name from database
+                     * Example: "Rocket Propulsion" instead of "CSRS101"
+                     */}
                     <h2 className="text-danger mb-0">
                         <FaAlignJustify className="me-4 fs-4 mb-1 d-none d-md-inline" />
-                        Course {course.name} <Breadcrumb course={course} />
+                        {course?.name || `Course ${cid}`}
+                        <Breadcrumb course={course} />
                     </h2>
                 </div>
 
-                {/* Right side: course navigation */}
+                {/* Right side: course navigation button (mobile) */}
                 <button
                     className="btn btn-link text-secondary d-md-none p-0"
                     onClick={() => setShowCourseNav(true)}
@@ -84,18 +95,18 @@ export default function CourseLayout({
 
             {/* Main content layout with sidebar and content area */}
             <div className="d-flex">
-                {/* Course Navigation*/}
+                {/* Course Navigation Sidebar (Desktop) */}
                 <div className="d-none d-md-block">
                     <CourseNavigation />
                 </div>
 
-                {/* Bootstrap padding */}
+                {/* Main Content Area */}
                 <div className="flex-fill p-3">
                     {children}
                 </div>
             </div>
 
-            {/* Main Kambaz mobile */}
+            {/* Main Kambaz Navigation Drawer (Mobile) */}
             <Offcanvas
                 show={showKambazNav}
                 onHide={() => setShowKambazNav(false)}
@@ -159,7 +170,7 @@ export default function CourseLayout({
                 </Offcanvas.Body>
             </Offcanvas>
 
-            {/* mobile */}
+            {/* Course Navigation Drawer (Mobile) */}
             <Offcanvas
                 show={showCourseNav}
                 onHide={() => setShowCourseNav(false)}
@@ -176,3 +187,31 @@ export default function CourseLayout({
         </div>
     );
 }
+
+/**
+ * KEY CHANGES:
+ *
+ * 1. Imports courses from database: import { courses } from "../../Database"
+ * 2. Finds actual course: const course = courses.find((c) => c._id === cid)
+ * 3. Displays real course name: {course?.name || `Course ${cid}`}
+ * 4. Passes real course object to Breadcrumb component
+ * 5. Uses optional chaining to handle missing courses gracefully
+ *
+ * WHAT THIS FIXES:
+ * ✓ Course header now shows "Rocket Propulsion" instead of "CSCS101"
+ * ✓ Course header shows "Web Development" instead of "CS5610"
+ * ✓ Breadcrumb gets real course data
+ * ✓ Works for all courses in the database
+ *
+ * WHAT'S PRESERVED:
+ * ✓ All mobile navigation drawers
+ * ✓ Kambaz logo and navigation items
+ * ✓ Course navigation sidebar
+ * ✓ Active state highlighting
+ * ✓ All styling and animations
+ * ✓ Responsive behavior
+ *
+ * EXAMPLE:
+ * Before: "Course CSRS101 > Modules"
+ * After: "Rocket Propulsion > Modules"
+ */

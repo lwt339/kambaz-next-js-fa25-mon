@@ -1,0 +1,73 @@
+[
+  { "_id": "E001", "user": "121", "course": "RS101" },
+  { "_id": "E002", "user": "122", "course": "RS101" },
+  { "_id": "E003", "user": "123", "course": "RS101" },
+  { "_id": "E004", "user": "124", "course": "RS101" },
+  { "_id": "E005", "user": "125", "course": "RS101" },
+  { "_id": "E006", "user": "126", "course": "RS101" },
+  { "_id": "E007", "user": "131", "course": "RS101" },
+
+  { "_id": "E008", "user": "127", "course": "RS102" },
+  { "_id": "E009", "user": "128", "course": "RS102" },
+  { "_id": "E010", "user": "129", "course": "RS102" },
+  { "_id": "E011", "user": "130", "course": "RS102" },
+  { "_id": "E012", "user": "121", "course": "RS102" },
+  { "_id": "E013", "user": "132", "course": "RS102" },
+
+  { "_id": "E014", "user": "122", "course": "RS103" },
+  { "_id": "E015", "user": "123", "course": "RS103" },
+  { "_id": "E016", "user": "125", "course": "RS103" },
+  { "_id": "E017", "user": "127", "course": "RS103" },
+  { "_id": "E018", "user": "131", "course": "RS103" },
+
+    { "_id": "E001", "user": "U001", "course": "CS5610" },
+    { "_id": "E002", "user": "U392635", "course": "CS5610" },
+    { "_id": "E003", "user": "U406959", "course": "CS5610" },
+    { "_id": "E004", "user": "U317292", "course": "CS5610" },
+
+    { "_id": "E005", "user": "U158249", "course": "CS5520" },
+    { "_id": "E006", "user": "U288346", "course": "CS5520" },
+    { "_id": "E007", "user": "U382142", "course": "CS5520" },
+    { "_id": "E008", "user": "U332318", "course": "CS5520" },
+
+    { "_id": "E009", "user": "U638", "course": "CS5001" },
+    { "_id": "E010", "user": "U245290", "course": "CS5001" },
+    { "_id": "E011", "user": "U359209", "course": "CS5001" },
+    { "_id": "E012", "user": "U369723", "course": "CS5001" },
+    { "_id": "E013", "user": "U359242", "course": "CS5001" },
+    { "_id": "E014", "user": "U361613", "course": "CS5001" },
+    { "_id": "E015", "user": "U359157", "course": "CS5001" },
+    { "_id": "E016", "user": "U371999", "course": "CS5001" },
+    { "_id": "E017", "user": "U369287", "course": "CS5001" },
+    { "_id": "E018", "user": "U4596", "course": "CS5001" },
+    { "_id": "E019", "user": "U353070", "course": "CS5001" },
+
+    { "_id": "E020", "user": "U638", "course": "CS5002" },
+    { "_id": "E021", "user": "U359209", "course": "CS5002" },
+    { "_id": "E022", "user": "U369723", "course": "CS5002" },
+    { "_id": "E023", "user": "U359242", "course": "CS5002" },
+    { "_id": "E024", "user": "U361613", "course": "CS5002" },
+    { "_id": "E025", "user": "U205", "course": "CS5002" },
+    { "_id": "E026", "user": "U359157", "course": "CS5002" },
+    { "_id": "E027", "user": "U371999", "course": "CS5002" },
+    { "_id": "E028", "user": "U353070", "course": "CS5002" },
+    { "_id": "E029", "user": "U369287", "course": "CS5002" },
+    { "_id": "E030", "user": "U370960", "course": "CS5002" },
+    { "_id": "E031", "user": "U301252", "course": "CS5002" },
+
+    { "_id": "E032", "user": "U001", "course": "CS5004" },
+    { "_id": "E033", "user": "U392635", "course": "CS5004" },
+    { "_id": "E034", "user": "U406959", "course": "CS5004" },
+    { "_id": "E035", "user": "U317292", "course": "CS5004" },
+
+    { "_id": "E036", "user": "U001", "course": "CS5008" },
+    { "_id": "E037", "user": "U392635", "course": "CS5008" },
+    { "_id": "E038", "user": "U359209", "course": "CS5008" },
+    { "_id": "E039", "user": "U369723", "course": "CS5008" },
+
+    { "_id": "E040", "user": "U001", "course": "CS5800" },
+    { "_id": "E041", "user": "U392635", "course": "CS5800" },
+    { "_id": "E042", "user": "U406959", "course": "CS5800" },
+    { "_id": "E043", "user": "U359209", "course": "CS5800" }
+
+]

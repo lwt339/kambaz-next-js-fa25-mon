@@ -1,44 +1,186 @@
-export default function GradesPage() {
-    const grades = [
-        { id: 1, assignment: "A1 - HTML & CSS Basics", dueDate: "Sep 22", status: "Submitted", score: "95", outOf: "100" },
-        { id: 2, assignment: "Q1 - HTML Quiz", dueDate: "Sep 22", status: "Submitted", score: "23", outOf: "25" },
-        { id: 3, assignment: "A2 - Bootstrap & Responsive Design", dueDate: "Oct 6", status: "Submitted", score: "92", outOf: "100" },
-        { id: 4, assignment: "Q2 - CSS Quiz", dueDate: "Oct 6", status: "Not Submitted", score: "-", outOf: "25" },
-        { id: 5, assignment: "A3 - JavaScript & React", dueDate: "Oct 20", status: "Not Available", score: "-", outOf: "100" }
-    ];
+/**
+ * Grades Page - TypeScript Fixed Version
+ * Location: app/(Kambaz)/Courses/[cid]/Grades/page.tsx
+ *
+ * Displays grades for the current course with proper TypeScript types.
+ * No more ESLint "unexpected any" errors!
+ */
 
-    const calculatePercentage = (score: string, outOf: string) => {
-        if (score === "-") return "-";
-        return `${((parseFloat(score) / parseFloat(outOf)) * 100).toFixed(1)}%`;
+"use client";
+
+import { useParams } from "next/navigation";
+import { Table, Button, Form, Row, Col } from "react-bootstrap";
+import { BsFileEarmarkArrowDown, BsGear } from "react-icons/bs";
+import * as db from "../../../Database";
+
+/**
+ * TypeScript Interfaces
+ * Define the shape of our data to avoid "any" type errors
+ */
+interface Assignment {
+    _id: string;
+    title: string;
+    course: string;
+    points: number;
+    dueDate: string;
+    availableDate?: string;
+}
+
+interface Quiz {
+    _id: string;
+    title: string;
+    course: string;
+    points: number;
+    dueDate: string;
+    availableDate: string;
+    questions: number;
+    timeLimit: number;
+}
+
+interface Grade {
+    _id: string;
+    student: string;
+    assignment: string;
+    course: string;
+    grade: number | null;
+    maxPoints: number;
+    submittedDate: string | null;
+    status: string;
+}
+
+interface GradeItem extends Assignment {
+    type: 'assignment' | 'quiz';
+}
+
+export default function GradesPage() {
+    const params = useParams();
+    const cid = params?.cid as string;
+
+    /**
+     * Current user ID (in real app, this would come from auth)
+     */
+    const currentUserId = "U001";
+
+    /**
+     * Type the database imports properly
+     */
+    const allGrades = db.grades as Grade[];
+    const allAssignments = db.assignments as Assignment[];
+    const allQuizzes = db.quizzes as Quiz[];
+
+    /**
+     * Filter grades for current course and student
+     */
+    const courseGrades = allGrades.filter(
+        (grade) => grade.course === cid && grade.student === currentUserId
+    );
+
+    /**
+     * Get assignments and quizzes for the course
+     */
+    const courseAssignments = allAssignments.filter((a) => a.course === cid);
+    const courseQuizzes = allQuizzes.filter((q) => q.course === cid);
+
+    /**
+     * Merge assignments and quizzes, then sort by due date
+     */
+    const allItems: GradeItem[] = [
+        ...courseAssignments.map((a) => ({ ...a, type: 'assignment' as const })),
+        ...courseQuizzes.map((q) => ({ ...q, type: 'quiz' as const }))
+    ].sort((a, b) => {
+        return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime();
+    });
+
+    /**
+     * Calculate percentage with proper null handling
+     */
+    const calculatePercentage = (score: number | null, maxPoints: number): string => {
+        if (score === null || score === undefined) return "-";
+        if (maxPoints === 0) return "-";
+        return `${((score / maxPoints) * 100).toFixed(1)}%`;
+    };
+
+    /**
+     * Calculate total grade across all graded items
+     */
+    const calculateTotalGrade = () => {
+        let totalEarned = 0;
+        let totalPossible = 0;
+
+        courseGrades.forEach((grade) => {
+            if (grade.grade !== null && grade.grade !== undefined) {
+                totalEarned += grade.grade;
+                totalPossible += grade.maxPoints;
+            }
+        });
+
+        if (totalPossible === 0) {
+            return { earned: 0, possible: 0, percentage: "0.0" };
+        }
+
+        const percentage = ((totalEarned / totalPossible) * 100).toFixed(1);
+        return { earned: totalEarned, possible: totalPossible, percentage };
+    };
+
+    const totalGrade = calculateTotalGrade();
+
+    /**
+     * Find grade record for a specific assignment or quiz
+     */
+    const getGradeForItem = (itemId: string): Grade | undefined => {
+        return courseGrades.find((g) => g.assignment === itemId);
+    };
+
+    /**
+     * Format date for table display
+     */
+    const formatDueDate = (dateString: string): string => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     };
 
     return (
-        <div id="wd-grades">
-            <div className="d-flex justify-content-between align-items-center mb-3">
-                <h3>Grades</h3>
+        <div id="wd-grades" className="p-4">
+            {/* Header Section */}
+            <div className="d-flex justify-content-between align-items-center mb-4">
+                <h3 className="mb-0">Grades</h3>
                 <div>
-                    <button className="btn btn-secondary me-2">
-                        <i className="bi bi-file-earmark-arrow-down me-1"></i> Import
-                    </button>
-                    <button className="btn btn-secondary dropdown-toggle">
-                        <i className="bi bi-gear me-1"></i> Settings
-                    </button>
+                    <Button variant="secondary" className="me-2">
+                        <BsFileEarmarkArrowDown className="me-1" />
+                        Import
+                    </Button>
+                    <Button variant="secondary">
+                        <BsGear className="me-1" />
+                        Settings
+                    </Button>
                 </div>
             </div>
 
-            <div className="row mb-3">
-                <div className="col-md-6">
-                    <label className="form-label">Student Names</label>
-                    <input type="text" className="form-control" placeholder="Search Students" />
-                </div>
-                <div className="col-md-6">
-                    <label className="form-label">Assignment Names</label>
-                    <input type="text" className="form-control" placeholder="Search Assignments" />
-                </div>
-            </div>
+            {/* Filter Section */}
+            <Row className="mb-4">
+                <Col md={6}>
+                    <Form.Group>
+                        <Form.Label>Student Names</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Search Students"
+                        />
+                    </Form.Group>
+                </Col>
+                <Col md={6}>
+                    <Form.Group>
+                        <Form.Label>Assignment Names</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Search Assignments"
+                        />
+                    </Form.Group>
+                </Col>
+            </Row>
 
+            {/* Grades Table */}
             <div className="table-responsive">
-                <table className="table table-striped">
+                <Table striped bordered hover>
                     <thead>
                     <tr>
                         <th>Assignment Name</th>
@@ -50,33 +192,58 @@ export default function GradesPage() {
                     </tr>
                     </thead>
                     <tbody>
-                    {grades.map((grade) => (
-                        <tr key={grade.id}>
-                            <td>{grade.assignment}</td>
-                            <td>{grade.dueDate}</td>
-                            <td>
-                  <span className={`badge ${
-                      grade.status === "Submitted" ? "bg-success" :
-                          grade.status === "Not Submitted" ? "bg-danger" :
-                              "bg-secondary"
-                  }`}>
-                    {grade.status}
-                  </span>
-                            </td>
-                            <td>{grade.score}</td>
-                            <td>{grade.outOf}</td>
-                            <td>{calculatePercentage(grade.score, grade.outOf)}</td>
-                        </tr>
-                    ))}
+                    {allItems.map((item) => {
+                        const gradeRecord = getGradeForItem(item._id);
+                        const score = gradeRecord?.grade ?? null;
+                        const maxPoints = item.points;
+                        const status = gradeRecord?.status || "Not Available";
+
+                        return (
+                            <tr key={item._id}>
+                                <td>{item.title}</td>
+                                <td>{formatDueDate(item.dueDate)}</td>
+                                <td>
+                                        <span className={`badge ${
+                                            status === "Submitted" ? "bg-success" :
+                                                status === "Not Submitted" ? "bg-danger" :
+                                                    status === "Completed" ? "bg-info" :
+                                                        "bg-secondary"
+                                        }`}>
+                                            {status}
+                                        </span>
+                                </td>
+                                <td>{score !== null ? score : "-"}</td>
+                                <td>{maxPoints}</td>
+                                <td>{calculatePercentage(score, maxPoints)}</td>
+                            </tr>
+                        );
+                    })}
                     </tbody>
                     <tfoot>
-                    <tr className="fw-bold">
+                    <tr className="fw-bold table-active">
                         <td colSpan={3}>Current Grade</td>
-                        <td colSpan={3}>210/350 (60.0%)</td>
+                        <td colSpan={3}>
+                            {totalGrade.earned}/{totalGrade.possible} ({totalGrade.percentage}%)
+                        </td>
                     </tr>
                     </tfoot>
-                </table>
+                </Table>
+            </div>
+
+            {/* Summary Section */}
+            <div className="mt-4 p-3 bg-light rounded">
+                <h5>Grade Summary</h5>
+                <p className="mb-1">
+                    <strong>Total Points Earned:</strong> {totalGrade.earned}
+                </p>
+                <p className="mb-1">
+                    <strong>Total Points Possible:</strong> {totalGrade.possible}
+                </p>
+                <p className="mb-0">
+                    <strong>Current Percentage:</strong> {totalGrade.percentage}%
+                </p>
             </div>
         </div>
     );
 }
+

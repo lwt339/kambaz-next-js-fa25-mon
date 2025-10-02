@@ -83,10 +83,10 @@ export default function KambazNavigation() {
                     if (pathname?.includes("/Courses/")) {
                         // If already in a course, extract the course ID
                         const match = pathname.match(/\/Courses\/([^\/]+)/);
-                        linkHref = match ? `/Courses/${match[1]}/Home` : "/Courses/5610/Home";
+                        linkHref = match ? `/Courses/${match[1]}/Home` : "/Courses/CS5610/Home";
                     } else {
                         // Default course
-                        linkHref = "/Courses/5610/Home";
+                        linkHref = "/Courses/CS5610/Home";
                     }
                 }
 

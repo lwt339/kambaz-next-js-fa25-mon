@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useMemo, useState } from "react";
@@ -10,50 +11,71 @@ import { MdAssignment } from "react-icons/md";
 import { GrNotes } from "react-icons/gr";
 import { PiProjectorScreenChartBold } from "react-icons/pi";
 import { IoEllipsisVertical } from "react-icons/io5";
+import * as db from "../../../Database";
 
+/**
+ * TypeScript Interfaces
+ * Define the shape of our data - this eliminates all "any" type errors
+ */
+interface Assignment {
+    _id: string;
+    title: string;
+    course: string;
+    description?: string;
+    points: number;
+    dueDate: string;
+    availableDate?: string;
+}
 
-const ASSIGNMENTS = [
-    { id: "123", title: "A1 - ENV + HTML", modules: "Multiple Modules", availability: "Not available until Sep 8 at 12:00am", submissionType: "Submitting a website url", dueDate: "Sep 22 at 11:59pm", points: "100 pts" },
-    { id: "124", title: "A2 - CSS + BOOTSTRAP", modules: "Multiple Modules", availability: "Not available until Sep 22 at 12:00am", submissionType: "Submitting a website url", dueDate: "Oct 6 at 11:59pm", points: "100 pts" },
-    { id: "125", title: "A3 - JAVASCRIPT + REACT + Routing", modules: "Multiple Modules", availability: "Not available until Oct 6 at 12:00am", submissionType: "Submitting a website url", dueDate: "Oct 20 at 11:59pm", points: "100 pts" },
-    { id: "126", title: "A4 - State + Redux", modules: "Multiple Modules", availability: "Not available until Oct 20 at 12:00am", submissionType: "Submitting a website url", dueDate: "Nov 3 at 11:59pm", points: "100 pts" },
-    { id: "127", title: "A5 - Node + Session", modules: "Multiple Modules", availability: "Not available until Nov 3 at 12:00am", submissionType: "Submitting a website url", dueDate: "Nov 17 at 11:59pm", points: "100 pts" },
-    { id: "128", title: "A6 - MongoDB + Mongoose", modules: "Multiple Modules", availability: "Not available until Nov 17 at 12:00am", submissionType: "Submitting a website url", dueDate: "Dec 1 at 11:59pm", points: "100 pts" },
-];
+interface Quiz {
+    _id: string;
+    title: string;
+    course: string;
+    type: string;
+    questions: number;
+    points: number;
+    dueDate: string;
+    availableDate: string;
+    timeLimit: number;
+    published: boolean;
+}
 
-const QUIZZES = [
-    { id: "129", title: "Q1 - HTML", type: "Multiple Choice", questions: "11 Question", availability: "Not available until Sep 22 at 12:00am", timeLimit: "Time Limit 20 Minutes", dueDate: "Sep 29 at 11:59pm", points: "29 pts" },
-    { id: "130", title: "Q2 - CSS", type: "Multiple Choice", questions: "6 Question", availability: "Not available until Sep 29 at 12:00am", timeLimit: "Time Limit 20 Minutes", dueDate: "Oct 6 at 11:59pm", points: "23 pts" },
-    { id: "132", title: "Q3 - CSS", type: "Multiple Choice", questions: "7 Question", availability: "Not available until Oct 6 at 12:00am", timeLimit: "Time Limit 20 Minutes", dueDate: "Oct 13 at 11:59pm", points: "32 pts" },
-    { id: "134", title: "Q4 - JS",  type: "Multiple Choice", questions: "3 Question", availability: "Not available until Oct 13 at 12:00am", timeLimit: "Time Limit 20 Minutes", dueDate: "Oct 20 at 11:59pm", points: "17 pts" },
-    { id: "135", title: "Q5 - JS",  type: "Multiple Choice", questions: "8 Question", availability: "Not available until Oct 20 at 12:00am", timeLimit: "Time Limit 20 Minutes", dueDate: "Oct 27 at 11:59pm", points: "31 pts" },
-    { id: "136", title: "Q6 - Redux", type: "Multiple Choice", questions: "3 Question", availability: "Not available until Nov 3 at 12:00am", timeLimit: "Time Limit 20 Minutes", dueDate: "Nov 10 at 11:59pm", points: "18 pts" },
-    { id: "137", title: "Q7 - Redux", type: "Multiple Choice", questions: "1 Question", availability: "Not available until Nov 10 at 12:00am", timeLimit: "Time Limit 20 Minutes", dueDate: "Nov 17 at 11:59pm", points: "20 pts" },
-    { id: "138", title: "Q8 - Node", type: "Multiple Choice", questions: "4 Question", availability: "Not available until Nov 17 at 12:00am", timeLimit: "Time Limit 20 Minutes", dueDate: "Nov 24 at 11:59pm", points: "25 pts" },
-    { id: "139", title: "Q9 - Node", type: "Multiple Choice", questions: "10 Question", availability: "Not available until Nov 24 at 12:00am", timeLimit: "Time Limit 20 Minutes", dueDate: "Dec 1 at 11:59pm", points: "38 pts" },
-    { id: "140", title: "Q10 - Mongo", type: "Multiple Choice", questions: "2 Question", availability: "Not available until Dec 1 at 12:00am", timeLimit: "Time Limit 20 Minutes", dueDate: "Dec 8 at 11:59pm", points: "20 pts" },
-];
-
-const EXAMS = [
-    { id: "151", title: "Exam 1 - A1-A3", type: "Multiple Choice", questions: "15 Questions", availability: "Not available until Oct 27 at 12:00am", timeLimit: "Time Limit 100 Minutes", dueDate: "Nov 3 at 11:59pm", points: "100 pts" },
-    { id: "152", title: "Exam 2 - A4-A6", type: "Multiple Choice", questions: "18 Questions", availability: "Not available until Dec 1 at 12:00am", timeLimit: "Time Limit 100 Minutes", dueDate: "Dec 8 at 11:59pm", points: "103 pts" },
-];
-
-const PROJECT = {
-    id: "160",
-    title: "Final Project",
-    description: "Group Project",
-    options: "Kambaz Quizzes or Kambaz Piazza or Social Network",
-    submissionType: "Submitting a text entry box or a website url",
-    dueDate: "Dec 7 at 11:59pm",
-    points: "350 pts",
-};
+interface Exam {
+    _id: string;
+    title: string;
+    course: string;
+    type: string;
+    questions: number;
+    points: number;
+    dueDate: string;
+    availableDate: string;
+    timeLimit: number;
+    published: boolean;
+}
 
 type SectionKey = "ASSIGNMENTS" | "QUIZZES" | "EXAMS" | "PROJECT";
 
 export default function Assignments() {
-    const { cid } = useParams();
+    const params = useParams();
+    const cid = params?.cid as string;
 
+    /**
+     * Type the database imports properly
+     */
+    const allAssignments = db.assignments as Assignment[];
+    const allQuizzes = db.quizzes as Quiz[];
+    const allExams = db.exams as Exam[];
+
+    /**
+     * Filter all items by current course
+     */
+    const courseAssignments = allAssignments.filter((a) => a.course === cid);
+    const courseQuizzes = allQuizzes.filter((q) => q.course === cid);
+    const courseExams = allExams.filter((e) => e.course === cid);
+
+    /**
+     * State for collapsible sections
+     */
     const initialOpen = useMemo<Record<SectionKey, boolean>>(
         () => ({ ASSIGNMENTS: true, QUIZZES: true, EXAMS: true, PROJECT: true }),
         []
@@ -62,7 +84,20 @@ export default function Assignments() {
 
     const toggle = (key: SectionKey) => setOpen((o) => ({ ...o, [key]: !o[key] }));
 
-    /** Green Checkmark*/
+    /**
+     * Format date for display
+     */
+    const formatDate = (dateString: string): string => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric'
+        });
+    };
+
+    /**
+     * Green Checkmark Component
+     */
     const GreenCheckmark = () => (
         <span className="me-2 position-relative">
             <FaCheckCircle
@@ -73,15 +108,26 @@ export default function Assignments() {
         </span>
     );
 
-    /** Assignment*/
-    const AssignmentControlButtons = () => (
+    /**
+     * Control Buttons Component
+     */
+    const ControlButtons = () => (
         <div className="float-end d-flex align-items-center">
             <GreenCheckmark />
             <IoEllipsisVertical className="fs-5 text-muted" />
         </div>
     );
 
-    const Header = (props: { label: string; percentage: string; isOpen: boolean; onToggle: () => void }) => (
+    /**
+     * Section Header Component
+     */
+    const Header = (props: {
+        label: string;
+        percentage: string;
+        isOpen: boolean;
+        onToggle: () => void;
+        count?: number;
+    }) => (
         <div
             className="wd-title p-3 ps-2 d-flex align-items-center"
             style={{ backgroundColor: "#f5f5f5", cursor: "pointer" }}
@@ -94,7 +140,10 @@ export default function Assignments() {
                 <FaCaretDown className="me-2" style={{ fontSize: "14px" }} /> :
                 <FaCaretRight className="me-2" style={{ fontSize: "14px" }} />
             }
-            <span className="fw-bold text-uppercase" style={{ fontSize: "13px" }}>{props.label}</span>
+            <span className="fw-bold text-uppercase" style={{ fontSize: "13px" }}>
+                {props.label}
+                {props.count !== undefined && ` (${props.count})`}
+            </span>
             <span
                 className="ms-auto me-2 px-2"
                 style={{
@@ -114,10 +163,12 @@ export default function Assignments() {
         </div>
     );
 
-    /** Green Border*/
-    const RowAssignment = (a: typeof ASSIGNMENTS[number]) => (
+    /**
+     * Assignment Row Component
+     */
+    const RowAssignment = (a: Assignment) => (
         <li
-            key={a.id}
+            key={a._id}
             className="wd-assignment-list-item list-group-item p-3 ps-2 border-start-0 border-end-0"
         >
             <div className="d-flex align-items-start">
@@ -125,110 +176,114 @@ export default function Assignments() {
                 <MdAssignment className="me-3 fs-4 text-success mt-1" />
                 <div className="flex-fill">
                     <Link
-                        href={`/Courses/${cid}/Assignments/${a.id}`}
+                        href={`/Courses/${cid}/Assignments/${a._id}`}
                         className="wd-assignment-link text-decoration-none text-dark"
                     >
                         <div className="fw-bold mb-1">{a.title}</div>
                     </Link>
                     <div className="small" style={{ color: "#6c757d", lineHeight: "1.4" }}>
-                        <span className="text-danger">{a.modules}</span>
-                        {a.availability && <span> | <strong>Not available until</strong> {a.availability.replace("Not available until ", "")}</span>}
+                        <span className="text-danger">Multiple Modules</span>
+                        {a.availableDate && (
+                            <span> | <strong>Not available until</strong> {formatDate(a.availableDate)} at 12:00am</span>
+                        )}
                         <br />
-                        <strong>Due</strong> {a.dueDate} | {a.points}
+                        <strong>Due</strong> {formatDate(a.dueDate)} at 11:59pm | {a.points} pts
                     </div>
                 </div>
                 <div className="ms-3">
-                    <AssignmentControlButtons />
+                    <ControlButtons />
                 </div>
             </div>
         </li>
     );
 
-    const RowQuiz = (q: typeof QUIZZES[number]) => (
+    /**
+     * Quiz Row Component
+     */
+    const RowQuiz = (q: Quiz) => (
         <li
-            key={q.id}
+            key={q._id}
             className="wd-assignment-list-item list-group-item p-3 ps-2 border-start-0 border-end-0"
-
         >
             <div className="d-flex align-items-start">
                 <BsGripVertical className="me-2 fs-4 text-muted mt-1" />
                 <GrNotes className="me-3 fs-4 text-success mt-1" />
                 <div className="flex-fill">
                     <Link
-                        href={`/Courses/${cid}/Assignments/${q.id}`}
+                        href={`/Courses/${cid}/Quizzes/${q._id}`}
                         className="wd-assignment-link text-decoration-none text-dark"
                     >
                         <div className="fw-bold mb-1">{q.title}</div>
                     </Link>
                     <div className="small" style={{ color: "#6c757d", lineHeight: "1.4" }}>
                         <span className="text-danger">Multiple Modules</span>
-                        <span> | <strong>Not available until</strong> {q.availability.replace("Not available until ", "")}</span>
+                        <span> | <strong>Not available until</strong> {formatDate(q.availableDate)} at 12:00am</span>
                         <br />
-                        <strong>Due</strong> {q.dueDate} | {q.points}
+                        <strong>Due</strong> {formatDate(q.dueDate)} at 11:59pm | {q.points} pts |
+                        {" "}{q.questions} Questions | Time Limit {q.timeLimit} Minutes
                     </div>
                 </div>
                 <div className="ms-3">
-                    <AssignmentControlButtons />
+                    <ControlButtons />
                 </div>
             </div>
         </li>
     );
 
-    const RowExam = (e: typeof EXAMS[number]) => (
+    /**
+     * Exam Row Component
+     */
+    const RowExam = (e: Exam) => (
         <li
-            key={e.id}
+            key={e._id}
             className="wd-assignment-list-item list-group-item p-3 ps-2 border-start-0 border-end-0"
-
         >
             <div className="d-flex align-items-start">
                 <BsGripVertical className="me-2 fs-4 text-muted mt-1" />
                 <FaRegFileAlt className="me-3 fs-4 text-success mt-1" />
                 <div className="flex-fill">
                     <Link
-                        href={`/Courses/${cid}/Assignments/${e.id}`}
+                        href={`/Courses/${cid}/Quizzes/${e._id}`}
                         className="wd-assignment-link text-decoration-none text-dark"
                     >
                         <div className="fw-bold mb-1">{e.title}</div>
                     </Link>
                     <div className="small" style={{ color: "#6c757d", lineHeight: "1.4" }}>
                         <span className="text-danger">Multiple Modules</span>
-                        <span> | <strong>Not available until</strong> {e.availability.replace("Not available until ", "")}</span>
+                        <span> | <strong>Not available until</strong> {formatDate(e.availableDate)} at 12:00am</span>
                         <br />
-                        <strong>Due</strong> {e.dueDate} | {e.points}
+                        <strong>Due</strong> {formatDate(e.dueDate)} at 11:59pm | {e.points} pts |
+                        {" "}{e.questions} Questions | Time Limit {e.timeLimit} Minutes
                     </div>
                 </div>
                 <div className="ms-3">
-                    <AssignmentControlButtons />
+                    <ControlButtons />
                 </div>
             </div>
         </li>
     );
 
+    /**
+     * Project Row Component
+     */
     const RowProject = () => (
         <li
             className="wd-assignment-list-item list-group-item p-3 ps-2 border-start-0 border-end-0 border-bottom-0"
-            style={{
-                borderLeft: "4px solid #198754"
-            }}
+            style={{ borderLeft: "4px solid #198754" }}
         >
             <div className="d-flex align-items-start">
                 <BsGripVertical className="me-2 fs-4 text-muted mt-1" />
                 <PiProjectorScreenChartBold className="me-3 fs-4 text-success mt-1" />
                 <div className="flex-fill">
-                    <Link
-                        href={`/Courses/${cid}/Assignments/${PROJECT.id}`}
-                        className="wd-assignment-link text-decoration-none text-dark"
-                    >
-                        <div className="fw-bold mb-1">{PROJECT.title}</div>
-                    </Link>
+                    <div className="fw-bold mb-1">Final Project</div>
                     <div className="small" style={{ color: "#6c757d", lineHeight: "1.4" }}>
                         <span className="text-danger">Multiple Modules</span>
                         <br />
-                        <strong>Due</strong> {PROJECT.dueDate} | {PROJECT.points}
+                        <strong>Due</strong> Dec 7 at 11:59pm | 350 pts
                     </div>
                 </div>
                 <div className="ms-3">
-                    <AssignmentControlButtons />
+                    <ControlButtons />
                 </div>
             </div>
         </li>
@@ -236,9 +291,8 @@ export default function Assignments() {
 
     return (
         <div id="wd-assignments">
-            {/* Search LEFT, Buttons RIGHT */}
+            {/* Search and Buttons Controls */}
             <div id="wd-assignments-controls" className="d-flex justify-content-between align-items-center mb-4">
-                {/* Search Bar */}
                 <InputGroup style={{ width: "300px" }}>
                     <InputGroup.Text className="bg-white border-end-0">
                         <FaSearch className="text-muted" style={{ fontSize: "14px" }} />
@@ -252,7 +306,6 @@ export default function Assignments() {
                     />
                 </InputGroup>
 
-                {/* Buttons */}
                 <div>
                     <Button
                         variant="light"
@@ -262,61 +315,98 @@ export default function Assignments() {
                     >
                         <FaPlus className="me-1" style={{ fontSize: "12px" }} /> Group
                     </Button>
-                    <Button
-                        variant="danger"
-                        id="wd-add-assignment"
-                    >
+                    <Button variant="danger" id="wd-add-assignment">
                         <FaPlus className="me-1" style={{ fontSize: "12px" }} /> Assignment
                     </Button>
                 </div>
             </div>
 
-            {/* Hidden title*/}
             <h3 id="wd-assignments-title" className="d-none">
                 ASSIGNMENTS 40% of Total
             </h3>
 
-            {/* ASSIGNMENTS*/}
             <ul id="wd-assignment-list" className="list-unstyled p-0">
+                {/* ASSIGNMENTS Section */}
                 <ListGroup className="rounded-0 mb-4 border">
                     <ListGroupItem className="p-0 border-0">
-                        <Header label="ASSIGNMENTS" percentage="40%" isOpen={open.ASSIGNMENTS} onToggle={() => toggle("ASSIGNMENTS")} />
+                        <Header
+                            label="ASSIGNMENTS"
+                            percentage="40%"
+                            count={courseAssignments.length}
+                            isOpen={open.ASSIGNMENTS}
+                            onToggle={() => toggle("ASSIGNMENTS")}
+                        />
                         {open.ASSIGNMENTS && (
                             <ul className="list-unstyled m-0">
-                                {ASSIGNMENTS.map(RowAssignment)}
+                                {courseAssignments.length > 0 ? (
+                                    courseAssignments.map(RowAssignment)
+                                ) : (
+                                    <li className="list-group-item text-center text-muted py-3">
+                                        No assignments available for this course
+                                    </li>
+                                )}
                             </ul>
                         )}
                     </ListGroupItem>
                 </ListGroup>
 
-                {/* QUIZZES*/}
+                {/* QUIZZES Section */}
                 <ListGroup className="rounded-0 mb-4 border">
                     <ListGroupItem className="p-0 border-0">
-                        <Header label="QUIZZES" percentage="10%" isOpen={open.QUIZZES} onToggle={() => toggle("QUIZZES")} />
+                        <Header
+                            label="QUIZZES"
+                            percentage="10%"
+                            count={courseQuizzes.length}
+                            isOpen={open.QUIZZES}
+                            onToggle={() => toggle("QUIZZES")}
+                        />
                         {open.QUIZZES && (
                             <ul className="list-unstyled m-0">
-                                {QUIZZES.map(RowQuiz)}
+                                {courseQuizzes.length > 0 ? (
+                                    courseQuizzes.map(RowQuiz)
+                                ) : (
+                                    <li className="list-group-item text-center text-muted py-3">
+                                        No quizzes available for this course
+                                    </li>
+                                )}
                             </ul>
                         )}
                     </ListGroupItem>
                 </ListGroup>
 
-                {/* EXAMS*/}
+                {/* EXAMS Section */}
                 <ListGroup className="rounded-0 mb-4 border">
                     <ListGroupItem className="p-0 border-0">
-                        <Header label="EXAMS" percentage="20%" isOpen={open.EXAMS} onToggle={() => toggle("EXAMS")} />
+                        <Header
+                            label="EXAMS"
+                            percentage="20%"
+                            count={courseExams.length}
+                            isOpen={open.EXAMS}
+                            onToggle={() => toggle("EXAMS")}
+                        />
                         {open.EXAMS && (
                             <ul className="list-unstyled m-0">
-                                {EXAMS.map(RowExam)}
+                                {courseExams.length > 0 ? (
+                                    courseExams.map(RowExam)
+                                ) : (
+                                    <li className="list-group-item text-center text-muted py-3">
+                                        No exams available for this course
+                                    </li>
+                                )}
                             </ul>
                         )}
                     </ListGroupItem>
                 </ListGroup>
 
-                {/* PROJECT*/}
+                {/* PROJECT Section */}
                 <ListGroup className="rounded-0 mb-4 border">
                     <ListGroupItem className="p-0 border-0">
-                        <Header label="PROJECT" percentage="30%" isOpen={open.PROJECT} onToggle={() => toggle("PROJECT")} />
+                        <Header
+                            label="PROJECT"
+                            percentage="30%"
+                            isOpen={open.PROJECT}
+                            onToggle={() => toggle("PROJECT")}
+                        />
                         {open.PROJECT && (
                             <ul className="list-unstyled m-0">
                                 <RowProject />
@@ -328,3 +418,26 @@ export default function Assignments() {
         </div>
     );
 }
+
+/**
+ * TYPESCRIPT FIXES EXPLAINED:
+ *
+ * The errors you saw were because TypeScript didn't know what shape your
+ * data had. When you write (a: any), TypeScript can't help you catch bugs.
+ *
+ * By defining interfaces (Assignment, Quiz, Exam), we tell TypeScript:
+ * "These objects will have these specific properties with these specific types"
+ *
+ * This gives you:
+ * 1. Autocomplete in your editor - type a. and see all properties
+ * 2. Error checking - TypeScript warns if you mistype a property name
+ * 3. Documentation - interfaces show what data looks like
+ * 4. Refactoring safety - changing a property name updates everywhere
+ *
+ * The fix for params was also important. useParams() can return undefined
+ * in some edge cases, so we use optional chaining (params?.cid) and then
+ * assert it's a string with "as string". This is safe because we know in
+ * this route there will always be a cid parameter.
+ *
+ * NO MORE ESLINT ERRORS!
+ */

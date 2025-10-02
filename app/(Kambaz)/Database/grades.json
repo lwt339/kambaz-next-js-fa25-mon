@@ -1,0 +1,262 @@
+[
+  {
+    "_id": "G-RS101-1",
+    "student": "121",
+    "assignment": "A101",
+    "course": "RS101",
+    "grade": 92,
+    "maxPoints": 100,
+    "submittedDate": "2023-05-13",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G-RS101-2",
+    "student": "121",
+    "assignment": "Q-RS101-1",
+    "course": "RS101",
+    "grade": 22,
+    "maxPoints": 25,
+    "submittedDate": "2023-02-15",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G-RS101-3",
+    "student": "121",
+    "assignment": "A102",
+    "course": "RS101",
+    "grade": 88,
+    "maxPoints": 100,
+    "submittedDate": "2023-05-20",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G-RS101-4",
+    "student": "122",
+    "assignment": "A101",
+    "course": "RS101",
+    "grade": 95,
+    "maxPoints": 100,
+    "submittedDate": "2023-05-13",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G-RS102-1",
+    "student": "127",
+    "assignment": "A201",
+    "course": "RS102",
+    "grade": 90,
+    "maxPoints": 100,
+    "submittedDate": "2023-05-13",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G-RS102-2",
+    "student": "127",
+    "assignment": "Q-RS102-1",
+    "course": "RS102",
+    "grade": 24,
+    "maxPoints": 25,
+    "submittedDate": "2023-02-15",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G-RS103-1",
+    "student": "122",
+    "assignment": "A301",
+    "course": "RS103",
+    "grade": 85,
+    "maxPoints": 100,
+    "submittedDate": "2023-05-13",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G-RS103-2",
+    "student": "123",
+    "assignment": "A301",
+    "course": "RS103",
+    "grade": 93,
+    "maxPoints": 100,
+    "submittedDate": "2023-05-13",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G001",
+    "student": "U001",
+    "assignment": "A5610-1",
+    "course": "CS5610",
+    "grade": 95,
+    "maxPoints": 100,
+    "submittedDate": "2025-09-22",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G002",
+    "student": "U001",
+    "assignment": "Q5610-1",
+    "course": "CS5610",
+    "grade": 23,
+    "maxPoints": 29,
+    "submittedDate": "2025-09-29",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G003",
+    "student": "U001",
+    "assignment": "A5610-2",
+    "course": "CS5610",
+    "grade": 92,
+    "maxPoints": 100,
+    "submittedDate": "2025-10-06",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G004",
+    "student": "U001",
+    "assignment": "Q5610-2",
+    "course": "CS5610",
+    "grade": null,
+    "maxPoints": 23,
+    "submittedDate": null,
+    "status": "Not Submitted"
+  },
+  {
+    "_id": "G005",
+    "student": "U001",
+    "assignment": "A5610-3",
+    "course": "CS5610",
+    "grade": null,
+    "maxPoints": 198,
+    "submittedDate": null,
+    "status": "Not Available"
+  },
+  {
+    "_id": "G006",
+    "student": "U392635",
+    "assignment": "A5610-1",
+    "course": "CS5610",
+    "grade": 88,
+    "maxPoints": 100,
+    "submittedDate": "2025-09-22",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G007",
+    "student": "U392635",
+    "assignment": "Q5610-1",
+    "course": "CS5610",
+    "grade": 26,
+    "maxPoints": 29,
+    "submittedDate": "2025-09-29",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G008",
+    "student": "U392635",
+    "assignment": "A5610-2",
+    "course": "CS5610",
+    "grade": 95,
+    "maxPoints": 100,
+    "submittedDate": "2025-10-06",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G009",
+    "student": "U158249",
+    "assignment": "A5520-1",
+    "course": "CS5520",
+    "grade": 90,
+    "maxPoints": 100,
+    "submittedDate": "2025-09-11",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G010",
+    "student": "U158249",
+    "assignment": "A5520-2",
+    "course": "CS5520",
+    "grade": 85,
+    "maxPoints": 100,
+    "submittedDate": "2025-09-17",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G011",
+    "student": "U158249",
+    "assignment": "Q5520-1",
+    "course": "CS5520",
+    "grade": 8,
+    "maxPoints": 10,
+    "submittedDate": "2025-09-23",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G012",
+    "student": "U638",
+    "assignment": "A5001-1",
+    "course": "CS5001",
+    "grade": 0,
+    "maxPoints": 0,
+    "submittedDate": "2024-09-12",
+    "status": "Completed"
+  },
+  {
+    "_id": "G013",
+    "student": "U638",
+    "assignment": "A5001-2",
+    "course": "CS5001",
+    "grade": 95,
+    "maxPoints": 100,
+    "submittedDate": "2024-09-18",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G014",
+    "student": "U638",
+    "assignment": "A5001-3",
+    "course": "CS5001",
+    "grade": 5,
+    "maxPoints": 5,
+    "submittedDate": "2024-09-15",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G015",
+    "student": "U638",
+    "assignment": "Q5001-1",
+    "course": "CS5001",
+    "grade": 5,
+    "maxPoints": 5,
+    "submittedDate": "2024-09-28",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G016",
+    "student": "U370960",
+    "assignment": "A5002-1",
+    "course": "CS5002",
+    "grade": 92,
+    "maxPoints": 100,
+    "submittedDate": "2024-09-10",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G017",
+    "student": "U370960",
+    "assignment": "A5002-2",
+    "course": "CS5002",
+    "grade": 18,
+    "maxPoints": 20,
+    "submittedDate": "2024-09-12",
+    "status": "Submitted"
+  },
+  {
+    "_id": "G018",
+    "student": "U370960",
+    "assignment": "A5002-3",
+    "course": "CS5002",
+    "grade": 88,
+    "maxPoints": 100,
+    "submittedDate": "2024-09-17",
+    "status": "Submitted"
+  }
+]
