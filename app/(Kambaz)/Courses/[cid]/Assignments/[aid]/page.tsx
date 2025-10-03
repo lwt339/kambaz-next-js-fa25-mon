@@ -1,20 +1,48 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * ASSIGNMENT EDITOR - DATABASE-DRIVEN
+ * ═══════════════════════════════════════════════════════════════════════════
+ *
+ * Location: app/(Kambaz)/Courses/[cid]/Assignments/[aid]/page.tsx
+ *
+ * Edit or create assignments with data from database
+ * All styling in assignments.css
+ */
+
 "use client";
 
 import { useState } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { useParams, useRouter } from "next/navigation";
+import Link from "next/link";
 import AssignToInput from "./AssignToInput";
+import * as db from "../../../../Database";
+import "../assignments.css";
 
 export default function AssignmentEditor() {
     const { cid, aid } = useParams();
     const router = useRouter();
 
-    const [assignedTo, setAssignedTo] = useState<string[]>(['Everyone']);
+    // Find assignment in database
+    const assignment = db.assignments.find((a: any) => a._id === aid);
+
+    // Determine if creating new or editing existing
+    const isNew = aid === "new" || !assignment;
+
+    // State for assign to field
+    const [assignedTo, setAssignedTo] = useState<string[]>(
+        isNew ? ['Everyone'] : ['Everyone']
+    );
+
+    // Format dates for datetime-local input
+    const formatDateForInput = (dateString: string): string => {
+        if (!dateString) return "";
+        const date = new Date(dateString);
+        return date.toISOString().slice(0, 16);
+    };
 
     return (
-        <div id="wd-assignments-editor" className="p-4">
-
-
+        <div id="wd-assignment-editor" className="p-4">
             <Form>
                 {/* Assignment Name */}
                 <Form.Group className="mb-3">
@@ -24,7 +52,7 @@ export default function AssignmentEditor() {
                     <Form.Control
                         id="wd-name"
                         type="text"
-                        defaultValue="A1 - ENV + HTML"
+                        defaultValue={isNew ? "" : assignment?.title}
                     />
                 </Form.Group>
 
@@ -34,23 +62,11 @@ export default function AssignmentEditor() {
                         as="textarea"
                         id="wd-description"
                         rows={10}
-                        defaultValue={`The assignment is available online
-
-Submit a link to the landing page of your Web application running on Vercel.
-
-The landing page should include the following:
-
-- Your full name and section
-- Links to each of the lab assignments
-- Link to the Kanbas application
-- Links to all relevant source code repositories
-
-The Kanbas application should include a link to navigate back to the landing page.`}
-
+                        defaultValue={isNew ? "" : assignment?.description}
                     />
                 </Form.Group>
 
-                {/* Points Row */}
+                {/* Points */}
                 <Row className="mb-3">
                     <Form.Label column sm={3} className="text-end">
                         Points
@@ -59,8 +75,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                         <Form.Control
                             type="number"
                             id="wd-points"
-                            defaultValue={100}
-
+                            defaultValue={isNew ? 100 : assignment?.points}
                         />
                     </Col>
                 </Row>
@@ -71,11 +86,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                         Assignment Group
                     </Form.Label>
                     <Col sm={9}>
-                        <Form.Select
-                            id="wd-group"
-                            defaultValue="ASSIGNMENTS"
-
-                        >
+                        <Form.Select id="wd-group" defaultValue="ASSIGNMENTS">
                             <option value="ASSIGNMENTS">ASSIGNMENTS</option>
                             <option value="QUIZZES">QUIZZES</option>
                             <option value="EXAMS">EXAMS</option>
@@ -90,11 +101,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                         Display Grade as
                     </Form.Label>
                     <Col sm={9}>
-                        <Form.Select
-                            id="wd-display-grade-as"
-                            defaultValue="Percentage"
-
-                        >
+                        <Form.Select id="wd-display-grade-as" defaultValue="Percentage">
                             <option value="Percentage">Percentage</option>
                             <option value="Points">Points</option>
                             <option value="Complete">Complete/Incomplete</option>
@@ -104,18 +111,14 @@ The Kanbas application should include a link to navigate back to the landing pag
                     </Col>
                 </Row>
 
-                {/* Submission Type Section */}
+                {/* Submission Type */}
                 <Row className="mb-3">
                     <Form.Label column sm={3} className="text-end">
                         Submission Type
                     </Form.Label>
                     <Col sm={9}>
                         <div className="border rounded p-3">
-                            <Form.Select
-                                id="wd-submission-type"
-                                defaultValue="Online"
-                                className="form-control mb-3"
-                            >
+                            <Form.Select id="wd-submission-type" defaultValue="Online" className="mb-3">
                                 <option value="Online">Online</option>
                                 <option value="Paper">On Paper</option>
                                 <option value="External">External Tool</option>
@@ -126,36 +129,11 @@ The Kanbas application should include a link to navigate back to the landing pag
                                 Online Entry Options
                             </Form.Label>
 
-                            <Form.Check
-                                type="checkbox"
-                                id="wd-text-entry"
-                                label="Text Entry"
-                                className="mb-2"
-                            />
-                            <Form.Check
-                                type="checkbox"
-                                id="wd-website-url"
-                                label="Website URL"
-                                defaultChecked
-                                className="mb-2"
-                            />
-                            <Form.Check
-                                type="checkbox"
-                                id="wd-media-recordings"
-                                label="Media Recordings"
-                                className="mb-2"
-                            />
-                            <Form.Check
-                                type="checkbox"
-                                id="wd-student-annotation"
-                                label="Student Annotation"
-                                className="mb-2"
-                            />
-                            <Form.Check
-                                type="checkbox"
-                                id="wd-file-upload"
-                                label="File Uploads"
-                            />
+                            <Form.Check type="checkbox" id="wd-text-entry" label="Text Entry" className="mb-2" />
+                            <Form.Check type="checkbox" id="wd-website-url" label="Website URL" defaultChecked className="mb-2" />
+                            <Form.Check type="checkbox" id="wd-media-recordings" label="Media Recordings" className="mb-2" />
+                            <Form.Check type="checkbox" id="wd-student-annotation" label="Student Annotation" className="mb-2" />
+                            <Form.Check type="checkbox" id="wd-file-upload" label="File Uploads" />
                         </div>
                     </Col>
                 </Row>
@@ -166,11 +144,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                         Submission Attempts
                     </Form.Label>
                     <Col sm={9}>
-                        <Form.Select
-                            id="wd-submission-attempts"
-                            defaultValue="Unlimited"
-
-                        >
+                        <Form.Select id="wd-submission-attempts" defaultValue="Unlimited">
                             <option value="Unlimited">Unlimited</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -180,7 +154,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                     </Col>
                 </Row>
 
-                {/* Group Assignment Checkbox */}
+                {/* Group Assignment */}
                 <Row className="mb-3">
                     <Form.Label column sm={3} className="text-end">
                         Group Assignment
@@ -194,7 +168,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                     </Col>
                 </Row>
 
-                {/* Peer Reviews Checkbox */}
+                {/* Peer Reviews */}
                 <Row className="mb-3">
                     <Form.Label column sm={3} className="text-end">
                         Peer Reviews
@@ -208,7 +182,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                     </Col>
                 </Row>
 
-                {/* Assign Section with Dates */}
+                {/* Assign Section */}
                 <Row className="mb-3">
                     <Form.Label column sm={3} className="text-end">
                         Assign
@@ -230,8 +204,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                                 <Form.Control
                                     type="datetime-local"
                                     id="wd-due-date"
-                                    defaultValue="2024-10-05T23:59"
-
+                                    defaultValue={isNew ? "" : formatDateForInput(assignment?.dueDate)}
                                 />
                             </Form.Group>
 
@@ -244,8 +217,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                                         <Form.Control
                                             type="datetime-local"
                                             id="wd-available-from"
-                                            defaultValue="2024-09-22T00:00"
-
+                                            defaultValue={isNew ? "" : formatDateForInput(assignment?.availableDate)}
                                         />
                                     </Form.Group>
                                 </Col>
@@ -257,8 +229,6 @@ The Kanbas application should include a link to navigate back to the landing pag
                                         <Form.Control
                                             type="datetime-local"
                                             id="wd-available-until"
-                                            defaultValue="2024-10-06T23:59"
-
                                         />
                                     </Form.Group>
                                 </Col>
@@ -267,19 +237,18 @@ The Kanbas application should include a link to navigate back to the landing pag
                     </Col>
                 </Row>
 
-                {/* Form Action Buttons */}
+                {/* Action Buttons */}
                 <hr className="my-4" />
 
                 <div className="d-flex justify-content-end gap-2">
-                    <Button
-                        variant="secondary"
-                        onClick={() => router.push(`/Kambaz/Courses/${cid}/Assignments`)}
-                    >
-                        Cancel
-                    </Button>
+                    <Link href={`/Courses/${cid}/Assignments`}>
+                        <Button variant="secondary">
+                            Cancel
+                        </Button>
+                    </Link>
                     <Button
                         variant="danger"
-                        onClick={() => router.push(`/Kambaz/Courses/${cid}/Assignments`)}
+                        onClick={() => router.push(`/Courses/${cid}/Assignments`)}
                     >
                         Save
                     </Button>

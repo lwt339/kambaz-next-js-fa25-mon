@@ -1,18 +1,36 @@
+/**
+ * ModulesControls Component - With Working Collapse/Expand
+ * Location: app/(Kambaz)/Courses/[cid]/Modules/ModulesControls.tsx
+ *
+ * Now accepts props to handle collapse/expand functionality
+ */
+
 import { Button, Dropdown } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa6";
 import { MdDoNotDisturbAlt } from "react-icons/md";
 import GreenCheckmark from "./GreenCheckmark";
 
-export default function ModulesControls() {
+type ModulesControlsProps = {
+    onCollapseAll: () => void;
+    onExpandAll: () => void;
+    allCollapsed: boolean;
+};
+
+export default function ModulesControls({
+                                            onCollapseAll,
+                                            onExpandAll,
+                                            allCollapsed
+                                        }: ModulesControlsProps) {
     return (
         <div id="wd-modules-controls" className="text-nowrap d-flex flex-wrap justify-content-end gap-2">
-            {/* Collapse All button*/}
+            {/* Collapse All / Expand All button */}
             <Button
                 variant="secondary"
                 size="lg"
                 id="wd-collapse-all"
+                onClick={allCollapsed ? onExpandAll : onCollapseAll}
             >
-                Collapse All
+                {allCollapsed ? "Expand All" : "Collapse All"}
             </Button>
 
             {/* View Progress button */}
@@ -54,7 +72,7 @@ export default function ModulesControls() {
                 </Dropdown.Menu>
             </Dropdown>
 
-            {/*Module button */}
+            {/* Module button */}
             <Button
                 variant="danger"
                 size="lg"

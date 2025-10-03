@@ -1,87 +1,175 @@
 /**
- * Modules Page - Data-Driven Client Component Version
+ * ═══════════════════════════════════════════════════════════════════════════
+ * MODULES PAGE - WITH WORKING COLLAPSE/EXPAND
+ * ═══════════════════════════════════════════════════════════════════════════
+ *
  * Location: app/(Kambaz)/Courses/[cid]/Modules/page.tsx
  *
- * Now pulls modules and lessons from the database filtered by course ID.
- * Uses client component with useParams() hook to match your other components.
+ * FEATURES:
+ * ✅ Working collapse/expand for each module
+ * ✅ Collapse All / Expand All button functionality
+ * ✅ No module description shown
+ * ✅ Database-driven
+ * ✅ All styling in modules.css
  */
 
 "use client";
 
+import { useState } from "react";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 import { BsGripVertical } from "react-icons/bs";
+import { IoMdArrowDropdown, IoMdArrowDropright } from "react-icons/io";
 import { useParams } from "next/navigation";
 import ModulesControls from "./ModulesControls";
 import LessonControlButtons from "./LessonControlButtons";
 import ModuleControlButtons from "./ModuleControlButtons";
-// Import modules from database
 import * as db from "../../../Database";
+import "./modules.css";
+
+type Module = {
+    _id: string;
+    name: string;
+    description?: string;
+    course: string;
+    lessons?: Lesson[];
+};
+
+type Lesson = {
+    _id: string;
+    name: string;
+    description?: string;
+    module: string;
+};
 
 export default function Modules() {
-    /**
-     * Extract course ID from URL using useParams hook
-     * Example: If URL is /Courses/RS101/Modules, then cid = "RS101"
-     *
-     * This is the client component approach, which matches how your
-     * Navigation and other components work.
-     */
     const { cid } = useParams();
 
-    /**
-     * Get modules from database and filter by current course
-     * Only shows modules where module.course matches the course ID
-     *
-     * Example: If cid = "RS101", only shows modules with course: "RS101"
-     */
-    const courseModules = db.modules.filter((module: any) => module.course === cid);
+    // Filter modules for this course
+    const courseModules = db.modules.filter(
+        (module: Module) => module.course === cid
+    );
+
+    // ────────────────────────────────────────────────────────────────────────
+    // STATE FOR COLLAPSE/EXPAND
+    // ────────────────────────────────────────────────────────────────────────
+    // Track which modules are collapsed (by module ID)
+    const [collapsedModules, setCollapsedModules] = useState<Set<string>>(new Set());
+
+    // Toggle individual module
+    const toggleModule = (moduleId: string) => {
+        setCollapsedModules(prev => {
+            const newSet = new Set(prev);
+            if (newSet.has(moduleId)) {
+                newSet.delete(moduleId);
+            } else {
+                newSet.add(moduleId);
+            }
+            return newSet;
+        });
+    };
+
+    // Collapse all modules
+    const collapseAll = () => {
+        const allModuleIds = courseModules.map((m: Module) => m._id);
+        setCollapsedModules(new Set(allModuleIds));
+    };
+
+    // Expand all modules
+    const expandAll = () => {
+        setCollapsedModules(new Set());
+    };
+
+    // Check if all modules are collapsed
+    const allCollapsed = collapsedModules.size === courseModules.length && courseModules.length > 0;
 
     return (
         <div id="wd-modules">
-            {/* Module Controls (Collapse All, View Progress, etc.) */}
-            <ModulesControls />
+            {/* MODULE CONTROLS */}
+            <ModulesControls
+                onCollapseAll={collapseAll}
+                onExpandAll={expandAll}
+                allCollapsed={allCollapsed}
+            />
             <br /><br /><br /><br />
 
-            <ListGroup className="rounded-0">
-                {/**
-                 * Map through filtered modules and display each one
-                 * Each module shows:
-                 * - Module name
-                 * - Module control buttons
-                 * - List of lessons within the module
-                 */}
-                {courseModules.map((module: any) => (
-                    <ListGroupItem key={module._id} className="wd-module p-0 mb-5 fs-5 border-gray">
-                        {/* Module Header */}
-                        <div className="wd-title p-3 ps-2 bg-secondary d-flex align-items-center">
-                            <BsGripVertical className="me-2 fs-3 flex-shrink-0" />
-                            <span className="text-truncate flex-grow-1 me-2">
-                                {module.name}
-                            </span>
-                            <div className="flex-shrink-0">
-                                <ModuleControlButtons />
-                            </div>
-                        </div>
+            {/* MODULES LIST */}
+            <ListGroup className="wd-modules-list">
+                {courseModules.map((module: Module) => {
+                    const isCollapsed = collapsedModules.has(module._id);
 
-                        {/* Lessons List */}
-                        {module.lessons && module.lessons.length > 0 && (
-                            <ListGroup className="wd-lessons rounded-0">
-                                {module.lessons.map((lesson: any) => (
-                                    <ListGroupItem
-                                        key={lesson._id}
-                                        className="wd-lesson p-3 ps-1 d-flex align-items-center"
-                                    >
-                                        <BsGripVertical className="me-2 fs-3 flex-shrink-0" />
-                                        <span className="flex-grow-1">{lesson.name}</span>
-                                        <div className="flex-shrink-0">
-                                            <LessonControlButtons />
-                                        </div>
-                                    </ListGroupItem>
-                                ))}
-                            </ListGroup>
-                        )}
-                    </ListGroupItem>
-                ))}
+                    return (
+                        <ListGroupItem
+                            key={module._id}
+                            className="wd-module"
+                        >
+                            {/* MODULE HEADER */}
+                            <div
+                                className="wd-module-header"
+                                onClick={() => toggleModule(module._id)}
+                            >
+                                <BsGripVertical className="wd-grip-icon" />
+
+                                {/* Collapse/Expand Arrow */}
+                                {isCollapsed ? (
+                                    <IoMdArrowDropright className="wd-collapse-icon" />
+                                ) : (
+                                    <IoMdArrowDropdown className="wd-collapse-icon" />
+                                )}
+
+                                <span className="wd-module-name">
+                                    {module.name}
+                                </span>
+                                <div className="wd-module-controls">
+                                    <ModuleControlButtons />
+                                </div>
+                            </div>
+
+                            {/* LESSONS LIST - Only show if not collapsed */}
+                            {!isCollapsed && module.lessons && module.lessons.length > 0 && (
+                                <ListGroup className="wd-lessons-list">
+                                    {module.lessons.map((lesson: Lesson) => (
+                                        <ListGroupItem
+                                            key={lesson._id}
+                                            className="wd-lesson"
+                                        >
+                                            <BsGripVertical className="wd-grip-icon" />
+                                            <span className="wd-lesson-name">
+                                                {lesson.name}
+                                            </span>
+                                            <div className="wd-lesson-controls">
+                                                <LessonControlButtons />
+                                            </div>
+                                        </ListGroupItem>
+                                    ))}
+                                </ListGroup>
+                            )}
+                        </ListGroupItem>
+                    );
+                })}
             </ListGroup>
+
+            {/* NO MODULES MESSAGE */}
+            {courseModules.length === 0 && (
+                <div className="wd-no-modules">
+                    <p>No modules available for this course yet.</p>
+                </div>
+            )}
         </div>
     );
 }
+
+/**
+ * HOW COLLAPSE/EXPAND WORKS:
+ *
+ * 1. State tracks collapsed module IDs in a Set
+ * 2. Click module header → toggles that module
+ * 3. Click "Collapse All" → adds all module IDs to Set
+ * 4. Click "Expand All" → clears the Set
+ * 5. Arrow icon changes: ▶ (collapsed) or ▼ (expanded)
+ * 6. Lessons only render when module is not collapsed
+ *
+ * REMOVED:
+ * - Module description display
+ * - No more gray description box
+ * - Cleaner, simpler interface
+ */

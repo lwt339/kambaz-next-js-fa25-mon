@@ -1,12 +1,5 @@
-/**
- * Course Layout - Data-Driven Version
- * Location: app/(Kambaz)/Courses/[cid]/layout.tsx
- *
- * Now gets the actual course name from the database instead of creating a fake object.
- * Keeps all your mobile navigation and styling.
- */
-
 "use client";
+
 import { ReactNode, use, useState } from "react";
 import CourseNavigation from "./Navigation";
 import { FaAlignJustify, FaBars } from "react-icons/fa";
@@ -20,7 +13,6 @@ import { Offcanvas, ListGroup } from "react-bootstrap";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Breadcrumb from "./Breadcrumb";
-// Import courses from database
 import { courses } from "../../Database";
 
 export default function CourseLayout({
@@ -33,17 +25,13 @@ export default function CourseLayout({
     const { cid } = use(params);
     const pathname = usePathname();
 
-    // State for mobile navigation drawers
     const [showKambazNav, setShowKambazNav] = useState(false);
     const [showCourseNav, setShowCourseNav] = useState(false);
 
-    /**
-     * Find the actual course from the database
-     * This replaces the fake course object with real data
-     */
+    // Find the actual course from database
     const course = courses.find((c) => c._id === cid);
 
-    // Canvas-style navigation items for the main drawer
+    // Canvas-style navigation items
     const canvasNavItems = [
         { id: "dashboard", label: "Dashboard", href: "/Dashboard", icon: AiOutlineDashboard },
         { id: "account", label: "Account", href: "/Account", icon: FaRegCircleUser },
@@ -57,10 +45,10 @@ export default function CourseLayout({
 
     return (
         <div id="wd-courses">
-            {/* Course header with navigation controls and breadcrumb */}
+            {/* COURSE HEADER WITH BREADCRUMB */}
             <div className="d-flex align-items-center justify-content-between p-2">
-                {/* Left side: mobile menu button and course title */}
                 <div className="d-flex align-items-center">
+                    {/* Mobile menu button */}
                     <button
                         className="btn btn-link text-danger d-md-none p-0 me-3"
                         onClick={() => setShowKambazNav(true)}
@@ -69,19 +57,28 @@ export default function CourseLayout({
                         <FaAlignJustify className="fs-3" />
                     </button>
 
-                    {/**
-                     * Course title with breadcrumb
-                     * Now displays the REAL course name from database
-                     * Example: "Rocket Propulsion" instead of "CSRS101"
-                     */}
-                    <h2 className="text-danger mb-0">
-                        <FaAlignJustify className="me-4 fs-4 mb-1 d-none d-md-inline" />
-                        {course?.name || `Course ${cid}`}
-                        <Breadcrumb course={course} />
-                    </h2>
+                    {/* COURSE TITLE + BREADCRUMB (SAME LINE) */}
+                    <div className="d-flex align-items-center text-danger">
+                        {/* Desktop icon */}
+                        <FaAlignJustify className="me-3 fs-4 d-none d-md-inline" />
+
+                        {/* Clickable course title (Course ID + Name) */}
+                        <Link
+                            href={`/Courses/${cid}/Home`}
+                            className="text-danger text-decoration-none hover-underline"
+                            style={{ fontSize: '1.5rem', fontWeight: 500 }}
+                        >
+                            {course?.number} {course?.name || `Course ${cid}`}
+                        </Link>
+
+                        {/* Breadcrumb (shows only section path) */}
+                        <span style={{ fontSize: '1.5rem', fontWeight: 500 }}>
+                            <Breadcrumb course={course} />
+                        </span>
+                    </div>
                 </div>
 
-                {/* Right side: course navigation button (mobile) */}
+                {/* Mobile course nav button */}
                 <button
                     className="btn btn-link text-secondary d-md-none p-0"
                     onClick={() => setShowCourseNav(true)}
@@ -93,7 +90,7 @@ export default function CourseLayout({
 
             <hr className="my-2" />
 
-            {/* Main content layout with sidebar and content area */}
+            {/* Main content layout */}
             <div className="d-flex">
                 {/* Course Navigation Sidebar (Desktop) */}
                 <div className="d-none d-md-block">
@@ -115,7 +112,6 @@ export default function CourseLayout({
                 style={{ width: '320px' }}
             >
                 <Offcanvas.Header className="border-bottom pb-3">
-                    {/* Kambaz Logo */}
                     <div className="d-flex align-items-center">
                         <div className="text-danger me-2">
                             <svg width="40" height="40" viewBox="0 0 40 40" fill="currentColor">
@@ -187,31 +183,3 @@ export default function CourseLayout({
         </div>
     );
 }
-
-/**
- * KEY CHANGES:
- *
- * 1. Imports courses from database: import { courses } from "../../Database"
- * 2. Finds actual course: const course = courses.find((c) => c._id === cid)
- * 3. Displays real course name: {course?.name || `Course ${cid}`}
- * 4. Passes real course object to Breadcrumb component
- * 5. Uses optional chaining to handle missing courses gracefully
- *
- * WHAT THIS FIXES:
- * ✓ Course header now shows "Rocket Propulsion" instead of "CSCS101"
- * ✓ Course header shows "Web Development" instead of "CS5610"
- * ✓ Breadcrumb gets real course data
- * ✓ Works for all courses in the database
- *
- * WHAT'S PRESERVED:
- * ✓ All mobile navigation drawers
- * ✓ Kambaz logo and navigation items
- * ✓ Course navigation sidebar
- * ✓ Active state highlighting
- * ✓ All styling and animations
- * ✓ Responsive behavior
- *
- * EXAMPLE:
- * Before: "Course CSRS101 > Modules"
- * After: "Rocket Propulsion > Modules"
- */

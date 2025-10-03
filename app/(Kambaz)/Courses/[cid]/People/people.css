@@ -1,0 +1,384 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * PEOPLE PAGE STYLES - ENHANCED
+ * ═══════════════════════════════════════════════════════════════════════════
+ *
+ * Location: app/(Kambaz)/Courses/[cid]/People/people.css
+ */
+
+/* ───────────────────────────────────────────────────────────────────────────
+   HEADER
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-people-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.wd-people-header h3 {
+    margin: 0 0 4px 0;
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #212529;
+}
+
+.wd-header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   CONTROLS BAR
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-people-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.wd-search-box {
+    position: relative;
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+}
+
+.wd-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    pointer-events: none;
+    font-size: 0.9rem;
+}
+
+.wd-search-input {
+    padding-left: 40px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    transition: all 0.2s ease;
+}
+
+.wd-search-input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   STATISTICS HEADER
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-stats-header {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.wd-stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wd-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.wd-stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.wd-stat-icon.faculty {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+}
+
+.wd-stat-icon.ta {
+    background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+}
+
+.wd-stat-icon.student {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+}
+
+.wd-stat-icon.total {
+    background: linear-gradient(135deg, #198754 0%, #146c43 100%);
+}
+
+.wd-stat-icon.sections {
+    background: linear-gradient(135deg, #6610f2 0%, #520dc2 100%);
+}
+
+.wd-stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #212529;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.wd-stat-label {
+    font-size: 0.875rem;
+    color: #6c757d;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   TABLE CONTAINER
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   PEOPLE TABLE
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-people-table {
+    margin-bottom: 0;
+}
+
+.wd-people-table thead {
+    background: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.wd-people-table thead th {
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #495057;
+    border-bottom: 2px solid #dee2e6;
+    padding: 16px 12px;
+    vertical-align: middle;
+}
+
+.wd-user-row {
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.wd-user-row:hover {
+    background-color: #f8f9fa !important;
+    border-left-color: #0d6efd;
+    transform: scale(1.002);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   NAME CELL
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 280px;
+}
+
+.wd-user-icon {
+    font-size: 2.75rem;
+    color: #6c757d;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.wd-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.wd-user-name {
+    font-weight: 600;
+    color: #212529;
+    font-size: 0.95rem;
+}
+
+.wd-user-email {
+    font-size: 0.8125rem;
+    color: #6c757d;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   OTHER CELLS
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-login-cell {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    color: #495057;
+}
+
+.wd-section-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.wd-role-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 6px;
+}
+
+.wd-activity-main {
+    font-weight: 500;
+    color: #212529;
+}
+
+.wd-activity-detail {
+    font-size: 0.8125rem;
+    color: #6c757d;
+    margin-top: 2px;
+}
+
+.wd-total-activity {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    color: #0d6efd;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   NO RESULTS MESSAGE
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-no-results {
+    text-align: center;
+    padding: 80px 20px;
+    color: #6c757d;
+}
+
+.wd-no-results-icon {
+    font-size: 4rem;
+    color: #dee2e6;
+    margin-bottom: 20px;
+}
+
+.wd-no-results h5 {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 8px;
+}
+
+.wd-no-results p {
+    margin: 0;
+    font-size: 0.9375rem;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 992px) {
+    .wd-stats-header {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .wd-stat-card {
+        padding: 16px;
+    }
+
+    .wd-stat-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.25rem;
+    }
+
+    .wd-stat-value {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .wd-people-header {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .wd-header-actions {
+        width: 100%;
+    }
+
+    .wd-header-actions button {
+        flex: 1;
+    }
+
+    .wd-people-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .wd-search-box {
+        max-width: none;
+    }
+
+    .wd-stats-header {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .wd-name-cell {
+        min-width: auto;
+    }
+
+    .wd-people-table {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .wd-stats-header {
+        grid-template-columns: 1fr;
+    }
+
+    .wd-people-table thead th {
+        padding: 12px 8px;
+        font-size: 0.75rem;
+    }
+
+    .wd-people-table tbody td {
+        padding: 12px 8px;
+    }
+}

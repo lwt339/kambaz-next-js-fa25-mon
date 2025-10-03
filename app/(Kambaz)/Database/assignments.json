@@ -5,8 +5,8 @@
     "course": "RS101",
     "description": "Design a rocket propulsion system for a small satellite launch vehicle.",
     "points": 100,
-    "dueDate": "2023-05-13",
-    "availableDate": "2023-05-06",
+    "dueDate": "2023-05-13T23:59:00",
+    "availableDate": "2023-05-06T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -15,8 +15,8 @@
     "course": "RS101",
     "description": "Analyze the combustion efficiency of different rocket fuels.",
     "points": 100,
-    "dueDate": "2023-05-20",
-    "availableDate": "2023-05-13",
+    "dueDate": "2023-05-20T23:59:00",
+    "availableDate": "2023-05-13T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -25,19 +25,9 @@
     "course": "RS101",
     "description": "Design and optimize a rocket nozzle for maximum efficiency.",
     "points": 100,
-    "dueDate": "2023-05-27",
-    "availableDate": "2023-05-20",
+    "dueDate": "2023-05-27T23:59:00",
+    "availableDate": "2023-05-20T00:00:00",
     "assignmentType": "ASSIGNMENT"
-  },
-  {
-    "_id": "P-RS101",
-    "title": "Final Project - Launch Vehicle Design",
-    "course": "RS101",
-    "description": "Team-based comprehensive project to design a complete small-scale launch vehicle. Include propulsion system selection, fuel analysis, nozzle optimization, structural considerations, and launch trajectory calculations. Deliverables include technical report, CAD models, performance simulations, and group presentation. Teams of 3-4 students.",
-    "points": 200,
-    "dueDate": "2023-05-12",
-    "availableDate": "2023-03-01",
-    "assignmentType": "PROJECT"
   },
   {
     "_id": "A201",
@@ -45,8 +35,8 @@
     "course": "RS102",
     "description": "Quiz on fundamental aerodynamic concepts and fluid dynamics.",
     "points": 100,
-    "dueDate": "2023-05-13",
-    "availableDate": "2023-05-06",
+    "dueDate": "2023-05-13T23:59:00",
+    "availableDate": "2023-05-06T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -55,8 +45,8 @@
     "course": "RS102",
     "description": "Analyze subsonic and supersonic flow patterns over an airfoil.",
     "points": 100,
-    "dueDate": "2023-05-20",
-    "availableDate": "2023-05-13",
+    "dueDate": "2023-05-20T23:59:00",
+    "availableDate": "2023-05-13T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -65,19 +55,9 @@
     "course": "RS102",
     "description": "Calculate aerodynamic heating for a spacecraft during re-entry.",
     "points": 100,
-    "dueDate": "2023-05-27",
-    "availableDate": "2023-05-20",
+    "dueDate": "2023-05-27T23:59:00",
+    "availableDate": "2023-05-20T00:00:00",
     "assignmentType": "ASSIGNMENT"
-  },
-  {
-    "_id": "P-RS102",
-    "title": "Final Project - Airfoil Design and Analysis",
-    "course": "RS102",
-    "description": "Design and analyze a custom airfoil for a specific flight regime. Perform CFD simulations to analyze lift, drag, and pressure distributions. Compare subsonic and supersonic performance. Calculate aerodynamic heating during high-speed flight. Deliverables include design report, simulation results, wind tunnel test plan, and presentation.",
-    "points": 200,
-    "dueDate": "2023-05-12",
-    "availableDate": "2023-03-01",
-    "assignmentType": "PROJECT"
   },
   {
     "_id": "A301",
@@ -85,8 +65,8 @@
     "course": "RS103",
     "description": "Design a spacecraft structure that can withstand launch loads.",
     "points": 100,
-    "dueDate": "2023-05-13",
-    "availableDate": "2023-05-06",
+    "dueDate": "2023-05-13T23:59:00",
+    "availableDate": "2023-05-06T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -95,8 +75,8 @@
     "course": "RS103",
     "description": "Calculate orbital parameters for a Mars mission.",
     "points": 100,
-    "dueDate": "2023-05-20",
-    "availableDate": "2023-05-13",
+    "dueDate": "2023-05-20T23:59:00",
+    "availableDate": "2023-05-13T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -105,19 +85,9 @@
     "course": "RS103",
     "description": "Comprehensive exam on spacecraft systems engineering principles.",
     "points": 100,
-    "dueDate": "2023-05-27",
-    "availableDate": "2023-05-20",
+    "dueDate": "2023-05-27T23:59:00",
+    "availableDate": "2023-05-20T00:00:00",
     "assignmentType": "ASSIGNMENT"
-  },
-  {
-    "_id": "P-RS103",
-    "title": "Final Project - Interplanetary Mission Design",
-    "course": "RS103",
-    "description": "Complete mission design for an interplanetary spacecraft. Select mission destination (Mars, Europa, or Titan), design spacecraft structure and subsystems, calculate orbital mechanics and trajectories, plan power and thermal systems, design communication systems. Deliverables include mission proposal document, spacecraft design specifications, systems integration plan, budget estimate, and final presentation.",
-    "points": 250,
-    "dueDate": "2023-05-12",
-    "availableDate": "2023-02-15",
-    "assignmentType": "PROJECT"
   },
   {
     "_id": "A5610-1",
@@ -125,8 +95,8 @@
     "course": "CS5610",
     "description": "Set up development environment and create basic HTML pages. Submit a link to the landing page of your Web application running on Vercel.",
     "points": 100,
-    "dueDate": "2025-09-22",
-    "availableDate": "2025-09-08",
+    "dueDate": "2025-09-22T23:59:00",
+    "availableDate": "2025-09-08T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -135,8 +105,8 @@
     "course": "CS5610",
     "description": "Style your web application using CSS and Bootstrap framework. Create a responsive design that works on mobile and desktop.",
     "points": 100,
-    "dueDate": "2025-10-06",
-    "availableDate": "2025-09-22",
+    "dueDate": "2025-10-06T23:59:00",
+    "availableDate": "2025-09-22T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -145,8 +115,8 @@
     "course": "CS5610",
     "description": "Implement a data-driven React application with routing and state management. Complete all Lab exercises and Kambaz exercises described in Chapter 3.",
     "points": 198,
-    "dueDate": "2025-10-20",
-    "availableDate": "2025-10-06",
+    "dueDate": "2025-10-20T23:59:00",
+    "availableDate": "2025-10-06T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -155,8 +125,8 @@
     "course": "CS5610",
     "description": "Implement Redux state management in your React application. Manage complex application state with Redux.",
     "points": 100,
-    "dueDate": "2025-11-03",
-    "availableDate": "2025-10-20",
+    "dueDate": "2025-11-03T23:59:00",
+    "availableDate": "2025-10-20T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -165,8 +135,8 @@
     "course": "CS5610",
     "description": "Build a Node.js backend with session management and authentication.",
     "points": 100,
-    "dueDate": "2025-11-17",
-    "availableDate": "2025-11-03",
+    "dueDate": "2025-11-17T23:59:00",
+    "availableDate": "2025-11-03T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -175,19 +145,9 @@
     "course": "CS5610",
     "description": "Integrate MongoDB database with your application using Mongoose ODM.",
     "points": 100,
-    "dueDate": "2025-12-01",
-    "availableDate": "2025-11-17",
+    "dueDate": "2025-12-01T23:59:00",
+    "availableDate": "2025-11-17T00:00:00",
     "assignmentType": "ASSIGNMENT"
-  },
-  {
-    "_id": "P-CS5610",
-    "title": "Final Project",
-    "course": "CS5610",
-    "description": "Group Project - Build a complete full-stack web application. Options include Kambaz Quizzes, Kambaz Piazza, or Social Network. Must include: React frontend with Redux state management, Node.js/Express backend, MongoDB database, user authentication, RESTful API, responsive design. Deliverables include source code, deployment URL, technical documentation, and video demonstration.",
-    "points": 350,
-    "dueDate": "2025-12-07",
-    "availableDate": "2025-10-20",
-    "assignmentType": "PROJECT"
   },
   {
     "_id": "A5520-1",
@@ -195,8 +155,8 @@
     "course": "CS5520",
     "description": "Complete Swift programming fundamentals including variables, data types, and basic control structures.",
     "points": 100,
-    "dueDate": "2025-09-11",
-    "availableDate": "2025-09-04",
+    "dueDate": "2025-09-11T23:59:00",
+    "availableDate": "2025-09-04T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -205,8 +165,8 @@
     "course": "CS5520",
     "description": "Advanced Swift concepts including functions, optionals, and error handling.",
     "points": 100,
-    "dueDate": "2025-09-17",
-    "availableDate": "2025-09-11",
+    "dueDate": "2025-09-17T23:59:00",
+    "availableDate": "2025-09-11T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -215,8 +175,8 @@
     "course": "CS5520",
     "description": "Build your first iOS application with basic UI components.",
     "points": 100,
-    "dueDate": "2025-09-23",
-    "availableDate": "2025-09-17",
+    "dueDate": "2025-09-23T23:59:00",
+    "availableDate": "2025-09-17T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -225,8 +185,8 @@
     "course": "CS5520",
     "description": "Extend your iOS app with additional functionality and views.",
     "points": 100,
-    "dueDate": "2025-09-24",
-    "availableDate": "2025-09-23",
+    "dueDate": "2025-09-24T23:59:00",
+    "availableDate": "2025-09-23T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -235,8 +195,8 @@
     "course": "CS5520",
     "description": "Design and implement complex user interfaces using UIKit.",
     "points": 100,
-    "dueDate": "2025-09-26",
-    "availableDate": "2025-09-24",
+    "dueDate": "2025-09-26T23:59:00",
+    "availableDate": "2025-09-24T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -245,8 +205,8 @@
     "course": "CS5520",
     "description": "Implement navigation and view controller transitions.",
     "points": 100,
-    "dueDate": "2025-10-01",
-    "availableDate": "2025-09-26",
+    "dueDate": "2025-10-01T23:59:00",
+    "availableDate": "2025-09-26T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -255,8 +215,8 @@
     "course": "CS5520",
     "description": "Implement UITableView with custom cells and data sources.",
     "points": 100,
-    "dueDate": "2025-10-08",
-    "availableDate": "2025-10-01",
+    "dueDate": "2025-10-08T23:59:00",
+    "availableDate": "2025-10-01T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -265,19 +225,9 @@
     "course": "CS5520",
     "description": "Integrate CocoaPods and implement HTTP networking.",
     "points": 100,
-    "dueDate": "2025-10-15",
-    "availableDate": "2025-10-08",
+    "dueDate": "2025-10-15T23:59:00",
+    "availableDate": "2025-10-08T00:00:00",
     "assignmentType": "ASSIGNMENT"
-  },
-  {
-    "_id": "P-CS5520",
-    "title": "Final Project - iOS Application",
-    "course": "CS5520",
-    "description": "Team-based iOS application development project. Build a complete iOS app with multiple screens, navigation, networking, data persistence, and Firebase integration. Must include authentication, real-time database, cloud storage, and user profiles. Deliverables include project proposal, prototype demo, final application, source code, and video presentation demonstrating all features.",
-    "points": 400,
-    "dueDate": "2025-12-10",
-    "availableDate": "2025-10-01",
-    "assignmentType": "PROJECT"
   },
   {
     "_id": "A5001-0",
@@ -285,8 +235,8 @@
     "course": "CS5001",
     "description": "Setup Python development environment and complete introductory exercises.",
     "points": 0,
-    "dueDate": "2024-09-05",
-    "availableDate": "2024-09-01",
+    "dueDate": "2024-09-05T23:59:00",
+    "availableDate": "2024-09-01T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -295,8 +245,8 @@
     "course": "CS5001",
     "description": "Practice with Python variables, data types, and arithmetic operations.",
     "points": 0,
-    "dueDate": "2024-09-12",
-    "availableDate": "2024-09-05",
+    "dueDate": "2024-09-12T23:59:00",
+    "availableDate": "2024-09-05T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -305,8 +255,8 @@
     "course": "CS5001",
     "description": "Complete programming assignment on variables and expressions.",
     "points": 100,
-    "dueDate": "2024-09-18",
-    "availableDate": "2024-09-12",
+    "dueDate": "2024-09-18T23:59:00",
+    "availableDate": "2024-09-12T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -315,8 +265,8 @@
     "course": "CS5001",
     "description": "Participatory Learning Activity - Module 1",
     "points": 5,
-    "dueDate": "2024-09-15",
-    "availableDate": "2024-09-12",
+    "dueDate": "2024-09-15T23:59:00",
+    "availableDate": "2024-09-12T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -325,19 +275,9 @@
     "course": "CS5001",
     "description": "Functions and testing assignment.",
     "points": 100,
-    "dueDate": "2024-09-25",
-    "availableDate": "2024-09-18",
+    "dueDate": "2024-09-25T23:59:00",
+    "availableDate": "2024-09-18T00:00:00",
     "assignmentType": "ASSIGNMENT"
-  },
-  {
-    "_id": "P-CS5001",
-    "title": "Final Project - Python Application",
-    "course": "CS5001",
-    "description": "Individual final project demonstrating mastery of Python programming concepts. Build a substantial Python application that includes functions, loops, lists, dictionaries, file I/O, and exception handling. Must solve a real-world problem and include comprehensive testing. Deliverables include source code, documentation, test cases, and written reflection on design decisions.",
-    "points": 150,
-    "dueDate": "2024-12-10",
-    "availableDate": "2024-11-01",
-    "assignmentType": "PROJECT"
   },
   {
     "_id": "A5002-1",
@@ -345,8 +285,8 @@
     "course": "CS5002",
     "description": "Logic and propositional calculus problems.",
     "points": 100,
-    "dueDate": "2024-09-10",
-    "availableDate": "2024-09-05",
+    "dueDate": "2024-09-10T23:59:00",
+    "availableDate": "2024-09-05T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -355,8 +295,8 @@
     "course": "CS5002",
     "description": "zyBooks reading and participation activities.",
     "points": 20,
-    "dueDate": "2024-09-12",
-    "availableDate": "2024-09-05",
+    "dueDate": "2024-09-12T23:59:00",
+    "availableDate": "2024-09-05T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -365,19 +305,9 @@
     "course": "CS5002",
     "description": "Set theory and functions assignment.",
     "points": 100,
-    "dueDate": "2024-09-17",
-    "availableDate": "2024-09-10",
+    "dueDate": "2024-09-17T23:59:00",
+    "availableDate": "2024-09-10T00:00:00",
     "assignmentType": "ASSIGNMENT"
-  },
-  {
-    "_id": "P-CS5002",
-    "title": "Final Project - Mathematical Proofs Portfolio",
-    "course": "CS5002",
-    "description": "Comprehensive portfolio of mathematical proofs demonstrating mastery of discrete structures. Include proofs using induction, contradiction, graph theory, combinatorics, and set theory. Must include at least 10 complete proofs with clear explanations and justifications. Deliverables include written portfolio, proof presentation, and reflection on problem-solving strategies.",
-    "points": 100,
-    "dueDate": "2024-12-08",
-    "availableDate": "2024-11-15",
-    "assignmentType": "PROJECT"
   },
   {
     "_id": "A5004-1",
@@ -385,8 +315,8 @@
     "course": "CS5004",
     "description": "Create simple Java classes with attributes and constructors.",
     "points": 100,
-    "dueDate": "2025-01-25",
-    "availableDate": "2025-01-18",
+    "dueDate": "2025-01-25T23:59:00",
+    "availableDate": "2025-01-18T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -395,8 +325,8 @@
     "course": "CS5004",
     "description": "In-lab exercises on class creation and object instantiation.",
     "points": 2,
-    "dueDate": "2025-01-22",
-    "availableDate": "2025-01-18",
+    "dueDate": "2025-01-22T23:59:00",
+    "availableDate": "2025-01-18T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -405,19 +335,9 @@
     "course": "CS5004",
     "description": "Quiz on classes and objects.",
     "points": 5,
-    "dueDate": "2025-01-18",
-    "availableDate": "2025-01-15",
+    "dueDate": "2025-01-18T23:59:00",
+    "availableDate": "2025-01-15T00:00:00",
     "assignmentType": "ASSIGNMENT"
-  },
-  {
-    "_id": "P-CS5004",
-    "title": "Final Project - Object-Oriented Application",
-    "course": "CS5004",
-    "description": "Design and implement a complete object-oriented application in Java. Must demonstrate proper use of classes, inheritance, polymorphism, interfaces, exception handling, and design patterns (MVC, Observer, Strategy). Choose from: Library Management System, E-commerce Platform, or Custom Application. Deliverables include UML diagrams, source code, JUnit tests, user documentation, and design justification document.",
-    "points": 200,
-    "dueDate": "2025-04-25",
-    "availableDate": "2025-03-15",
-    "assignmentType": "PROJECT"
   },
   {
     "_id": "A5008-1",
@@ -425,8 +345,8 @@
     "course": "CS5008",
     "description": "Introduction to C programming and memory management.",
     "points": 100,
-    "dueDate": "2025-01-25",
-    "availableDate": "2025-01-18",
+    "dueDate": "2025-01-25T23:59:00",
+    "availableDate": "2025-01-18T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -435,19 +355,9 @@
     "course": "CS5008",
     "description": "Implement programs using arrays and pointer arithmetic.",
     "points": 100,
-    "dueDate": "2025-02-08",
-    "availableDate": "2025-02-01",
+    "dueDate": "2025-02-08T23:59:00",
+    "availableDate": "2025-02-01T00:00:00",
     "assignmentType": "ASSIGNMENT"
-  },
-  {
-    "_id": "P-CS5008",
-    "title": "Final Project - Custom Data Structure Library",
-    "course": "CS5008",
-    "description": "Implement a comprehensive data structures library in C from scratch. Must include: dynamic arrays, linked lists (singly and doubly), stacks, queues, hash tables, binary search trees, and heaps. Include memory management, error handling, and comprehensive test suite. Deliverables include library code, Makefile, test programs, performance analysis report, and API documentation.",
-    "points": 200,
-    "dueDate": "2025-04-20",
-    "availableDate": "2025-03-01",
-    "assignmentType": "PROJECT"
   },
   {
     "_id": "A5800-1",
@@ -455,8 +365,8 @@
     "course": "CS5800",
     "description": "Analyze time and space complexity of algorithms.",
     "points": 100,
-    "dueDate": "2025-05-20",
-    "availableDate": "2025-05-13",
+    "dueDate": "2025-05-20T23:59:00",
+    "availableDate": "2025-05-13T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
@@ -465,18 +375,128 @@
     "course": "CS5800",
     "description": "Design and analyze divide-and-conquer algorithms.",
     "points": 100,
-    "dueDate": "2025-06-03",
-    "availableDate": "2025-05-27",
+    "dueDate": "2025-06-03T23:59:00",
+    "availableDate": "2025-05-27T00:00:00",
     "assignmentType": "ASSIGNMENT"
   },
   {
-    "_id": "P-CS5800",
-    "title": "Final Project - Algorithm Design and Analysis",
-    "course": "CS5800",
-    "description": "Research and solve a complex computational problem using advanced algorithm design techniques. Choose a problem from: graph optimization, string matching, computational geometry, or approximation algorithms for NP-hard problems. Must include algorithm design, correctness proof, complexity analysis, implementation, and experimental evaluation. Deliverables include research paper, implementation code, experimental results, and presentation.",
-    "points": 150,
-    "dueDate": "2025-08-08",
-    "availableDate": "2025-07-01",
-    "assignmentType": "PROJECT"
+    "_id": "A-RS4550-1",
+    "title": "Homework 1 - Rocket Propulsion Fundamentals",
+    "course": "RS4550",
+    "description": "Analyze rocket propulsion systems and calculate thrust, specific impulse, and exhaust velocity for different engine configurations.",
+    "points": 100,
+    "dueDate": "2025-02-15T23:59:00",
+    "availableDate": "2025-02-08T00:00:00",
+    "assignmentType": "ASSIGNMENT"
+  },
+  {
+    "_id": "A-RS4550-2",
+    "title": "Homework 2 - Combustion Efficiency Analysis",
+    "course": "RS4550",
+    "description": "Evaluate combustion efficiency for various fuel types and oxidizer combinations. Calculate chamber pressure and temperature.",
+    "points": 100,
+    "dueDate": "2025-03-01T23:59:00",
+    "availableDate": "2025-02-22T00:00:00",
+    "assignmentType": "ASSIGNMENT"
+  },
+  {
+    "_id": "A-RS4550-3",
+    "title": "Homework 3 - Nozzle Design Optimization",
+    "course": "RS4550",
+    "description": "Design an optimized nozzle for maximum performance. Calculate expansion ratio, exit pressure, and thrust coefficient.",
+    "points": 100,
+    "dueDate": "2025-03-15T23:59:00",
+    "availableDate": "2025-03-08T00:00:00",
+    "assignmentType": "ASSIGNMENT"
+  },
+  {
+    "_id": "A-RS4550-4",
+    "title": "Lab Report 1 - Engine Testing Data Analysis",
+    "course": "RS4550",
+    "description": "Analyze experimental data from rocket engine tests. Compare theoretical predictions with measured performance.",
+    "points": 75,
+    "dueDate": "2025-03-29T23:59:00",
+    "availableDate": "2025-03-22T00:00:00",
+    "assignmentType": "ASSIGNMENT"
+  },
+  {
+    "_id": "A-RS4560-1",
+    "title": "Homework 1 - Subsonic Flow Analysis",
+    "course": "RS4560",
+    "description": "Calculate lift and drag coefficients for various airfoil shapes. Analyze pressure distributions and boundary layer effects.",
+    "points": 100,
+    "dueDate": "2025-03-08T23:59:00",
+    "availableDate": "2025-03-01T00:00:00",
+    "assignmentType": "ASSIGNMENT"
+  },
+  {
+    "_id": "A-RS4560-2",
+    "title": "Homework 2 - Supersonic Aerodynamics",
+    "course": "RS4560",
+    "description": "Analyze shock wave formation and oblique shock calculations. Determine Mach numbers and pressure ratios.",
+    "points": 100,
+    "dueDate": "2025-03-22T23:59:00",
+    "availableDate": "2025-03-15T00:00:00",
+    "assignmentType": "ASSIGNMENT"
+  },
+  {
+    "_id": "A-RS4560-3",
+    "title": "Homework 3 - Thermal Protection Systems",
+    "course": "RS4560",
+    "description": "Calculate aerodynamic heating rates during atmospheric entry. Design thermal protection system for specific flight conditions.",
+    "points": 100,
+    "dueDate": "2025-04-05T23:59:00",
+    "availableDate": "2025-03-29T00:00:00",
+    "assignmentType": "ASSIGNMENT"
+  },
+  {
+    "_id": "A-RS4560-4",
+    "title": "CFD Simulation Report",
+    "course": "RS4560",
+    "description": "Perform computational fluid dynamics simulation of airflow over an aircraft wing. Validate results with theoretical predictions.",
+    "points": 75,
+    "dueDate": "2025-04-19T23:59:00",
+    "availableDate": "2025-04-12T00:00:00",
+    "assignmentType": "ASSIGNMENT"
+  },
+  {
+    "_id": "A-RS4570-1",
+    "title": "Homework 1 - Structural Load Analysis",
+    "course": "RS4570",
+    "description": "Calculate structural loads during launch and spaceflight. Analyze stress, strain, and factor of safety for spacecraft structures.",
+    "points": 100,
+    "dueDate": "2025-04-12T23:59:00",
+    "availableDate": "2025-04-05T00:00:00",
+    "assignmentType": "ASSIGNMENT"
+  },
+  {
+    "_id": "A-RS4570-2",
+    "title": "Homework 2 - Orbital Mechanics Calculations",
+    "course": "RS4570",
+    "description": "Calculate orbital parameters for interplanetary trajectories. Determine delta-v requirements and mission timelines.",
+    "points": 100,
+    "dueDate": "2025-04-26T23:59:00",
+    "availableDate": "2025-04-19T00:00:00",
+    "assignmentType": "ASSIGNMENT"
+  },
+  {
+    "_id": "A-RS4570-3",
+    "title": "Homework 3 - Power Systems Design",
+    "course": "RS4570",
+    "description": "Design spacecraft power generation and distribution system. Calculate solar panel sizing and battery requirements.",
+    "points": 100,
+    "dueDate": "2025-05-10T23:59:00",
+    "availableDate": "2025-05-03T00:00:00",
+    "assignmentType": "ASSIGNMENT"
+  },
+  {
+    "_id": "A-RS4570-4",
+    "title": "Systems Integration Analysis",
+    "course": "RS4570",
+    "description": "Perform systems-level analysis of spacecraft design. Evaluate mass budget, power budget, and communication link performance.",
+    "points": 75,
+    "dueDate": "2025-05-24T23:59:00",
+    "availableDate": "2025-05-17T00:00:00",
+    "assignmentType": "ASSIGNMENT"
   }
 ]

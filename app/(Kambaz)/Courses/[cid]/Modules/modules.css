@@ -1,0 +1,227 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * MODULES STYLES
+ * ═══════════════════════════════════════════════════════════════════════════
+ *
+ * Location: app/(Kambaz)/Courses/[cid]/Modules/modules.css
+ *
+ * All module-specific styling separated from global styles
+ * Beautiful, organized, and maintainable
+ *
+ * @author Kambaz Development Team
+ * @version 5.0
+ */
+
+/* ───────────────────────────────────────────────────────────────────────────
+   MODULES CONTAINER
+   ─────────────────────────────────────────────────────────────────────────── */
+
+#wd-modules {
+    padding: 0;
+}
+
+.wd-modules-list {
+    border-radius: 0;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   MODULE ITEM
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-module {
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    border: 1px solid #c7cdd1 !important;
+    border-radius: 0;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   MODULE HEADER
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-module-header {
+    padding: 12px 16px 12px 8px;
+    background-color: #c7cdd1 !important;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.wd-module-header:hover {
+    background-color: #b8bec2 !important;
+}
+
+.wd-module-header .wd-grip-icon {
+    margin-right: 8px;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.wd-module-header .wd-collapse-icon {
+    margin-right: 8px;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.wd-module-header .wd-module-name {
+    flex-grow: 1;
+    margin-right: 8px;
+    font-weight: 600;
+}
+
+.wd-module-header .wd-module-controls {
+    flex-shrink: 0;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   LESSONS LIST
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-lessons-list {
+    border-radius: 0;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   LESSON ITEM
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-lesson {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    border-left: 3px solid #198754 !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    border-radius: 0;
+    transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.wd-lesson:hover {
+    background-color: #f8f9fa;
+    padding-left: 20px !important;
+}
+
+.wd-lesson:last-child {
+    border-bottom: none !important;
+}
+
+.wd-lesson .wd-grip-icon {
+    margin-right: 8px;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.wd-lesson .wd-lesson-name {
+    flex-grow: 1;
+}
+
+.wd-lesson .wd-lesson-controls {
+    flex-shrink: 0;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   NO MODULES MESSAGE
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-no-modules {
+    text-align: center;
+    padding: 60px 20px;
+    color: #6c757d;
+}
+
+.wd-no-modules p {
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   MODULE CONTROLS (from ModulesControls component)
+   ─────────────────────────────────────────────────────────────────────────── */
+
+#wd-modules-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+#wd-modules-controls::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .wd-module-header {
+        font-size: 0.9rem;
+    }
+
+    .wd-lesson {
+        font-size: 0.875rem;
+    }
+
+    #wd-modules-controls {
+        justify-content: center;
+    }
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   LEGACY SUPPORT (for existing class names in your codebase)
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Support for old class names */
+.wd-title {
+    /* Same as .wd-module-header */
+    padding: 12px 16px 12px 8px;
+    background-color: #c7cdd1 !important;
+    cursor: pointer;
+    user-select: none;
+}
+
+.wd-title:hover {
+    background-color: #b8bec2 !important;
+}
+
+.border-gray {
+    border: 1px solid #c7cdd1 !important;
+}
+
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * SUMMARY
+ * ═══════════════════════════════════════════════════════════════════════════
+ *
+ * This CSS file provides:
+ *
+ * LAYOUT:
+ * - Module list container
+ * - Individual module items
+ * - Nested lessons list
+ *
+ * STYLING:
+ * - Gray module headers (#c7cdd1)
+ * - Green left border on lessons (#198754)
+ * - Hover effects on both modules and lessons
+ * - Proper spacing and padding
+ *
+ * INTERACTIONS:
+ * - Hover darkens module header
+ * - Hover lightens lesson background
+ * - Hover indents lesson slightly
+ * - Smooth transitions
+ *
+ * RESPONSIVE:
+ * - Mobile-friendly font sizes
+ * - Adjusted layout for small screens
+ * - Controls stack on mobile
+ */

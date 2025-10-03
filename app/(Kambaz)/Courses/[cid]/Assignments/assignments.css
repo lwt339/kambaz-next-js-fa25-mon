@@ -1,0 +1,275 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * ASSIGNMENTS STYLES
+ * ═══════════════════════════════════════════════════════════════════════════
+ *
+ * Location: app/(Kambaz)/Courses/[cid]/Assignments/assignments.css
+ *
+ * All assignment-specific styling separated from global styles
+ *
+ * @author Kambaz Development Team
+ * @version 5.0
+ */
+
+/* ───────────────────────────────────────────────────────────────────────────
+   ASSIGNMENTS CONTAINER
+   ─────────────────────────────────────────────────────────────────────────── */
+
+#wd-assignments {
+    padding: 0;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   CONTROLS BAR (Search + Buttons)
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-assignments-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.wd-search-input {
+    width: 300px;
+}
+
+.wd-search-icon {
+    background-color: white;
+    border-right: none;
+    border-color: #ced4da;
+}
+
+.wd-search-field {
+    border-left: none;
+    border-color: #ced4da;
+}
+
+.wd-search-field:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+}
+
+.wd-action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.wd-group-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+.wd-btn-icon {
+    font-size: 12px;
+    margin-right: 4px;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   ASSIGNMENT LIST
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-assignment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wd-section {
+    border-radius: 0;
+    margin-bottom: 16px;
+    border: 1px solid #dee2e6;
+}
+
+.wd-section-item {
+    padding: 0;
+    border: 0;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   SECTION HEADER (ASSIGNMENTS, QUIZZES, etc.)
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-section-header {
+    padding: 12px 16px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.wd-section-header:hover {
+    background-color: #e9ecef;
+}
+
+.wd-section-header .wd-grip-icon {
+    margin-right: 8px;
+    font-size: 1.25rem;
+    color: #6c757d;
+    flex-shrink: 0;
+}
+
+.wd-section-header .wd-caret-icon {
+    margin-right: 8px;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.wd-section-header .wd-section-label {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.wd-section-header .wd-percentage-badge {
+    margin-left: auto;
+    margin-right: 16px;
+    padding: 2px 8px;
+    font-size: 13px;
+    font-weight: normal;
+    color: #6c757d;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.wd-section-header .wd-add-icon {
+    margin-right: 8px;
+    color: #6c757d;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.wd-section-header .wd-ellipsis-icon {
+    font-size: 1.25rem;
+    color: #6c757d;
+    flex-shrink: 0;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   ITEMS LIST (Assignments, Quizzes, Exams)
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   ASSIGNMENT ITEM
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wd-assignment-item {
+    padding: 12px 8px;
+    border-left: 4px solid #198754;
+    border-bottom: 1px solid #dee2e6;
+    transition: background-color 0.2s ease;
+}
+
+.wd-assignment-item:hover {
+    background-color: #f8f9fa;
+}
+
+.wd-assignment-item:last-child {
+    border-bottom: none;
+}
+
+.wd-item-content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.wd-item-content .wd-grip-icon {
+    margin-right: 8px;
+    font-size: 1.25rem;
+    color: #6c757d;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.wd-item-content .wd-type-icon {
+    margin-right: 12px;
+    font-size: 1.25rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.wd-item-details {
+    flex-grow: 1;
+}
+
+.wd-item-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+    display: block;
+    text-decoration: none;
+    color: #212529;
+}
+
+.wd-item-title:hover {
+    text-decoration: underline;
+    color: #212529;
+}
+
+.wd-item-meta {
+    font-size: 0.875rem;
+    color: #6c757d;
+    line-height: 1.4;
+}
+
+.wd-item-controls {
+    margin-left: 12px;
+    flex-shrink: 0;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   ASSIGNMENT EDITOR
+   ─────────────────────────────────────────────────────────────────────────── */
+
+#wd-assignment-editor {
+    max-width: 900px;
+}
+
+#wd-assignment-editor .form-label {
+    font-weight: 500;
+}
+
+#wd-assignment-editor .text-end {
+    padding-top: 8px;
+}
+
+#wd-assignment-editor .border.rounded {
+    background-color: #f8f9fa;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .wd-assignments-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .wd-search-input {
+        width: 100%;
+    }
+
+    .wd-action-buttons {
+        justify-content: flex-end;
+    }
+
+    .wd-section-header {
+        font-size: 0.875rem;
+    }
+
+    .wd-percentage-badge {
+        display: none;
+    }
+}
