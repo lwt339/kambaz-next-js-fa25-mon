@@ -34,6 +34,7 @@ import Square from "./Square";
 import Highlight from "./Highlight";
 import PathParameters from "./PathParameters";
 import TodoList from "./todos/TodoList";
+import Link from "next/link";
 
 export default function Lab3() {
 
@@ -159,9 +160,9 @@ export default function Lab3() {
             <div className="mt-5 p-3 bg-info bg-opacity-10 rounded">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="/Labs">Back to Labs Index</a></li>
-                    <li><a href="/">Kambaz Application</a></li>
-                    <li><a href="https://github.com/lwt339/kambaz-next-js-fa25-mon">GitHub Repository</a></li>
+                    <li><Link href="/Labs">Back to Labs Index</Link></li>
+                    <li><Link href="/">Kambaz Application</Link></li>
+                    <li><Link href="https://github.com/lwt339/kambaz-next-js-fa25-mon">GitHub Repository</Link></li>
                 </ul>
             </div>
         </div>

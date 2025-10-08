@@ -189,23 +189,66 @@ export interface FilterState {
 }
 
 /**
- * Type Guards
- * Functions to check if an object is of a specific type
+ * Type guard to check if a value is a User
+ * @param obj - Object to check
+ * @returns True if object is a User
  */
-export function isAssignment(item: any): item is Assignment {
-    return item.assignmentType !== undefined;
+export function isUser(obj: unknown): obj is User {
+    return (
+        typeof obj === 'object' &&
+        obj !== null &&
+        '_id' in obj &&
+        'username' in obj &&
+        'firstName' in obj &&
+        'lastName' in obj
+    );
 }
 
-export function isQuiz(item: any): item is Quiz {
-    return item.timeLimit !== undefined && item.questions !== undefined && !item.group;
+/**
+ * Type guard to check if a value is a Course
+ * @param obj - Object to check
+ * @returns True if object is a Course
+ */
+export function isCourse(obj: unknown): obj is Course {
+    return (
+        typeof obj === 'object' &&
+        obj !== null &&
+        '_id' in obj &&
+        'name' in obj &&
+        'number' in obj &&
+        'department' in obj
+    );
 }
 
-export function isExam(item: any): item is Exam {
-    return item.type === "Comprehensive" || item.type === "Multiple Choice";
+/**
+ * Type guard to check if a value is a Module
+ * @param obj - Object to check
+ * @returns True if object is a Module
+ */
+export function isModule(obj: unknown): obj is Module {
+    return (
+        typeof obj === 'object' &&
+        obj !== null &&
+        '_id' in obj &&
+        'name' in obj &&
+        'course' in obj
+    );
 }
 
-export function isProject(item: any): item is Project {
-    return item.group !== undefined && item.maxGroupSize !== undefined;
+/**
+ * Type guard to check if a value is an Assignment
+ * @param obj - Object to check
+ * @returns True if object is an Assignment
+ */
+export function isAssignment(obj: unknown): obj is Assignment {
+    return (
+        typeof obj === 'object' &&
+        obj !== null &&
+        '_id' in obj &&
+        'title' in obj &&
+        'course' in obj &&
+        'points' in obj
+    );
 }
 
 /**
