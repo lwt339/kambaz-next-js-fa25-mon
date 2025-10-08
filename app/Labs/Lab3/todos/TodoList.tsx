@@ -1,4 +1,4 @@
-import { ListGroup, ListGroupItem } from "react-bootstrap";
+import { ListGroup} from "react-bootstrap";
 
 import  TodoItem  from "./TodoItem";
 import todos from "./todos.json";

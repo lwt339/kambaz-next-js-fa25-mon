@@ -1,4 +1,4 @@
-import { ListGroup, ListGroupItem } from "react-bootstrap";
+import {ListGroupItem } from "react-bootstrap";
 
 
 interface Todo {
