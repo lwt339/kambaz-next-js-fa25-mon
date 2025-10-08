@@ -1,11 +1,11 @@
-/* Tag Input with Pills */
+
 "use client";
 
 import { useState, KeyboardEvent, ChangeEvent } from "react";
 import { Form } from "react-bootstrap";
 
 interface AssignToInputProps {
-    /* Current list of assigned people/groups */
+
     value: string[];
 
     onChange: (newValue: string[]) => void;
@@ -57,14 +57,14 @@ export default function AssignToInput({
     };
 
     /**
-     * Update the input value as user types
+     * Update the input
      */
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
     };
 
     /**
-     * clicking anywhere in the container
+     * clicking in the container
      */
     const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
         const input = e.currentTarget.querySelector('input');

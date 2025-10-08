@@ -5,8 +5,11 @@ export default function Square({ children }: { children: ReactNode }) {
     const num = Number(children);
 
     return (
-        <span id="wd-square" className="badge bg-primary mx-2">
+        <div className="p-3 bg-white border rounded">
+        <span id="wd-square" >
       {num} squared = {num * num}
+
     </span>
+        </div>
     );
 }

@@ -1,15 +1,3 @@
-/**
- * ═══════════════════════════════════════════════════════════════════════════
- * ASSIGNMENTS PAGE - DATABASE-DRIVEN WITH SEPARATE CSS
- * ═══════════════════════════════════════════════════════════════════════════
- *
- * Location: app/(Kambaz)/Courses/[cid]/Assignments/page.tsx
- *
- * All styling in assignments.css
- * Completely data-driven from database
- * Shows assignments, quizzes, exams, and projects
- */
-
 "use client";
 
 import { useState } from "react";
@@ -24,25 +12,41 @@ import { PiProjectorScreenChartBold } from "react-icons/pi";
 import { IoEllipsisVertical } from "react-icons/io5";
 import AssignmentControlButtons from "./AssignmentControlButtons";
 import * as db from "../../../Database";
+import type { Assignment, Quiz, Exam } from "../../../Database/type";
 import "./assignments.css";
 
 type SectionKey = "ASSIGNMENTS" | "QUIZZES" | "EXAMS" | "PROJECT";
 
 export default function Assignments() {
+
     const params = useParams();
     const cid = params?.cid as string;
 
-    // Get data from database filtered by course
-    const courseAssignments = db.assignments.filter((a: any) =>
+    /**
+     * database import
+     */
+    const typedAssignments = db.assignments as Assignment[];
+    const typedQuizzes = db.quizzes as Quiz[];
+    const typedExams = db.exams as Exam[];
+
+    /**
+     * Filter assignments by course and type
+     */
+    const courseAssignments = typedAssignments.filter((a: Assignment) =>
         a.course === cid && a.assignmentType === "ASSIGNMENT"
     );
-    const courseQuizzes = db.quizzes.filter((q: any) => q.course === cid);
-    const courseExams = db.exams.filter((e: any) => e.course === cid);
-    const courseProjects = db.assignments.filter((p: any) =>
+
+    const courseQuizzes = typedQuizzes.filter((q: Quiz) => q.course === cid);
+
+    const courseExams = typedExams.filter((e: Exam) => e.course === cid);
+
+    const courseProjects = typedAssignments.filter((p: Assignment) =>
         p.course === cid && p.assignmentType === "PROJECT"
     );
 
-    // State for collapsible sections
+    /**
+     * expanded or collapsed
+     */
     const [open, setOpen] = useState<Record<SectionKey, boolean>>({
         ASSIGNMENTS: true,
         QUIZZES: true,
@@ -50,15 +54,22 @@ export default function Assignments() {
         PROJECT: true
     });
 
+    /**
+     * Toggle function
+     */
     const toggle = (key: SectionKey) => setOpen((o) => ({ ...o, [key]: !o[key] }));
 
-    // Format date
+    /**
+     * Format a date string
+     */
     const formatDate = (dateString: string): string => {
         const date = new Date(dateString);
         return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     };
 
-    // Format time
+    /**
+     * show time
+     */
     const formatTime = (dateString: string): string => {
         const date = new Date(dateString);
         return date.toLocaleTimeString('en-US', {
@@ -68,7 +79,9 @@ export default function Assignments() {
         });
     };
 
-    // Section Header Component
+    /**
+     * Section Header
+     */
     const SectionHeader = (props: {
         label: string;
         percentage: string;
@@ -97,8 +110,10 @@ export default function Assignments() {
         </div>
     );
 
-    // Assignment Row
-    const AssignmentRow = (a: any) => (
+    /**
+     * Assignment Row
+     */
+    const AssignmentRow = (a: Assignment) => (
         <li key={a._id} className="wd-assignment-item">
             <div className="wd-item-content">
                 <BsGripVertical className="wd-grip-icon" />
@@ -126,8 +141,10 @@ export default function Assignments() {
         </li>
     );
 
-    // Quiz Row
-    const QuizRow = (q: any) => (
+    /**
+     * Quiz Row
+     */
+    const QuizRow = (q: Quiz) => (
         <li key={q._id} className="wd-assignment-item">
             <div className="wd-item-content">
                 <BsGripVertical className="wd-grip-icon" />
@@ -153,8 +170,10 @@ export default function Assignments() {
         </li>
     );
 
-    // Exam Row
-    const ExamRow = (e: any) => (
+    /**
+     * Exam Row
+     */
+    const ExamRow = (e: Exam) => (
         <li key={e._id} className="wd-assignment-item">
             <div className="wd-item-content">
                 <BsGripVertical className="wd-grip-icon" />
@@ -180,8 +199,10 @@ export default function Assignments() {
         </li>
     );
 
-    // Project Row
-    const ProjectRow = (p: any) => (
+    /**
+     * Project Row
+     */
+    const ProjectRow = (p: Assignment) => (
         <li key={p._id} className="wd-assignment-item">
             <div className="wd-item-content">
                 <BsGripVertical className="wd-grip-icon" />
@@ -211,7 +232,7 @@ export default function Assignments() {
 
     return (
         <div id="wd-assignments">
-            {/* Controls Bar */}
+            {/* Controls Bar - Search and action buttons */}
             <div className="wd-assignments-controls">
                 <InputGroup className="wd-search-input">
                     <InputGroup.Text className="wd-search-icon">
@@ -237,7 +258,7 @@ export default function Assignments() {
             </div>
 
             <ul className="wd-assignment-list">
-                {/* ASSIGNMENTS Section */}
+                {/* ASSIGNMENTS Section - Regular course assignments */}
                 <ListGroup className="wd-section">
                     <ListGroupItem className="wd-section-item">
                         <SectionHeader
@@ -255,7 +276,7 @@ export default function Assignments() {
                     </ListGroupItem>
                 </ListGroup>
 
-                {/* QUIZZES Section */}
+                {/* QUIZZES Section - Short assessments */}
                 <ListGroup className="wd-section">
                     <ListGroupItem className="wd-section-item">
                         <SectionHeader
@@ -273,7 +294,7 @@ export default function Assignments() {
                     </ListGroupItem>
                 </ListGroup>
 
-                {/* EXAMS Section */}
+                {/* EXAMS Section - Major assessments */}
                 <ListGroup className="wd-section">
                     <ListGroupItem className="wd-section-item">
                         <SectionHeader
@@ -291,7 +312,7 @@ export default function Assignments() {
                     </ListGroupItem>
                 </ListGroup>
 
-                {/* PROJECT Section */}
+                {/* PROJECT Section - Major course projects */}
                 <ListGroup className="wd-section">
                     <ListGroupItem className="wd-section-item">
                         <SectionHeader

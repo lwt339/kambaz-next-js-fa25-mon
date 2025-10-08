@@ -1,26 +1,3 @@
-/**
- * ═══════════════════════════════════════════════════════════════════════════
- * KAMBAZ NAVIGATION COMPONENT
- * ═══════════════════════════════════════════════════════════════════════════
- *
- * Location: app/(Kambaz)/Navigation.tsx
- *
- * DATA-DRIVEN NAVIGATION BAR
- * - Dynamically renders navigation links from data array
- * - Highlights active route
- * - Beautiful styling with icons
- * - Responsive design
- *
- * KEY FEATURES:
- * ✅ Data-driven navigation (no hardcoded links)
- * ✅ Active state highlighting
- * ✅ Icon support with react-icons
- * ✅ Clean, organized code structure
- * ✅ Follows textbook Chapter 3 guidelines
- *
- * @author Kambaz Development Team
- * @version 3.0 - Data-Driven Edition
- */
 
 "use client";
 
@@ -28,43 +5,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
-
-// ═══════════════════════════════════════════════════════════════════════════
-// ICON IMPORTS
-// ═══════════════════════════════════════════════════════════════════════════
+// icon imports
 import { FaRegCircleUser, FaInbox } from "react-icons/fa6";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { LiaBookSolid } from "react-icons/lia";
 import { IoCalendarOutline } from "react-icons/io5";
 import { FaFlask } from "react-icons/fa";
 
-// ═══════════════════════════════════════════════════════════════════════════
-// TYPE DEFINITIONS
-// ═══════════════════════════════════════════════════════════════════════════
-
 /**
  * Navigation Item Interface
- * Defines the structure for each navigation link
  */
 type NavItem = {
-    id: string;                                      // Unique identifier
-    href: string;                                    // Target route
-    label: string;                                   // Display text
-    Icon: React.ComponentType<{ className?: string }>;  // Icon component
+    id: string;
+    href: string;
+    label: string;
+    Icon: React.ComponentType<{ className?: string }>;
 };
 
-// ═══════════════════════════════════════════════════════════════════════════
-// NAVIGATION DATA STRUCTURE
-// ═══════════════════════════════════════════════════════════════════════════
 
-/**
- * Navigation Links Configuration
- *
- * This array drives the entire navigation system.
- * To add a new link, simply add an entry here!
- *
- * Order matters - links appear in this order top to bottom
- */
+// navigation data
+
 const NAV_LINKS: NavItem[] = [
     {
         id: "account",
@@ -80,7 +40,7 @@ const NAV_LINKS: NavItem[] = [
     },
     {
         id: "courses",
-        href: "/Dashboard",  // Courses link goes to Dashboard per textbook
+        href: "/Dashboard",
         label: "Courses",
         Icon: LiaBookSolid
     },
@@ -104,39 +64,19 @@ const NAV_LINKS: NavItem[] = [
     },
 ];
 
-// ═══════════════════════════════════════════════════════════════════════════
-// MAIN NAVIGATION COMPONENT
-// ═══════════════════════════════════════════════════════════════════════════
 
-/**
- * KambazNavigation Component
- *
- * Renders the left sidebar navigation with:
- * - NEU logo at top
- * - Dynamic navigation links from NAV_LINKS array
- * - Active state highlighting
- * - Icon and label for each link
- *
- * @returns JSX.Element - The rendered navigation sidebar
- */
+// MAIN component
+
 export default function KambazNavigation() {
-    // ────────────────────────────────────────────────────────────────────────
-    // HOOKS
-    // ────────────────────────────────────────────────────────────────────────
     const pathname = usePathname();
 
-    // ────────────────────────────────────────────────────────────────────────
-    // RENDER
-    // ────────────────────────────────────────────────────────────────────────
     return (
         <ListGroup
             id="wd-kambaz-navigation"
             className="rounded-0 position-fixed bottom-0 top-0 d-none d-md-block bg-black z-2"
             style={{ width: 110 }}
         >
-            {/* ═══════════════════════════════════════════════════════════════
-                NEU LOGO
-                ═══════════════════════════════════════════════════════════════ */}
+            {/* NEU LOGO */}
             <ListGroupItem
                 as="a"
                 target="_blank"
@@ -154,34 +94,21 @@ export default function KambazNavigation() {
 
             <br />
 
-            {/* ═══════════════════════════════════════════════════════════════
-                DATA-DRIVEN NAVIGATION LINKS
-                ═══════════════════════════════════════════════════════════════
-
-                Maps over NAV_LINKS array to create navigation items
-                Each link has:
-                - Active state highlighting
-                - Icon (always red except Account)
-                - Label text
-                - Proper routing
-            */}
+            {/* data-driven navigation links */}
             {NAV_LINKS.map(({ id, href, label, Icon }) => {
-                // ────────────────────────────────────────────────────────────
                 // DETERMINE ACTIVE STATE
-                // ────────────────────────────────────────────────────────────
                 let active: boolean;
 
                 if (id === "courses") {
-                    // Special case: Courses is active when in any course
+                    // Courses is active when in any course
                     active = pathname?.includes("/Courses/") || false;
                 } else {
-                    // Standard case: Active when pathname starts with href
+                    // ctive when pathname starts with href
                     active = pathname?.startsWith(href) || false;
                 }
 
-                // ────────────────────────────────────────────────────────────
-                // STYLING BASED ON ACTIVE STATE
-                // ────────────────────────────────────────────────────────────
+                // styling based on active state
+
                 const bgColor = active ? "bg-white" : "bg-black";
                 const textColor = active ? "text-danger" : "text-white";
 
@@ -190,12 +117,11 @@ export default function KambazNavigation() {
                     ? (active ? "text-danger" : "text-white")
                     : "text-danger";
 
-                // ────────────────────────────────────────────────────────────
-                // SMART ROUTING FOR COURSES
-                // ────────────────────────────────────────────────────────────
+
+                // courses
                 let linkHref = href;
                 if (id === "courses") {
-                    // If already in a course, navigate to that course's Home
+                    // course's Home
                     if (pathname?.includes("/Courses/")) {
                         const match = pathname.match(/\/Courses\/([^\/]+)/);
                         linkHref = match
@@ -207,9 +133,7 @@ export default function KambazNavigation() {
                     }
                 }
 
-                // ────────────────────────────────────────────────────────────
-                // RENDER NAVIGATION ITEM
-                // ────────────────────────────────────────────────────────────
+                // render
                 return (
                     <ListGroupItem
                         key={id}
@@ -233,32 +157,3 @@ export default function KambazNavigation() {
         </ListGroup>
     );
 }
-
-// ═══════════════════════════════════════════════════════════════════════════
-// USAGE NOTES
-// ═══════════════════════════════════════════════════════════════════════════
-/**
- * HOW TO USE THIS COMPONENT:
- *
- * 1. Import in your layout:
- *    import KambazNavigation from "./Navigation";
- *
- * 2. Add to layout:
- *    <KambazNavigation />
- *
- * 3. To add new navigation items:
- *    - Add entry to NAV_LINKS array
- *    - Import the icon you want to use
- *    - That's it! The component will handle the rest.
- *
- * CUSTOMIZATION:
- * - Width: Change the style={{ width: 110 }} prop
- * - Colors: Modify bgColor and textColor variables
- * - Icons: Import different icons from react-icons
- *
- * DATA-DRIVEN APPROACH:
- * - All navigation items come from NAV_LINKS array
- * - No hardcoded JSX for each link
- * - Easy to maintain and extend
- * - Follows DRY (Don't Repeat Yourself) principle
- */

@@ -1,28 +1,10 @@
-/**
- * ═══════════════════════════════════════════════════════════════════════════
- * DASHBOARD STYLES
- * ═══════════════════════════════════════════════════════════════════════════
- *
- * Location: app/(Kambaz)/Dashboard/dashboard.css
- *
- * All dashboard-specific styling
- * Keeps styles organized and separated from global styles
- *
- * @author Kambaz Development Team
- * @version 5.0
- */
-
-/* ───────────────────────────────────────────────────────────────────────────
-   DASHBOARD GRID LAYOUT
-   ─────────────────────────────────────────────────────────────────────────── */
-
-/* Courses row - custom spacing */
+/* Courses row*/
 #wd-dashboard-courses .wd-courses-row {
     flex-wrap: wrap;
     margin: 0 -16px;
 }
 
-/* Course columns - FIXED 270px width with 32px spacing */
+/* Course columns*/
 #wd-dashboard-courses .wd-course-col {
     width: 270px !important;
     min-width: 270px !important;
@@ -36,9 +18,7 @@
     height: 100%;
 }
 
-/* ───────────────────────────────────────────────────────────────────────────
-   COURSE CARD STYLING
-   ─────────────────────────────────────────────────────────────────────────── */
+/* styling */
 
 #wd-dashboard .wd-course-card {
     background-color: rgba(255, 255, 255, 0.68) !important;
@@ -57,7 +37,7 @@
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Course link wrapper */
+/* link wrapper */
 #wd-dashboard .wd-course-link {
     text-decoration: none;
     color: inherit;
@@ -66,9 +46,7 @@
     height: 100%;
 }
 
-/* ───────────────────────────────────────────────────────────────────────────
-   COURSE IMAGE SECTION
-   ─────────────────────────────────────────────────────────────────────────── */
+/* image section */
 
 #wd-dashboard .wd-img-wrap {
     position: relative;
@@ -121,9 +99,7 @@
     z-index: 2;
 }
 
-/* ───────────────────────────────────────────────────────────────────────────
-   CARD BODY CONTENT
-   ─────────────────────────────────────────────────────────────────────────── */
+/* card body content */
 
 #wd-dashboard .wd-card-body {
     padding: 12px;
@@ -181,9 +157,7 @@
     flex: 1;
 }
 
-/* ───────────────────────────────────────────────────────────────────────────
-   GO BUTTON
-   ─────────────────────────────────────────────────────────────────────────── */
+/* go button */
 
 #wd-dashboard .wd-go-button {
     width: 100%;
@@ -191,9 +165,7 @@
     flex-shrink: 0;
 }
 
-/* ───────────────────────────────────────────────────────────────────────────
-   MINI ICONS - POSITIONED AT BOTTOM
-   ─────────────────────────────────────────────────────────────────────────── */
+/* mini icons */
 
 #wd-dashboard .wd-mini-icons {
     display: flex;
@@ -226,9 +198,7 @@
     outline: none;
 }
 
-/* ───────────────────────────────────────────────────────────────────────────
-   RESPONSIVE - MAINTAIN CARD WIDTH
-   ─────────────────────────────────────────────────────────────────────────── */
+/* responsive */
 
 @media (max-width: 768px) {
     #wd-dashboard-courses .wd-course-col {

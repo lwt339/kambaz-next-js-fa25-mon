@@ -21,12 +21,12 @@ export default function Classes() {
                 Red background
             </div>
 
-            {/* Dynamic class using template literal */}
+
             <div className={`wd-bg-${color} wd-fg-black wd-padding-10px`}>
                 Dynamic Blue background
             </div>
 
-            {/* Conditional class selection */}
+
             <div className={`${dangerous ? 'wd-bg-red' : 'wd-bg-green'} wd-fg-black wd-padding-10px`}>
                 Dangerous background
             </div>

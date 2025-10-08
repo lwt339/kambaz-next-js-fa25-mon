@@ -12,7 +12,7 @@ export default function MapFunction() {
             <div className="p-3 bg-white border rounded">
                 squares = {squares}<br/>
                 cubes = {cubes}<br/>
-                <strong>Todos:</strong>
+                Todos:
                 <ol>
                     {todos.map((todo, index) => (
                         <li key={index}>{todo}</li>

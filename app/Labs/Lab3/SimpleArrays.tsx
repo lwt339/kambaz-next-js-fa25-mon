@@ -3,7 +3,6 @@ export default function SimpleArrays() {
     let blockScoped = 5;
     const constant1 = functionScoped - blockScoped;
 
-    // Different types of arrays
     let numberArray1 = [1, 2, 3, 4, 5];
     let stringArray1 = ["string1", "string2"];
     let htmlArray1 = [<li key="1">Buy milk</li>, <li key="2">Feed the pets</li>];
@@ -16,7 +15,7 @@ export default function SimpleArrays() {
                 numberArray1 = {numberArray1}<br/>
                 stringArray1 = {stringArray1}<br/>
                 variableArray1 = {variableArray1}<br/>
-                <strong>Todo list:</strong>
+                Todo list:
                 <ol>{htmlArray1}</ol>
             </div>
             <hr/>

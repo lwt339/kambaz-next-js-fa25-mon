@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
-import TOC from "./TOC";
-
+import TOC from "./Navigation";
 // import "./globals.css";
 export default function LabsLayout({ children }: Readonly<{ children: ReactNode }>) {
     return (

@@ -7,27 +7,21 @@ import { BsGripVertical, BsSearch, BsPlus, BsCaretDownFill } from "react-icons/b
 import { GrNotes } from "react-icons/gr";
 import { FaCheckCircle } from "react-icons/fa";
 import { IoEllipsisVertical } from "react-icons/io5";
-// Import quizzes from database
+// database
 import * as db from "../../../Database";
+import type { Quiz } from "../../../Database/type";
+
 
 export default function QuizzesPage() {
-    /**
-     * Get course ID from URL
-     * Example: /Courses/CS5610/Quizzes → cid = "CS5610"
-     */
-    const { cid } = useParams();
 
-    /**
-     * Filter quizzes to show only those for the current course
-     * Uses the course field in each quiz object
-     */
-    const courseQuizzes = db.quizzes.filter((quiz: any) => quiz.course === cid);
+    const { cid } = useParams<{ cid: string }>();
 
-    /**
-     * Format date for display
-     * Converts ISO date string to readable format
-     */
-    const formatDate = (dateString: string) => {
+    const typedQuizzes = db.quizzes as Quiz[];
+
+    const courseQuizzes = typedQuizzes.filter((quiz: Quiz) => quiz.course === cid);
+
+
+    const formatDate = (dateString: string): string => {
         const date = new Date(dateString);
         return date.toLocaleDateString('en-US', {
             month: 'short',
@@ -38,7 +32,7 @@ export default function QuizzesPage() {
 
     return (
         <div id="wd-quizzes" className="p-4">
-            {/* Controls Section - Search and Add Quiz Button */}
+            {/* Controls Section */}
             <div className="d-flex justify-content-between align-items-center mb-4">
                 {/* Search Bar */}
                 <InputGroup style={{ width: "300px" }}>
@@ -79,29 +73,19 @@ export default function QuizzesPage() {
                     </div>
                 </ListGroupItem>
 
-                {/**
-                 * Map through filtered quizzes and create list items
-                 * Each quiz shows:
-                 * - Quiz title
-                 * - Available date
-                 * - Due date
-                 * - Points
-                 * - Number of questions
-                 * - Time limit
-                 */}
-                {courseQuizzes.map((quiz: any) => (
+
+                {courseQuizzes.map((quiz: Quiz) => (
                     <ListGroupItem
                         key={quiz._id}
                         className="border-start-0 border-end-0 p-3"
                     >
                         <div className="d-flex align-items-start justify-content-between">
-                            {/* Left side: Quiz icon and details */}
+                            {/* Quiz icon and details */}
                             <div className="d-flex align-items-start flex-grow-1">
                                 <BsGripVertical className="me-2 fs-4 text-muted mt-1" />
                                 <GrNotes className="me-3 fs-4 text-success mt-1" />
 
                                 <div className="flex-fill">
-                                    {/* Quiz Title as Link */}
                                     <Link
                                         href={`/Courses/${cid}/Quizzes/${quiz._id}`}
                                         className="text-decoration-none text-dark fw-bold"
@@ -109,7 +93,6 @@ export default function QuizzesPage() {
                                         {quiz.title}
                                     </Link>
 
-                                    {/* Quiz Details */}
                                     <div className="small text-muted mt-1">
                                         <div>
                                             <span className="text-danger">Multiple Modules</span>
@@ -131,7 +114,7 @@ export default function QuizzesPage() {
                                 </div>
                             </div>
 
-                            {/* Right side: Status icons */}
+                            {/* Status icons and menu */}
                             <div className="d-flex align-items-center gap-2">
                                 <FaCheckCircle className="text-success" />
                                 <IoEllipsisVertical className="fs-5 text-muted" />
@@ -140,7 +123,6 @@ export default function QuizzesPage() {
                     </ListGroupItem>
                 ))}
 
-                {/* Show message if no quizzes */}
                 {courseQuizzes.length === 0 && (
                     <ListGroupItem className="text-center text-muted py-4">
                         No quizzes available for this course

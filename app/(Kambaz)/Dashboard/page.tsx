@@ -61,7 +61,7 @@ export default function Dashboard() {
                                         href={`/Courses/${course._id}/Home`}
                                         className="wd-course-link"
                                     >
-                                        {/* COURSE IMAGE */}
+                                        {/* course image */}
                                         <div className="wd-img-wrap">
                                             {!imgError[course._id] ? (
                                                 <CardImg
@@ -87,11 +87,11 @@ export default function Dashboard() {
                                             {/* Bottom gradient */}
                                             <div className="wd-gradient-overlay" />
 
-                                            {/* Three dots menu */}
+                                            {/* Three dots*/}
                                             <BsThreeDotsVertical className="wd-menu-icon" />
                                         </div>
 
-                                        {/* CARD BODY */}
+                                        {/* card body */}
                                         <CardBody className="wd-card-body">
                                             {/* Course Name */}
                                             <CardTitle

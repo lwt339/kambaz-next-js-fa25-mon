@@ -11,11 +11,6 @@ interface TodoItemProps {
     todo?: Todo;
 }
 
-/**
- * TodoItem Component
- * Renders a single todo item with checkbox and status
- * Demonstrates React props and default values
- */
 export default function TodoItem({
                              todo = {
                                  done: true,
@@ -23,7 +18,7 @@ export default function TodoItem({
                                  status: 'COMPLETED'
                              }
                          }: TodoItemProps) {
-    // Determine status color based on todo status
+
     const getStatusColor = (status: string) => {
         switch(status) {
             case 'COMPLETED': return 'text-success';

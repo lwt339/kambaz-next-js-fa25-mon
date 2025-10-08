@@ -18,7 +18,7 @@ export default function Styles() {
         <div id="wd-styles" className="mb-4">
             <h2>Styles</h2>
 
-            {/* Inline style object with double curly braces */}
+
             <div style={{
                 backgroundColor: "lightyellow",
                 color: "black",

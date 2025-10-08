@@ -1,10 +1,3 @@
-/**
- * ModulesControls Component - With Working Collapse/Expand
- * Location: app/(Kambaz)/Courses/[cid]/Modules/ModulesControls.tsx
- *
- * Now accepts props to handle collapse/expand functionality
- */
-
 import { Button, Dropdown } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa6";
 import { MdDoNotDisturbAlt } from "react-icons/md";

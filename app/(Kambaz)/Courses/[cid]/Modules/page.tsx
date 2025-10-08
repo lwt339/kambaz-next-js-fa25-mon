@@ -1,17 +1,4 @@
-/**
- * ═══════════════════════════════════════════════════════════════════════════
- * MODULES PAGE - WITH WORKING COLLAPSE/EXPAND
- * ═══════════════════════════════════════════════════════════════════════════
- *
- * Location: app/(Kambaz)/Courses/[cid]/Modules/page.tsx
- *
- * FEATURES:
- * ✅ Working collapse/expand for each module
- * ✅ Collapse All / Expand All button functionality
- * ✅ No module description shown
- * ✅ Database-driven
- * ✅ All styling in modules.css
- */
+
 
 "use client";
 
@@ -49,10 +36,8 @@ export default function Modules() {
         (module: Module) => module.course === cid
     );
 
-    // ────────────────────────────────────────────────────────────────────────
-    // STATE FOR COLLAPSE/EXPAND
-    // ────────────────────────────────────────────────────────────────────────
-    // Track which modules are collapsed (by module ID)
+    // state for collapse/expand
+    // by module ID
     const [collapsedModules, setCollapsedModules] = useState<Set<string>>(new Set());
 
     // Toggle individual module
@@ -90,9 +75,9 @@ export default function Modules() {
                 onExpandAll={expandAll}
                 allCollapsed={allCollapsed}
             />
-            <br /><br /><br /><br />
+            <br /><br />
 
-            {/* MODULES LIST */}
+            {/* modules list */}
             <ListGroup className="wd-modules-list">
                 {courseModules.map((module: Module) => {
                     const isCollapsed = collapsedModules.has(module._id);
@@ -102,14 +87,14 @@ export default function Modules() {
                             key={module._id}
                             className="wd-module"
                         >
-                            {/* MODULE HEADER */}
+                            {/* module header */}
                             <div
                                 className="wd-module-header"
                                 onClick={() => toggleModule(module._id)}
                             >
                                 <BsGripVertical className="wd-grip-icon" />
 
-                                {/* Collapse/Expand Arrow */}
+                                {/* Collapse Expand Arrow */}
                                 {isCollapsed ? (
                                     <IoMdArrowDropright className="wd-collapse-icon" />
                                 ) : (
@@ -124,7 +109,7 @@ export default function Modules() {
                                 </div>
                             </div>
 
-                            {/* LESSONS LIST - Only show if not collapsed */}
+                            {/* lessons list */}
                             {!isCollapsed && module.lessons && module.lessons.length > 0 && (
                                 <ListGroup className="wd-lessons-list">
                                     {module.lessons.map((lesson: Lesson) => (
@@ -148,7 +133,7 @@ export default function Modules() {
                 })}
             </ListGroup>
 
-            {/* NO MODULES MESSAGE */}
+            {/* no modules */}
             {courseModules.length === 0 && (
                 <div className="wd-no-modules">
                     <p>No modules available for this course yet.</p>

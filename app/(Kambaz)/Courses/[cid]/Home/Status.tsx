@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import { MdDoNotDisturbAlt } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
 import { BiImport } from "react-icons/bi";
@@ -6,7 +7,6 @@ import { GrHomeRounded } from "react-icons/gr";
 import { BiTargetLock } from "react-icons/bi";
 import { TbBellRinging } from "react-icons/tb";
 import { SiGoogleanalytics } from "react-icons/si";
-import { Button } from "react-bootstrap";
 
 export default function CourseStatus() {
     return (

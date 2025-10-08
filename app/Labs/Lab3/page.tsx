@@ -1,5 +1,7 @@
 "use client";
 
+import WorkingWithLocation from "./WorkingWithLocation";
+
 import VariablesAndConstants from "./VariablesAndConstants";
 import VariableTypes from "./VariableTypes";
 import BooleanVariables from "./BooleanVariables";
@@ -34,16 +36,18 @@ import PathParameters from "./PathParameters";
 import TodoList from "./todos/TodoList";
 
 export default function Lab3() {
-    // Log to console for debugging demonstration
-    console.log('Lab 3 Component Loaded!');
+
+    console.log('Hello World!');
 
     return (
         <div id="wd-lab3" className="container">
+            <WorkingWithLocation />
             <h2 className="mb-4">Lab 3 - Creating Single Page Applications with React</h2>
 
-            {/* Section 3.2: Introduction to JavaScript */}
+
+            {/* Introduction to JavaScript */}
             <section className="mb-5 p-4 border rounded bg-light">
-                <h3 className="text-primary">JavaScript Fundamentals</h3>
+                <h3 className="text-primary">JavaScript </h3>
 
                 {/* Variables and Constants */}
                 <VariablesAndConstants />
@@ -58,29 +62,29 @@ export default function Lab3() {
                 <IfElse />
                 <TernaryOperator />
 
-                {/* Conditional Output */}
+
                 <ConditionalOutputIfElse />
                 <ConditionalOutputInline />
             </section>
 
-            {/* Section 3.3: JavaScript Functions */}
+            {/* JavaScript Functions */}
             <section className="mb-5 p-4 border rounded bg-light">
                 <h3 className="text-primary">JavaScript Functions</h3>
 
-                {/* Legacy Functions */}
+
                 <LegacyFunctions />
 
-                {/* Arrow Functions */}
+
                 <ArrowFunctions />
 
-                {/* Implied Returns */}
+
                 <ImpliedReturn />
 
-                {/* Template Literals */}
+
                 <TemplateLiterals />
             </section>
 
-            {/* Section 3.4: JavaScript Data Structures */}
+            {/* JavaScript Data Structures */}
             <section className="mb-5 p-4 border rounded bg-light">
                 <h3 className="text-primary">JavaScript Data Structures</h3>
 
@@ -99,31 +103,39 @@ export default function Lab3() {
                 {/* JSON */}
                 <JsonStringify />
                 <House />
+            </section>
 
-                {/* Advanced Operations */}
+                {/* Todo List Application */}
+                <section className="mb-5 p-4 border rounded bg-light">
+                    <h3 className="text-primary">Todo List Application</h3>
+                    <TodoList />
+                </section>
+
+                {/* Operations */}
+            <section className="mb-5 p-4 border rounded bg-light">
                 <Spreading />
                 <Destructing />
                 <FunctionDestructing />
                 <DestructingImports />
             </section>
 
-            {/* Section 3.5: Dynamic Styling */}
+            {/* Dynamic Styling */}
             <section className="mb-5 p-4 border rounded bg-light">
                 <h3 className="text-primary">Dynamic Styling</h3>
 
-                {/* Classes and Styles */}
+
                 <Classes />
                 <Styles />
             </section>
 
-            {/* Section 3.6: Parameterizing Components */}
+            {/* Parameterizing Components */}
             <section className="mb-5 p-4 border rounded bg-light">
                 <h3 className="text-primary">Parameterizing Components</h3>
 
-                {/* Component Parameters */}
+
                 <Add a={3} b={4} />
 
-                {/* Child Components */}
+
                 <div className="mb-3">
                     <h4>Square of 4</h4>
                     <Square>4</Square>
@@ -141,11 +153,7 @@ export default function Lab3() {
                 <PathParameters />
             </section>
 
-            {/* Section 3.7: Todo List Application */}
-            <section className="mb-5 p-4 border rounded bg-light">
-                <h3 className="text-primary">Todo List Application</h3>
-                <TodoList />
-            </section>
+
 
             {/* Navigation Links */}
             <div className="mt-5 p-3 bg-info bg-opacity-10 rounded">
@@ -153,7 +161,7 @@ export default function Lab3() {
                 <ul>
                     <li><a href="/Labs">Back to Labs Index</a></li>
                     <li><a href="/">Kambaz Application</a></li>
-                    <li><a href="https://github.com/yourusername/kambaz-react">GitHub Repository</a></li>
+                    <li><a href="https://github.com/lwt339/kambaz-next-js-fa25-mon">GitHub Repository</a></li>
                 </ul>
             </div>
         </div>

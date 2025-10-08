@@ -6,22 +6,13 @@ export default function CourseNavigation() {
     const { cid } = useParams();
     const pathname = usePathname();
 
-    // checking active state
-    const isActive = (path: string) => {
-        return pathname.includes(path);
-    };
+    // Data structure for navigation links
+    const links = ["Home", "Modules", "Piazza", "Zoom", "Assignments", "Quizzes", "Grades", "People"];
 
-    // navigation links
-    const links = [
-        { name: "Home", path: `/Courses/${cid}/Home` },
-        { name: "Modules", path: `/Courses/${cid}/Modules` },
-        { name: "Piazza", path: `/Courses/${cid}/Piazza` },
-        { name: "Zoom", path: `/Courses/${cid}/Zoom` },
-        { name: "Assignments", path: `/Courses/${cid}/Assignments` },
-        { name: "Quizzes", path: `/Courses/${cid}/Quizzes` },
-        { name: "Grades", path: `/Courses/${cid}/Grades` },
-        { name: "People", path: `/Courses/${cid}/People` },
-    ];
+    // Helper function
+    const isActive = (linkName: string) => {
+        return pathname.includes(`/Courses/${cid}/${linkName}`);
+    };
 
     return (
         <div
@@ -31,19 +22,19 @@ export default function CourseNavigation() {
         >
             {links.map((link) => (
                 <Link
-                    key={link.name}
-                    href={link.path}
+                    key={link}
+                    href={`/Courses/${cid}/${link}`}
                     className={`list-group-item border-0 ${
-                        isActive(link.path)
-                            ? 'active text-black border-start border-4 border-black'
-                            : 'text-danger'
+                        isActive(link)
+                            ? "active text-black border-start border-4 border-black"
+                            : "text-danger"
                     }`}
                     style={{
-                        backgroundColor: isActive(link.path) ? 'white' : 'transparent',
-                        paddingLeft: isActive(link.path) ? '12px' : '16px'
+                        backgroundColor: isActive(link) ? "white" : "transparent",
+                        paddingLeft: isActive(link) ? "12px" : "16px"
                     }}
                 >
-                    {link.name}
+                    {link}
                 </Link>
             ))}
         </div>

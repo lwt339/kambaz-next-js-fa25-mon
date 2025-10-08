@@ -23,6 +23,28 @@ body * {
     text-decoration: underline !important;
 }
 
+/* Breadcrumb link hover effect */
+.breadcrumb-link {
+    position: relative;
+    transition: text-decoration 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+    text-decoration: underline !important;
+}
+
+.breadcrumb-link:active {
+    text-decoration: underline !important;
+    opacity: 0.8;
+}
+
+
+.breadcrumb-link:hover,
+.breadcrumb-link:active {
+    color: #c82333;
+}
+
+
 /* NAVIGATION */
 /* Active State */
 .list-group.wd > .list-group-item.active {

@@ -1,14 +1,3 @@
-/**
- * ═══════════════════════════════════════════════════════════════════════════
- * ASSIGNMENT EDITOR - DATABASE-DRIVEN
- * ═══════════════════════════════════════════════════════════════════════════
- *
- * Location: app/(Kambaz)/Courses/[cid]/Assignments/[aid]/page.tsx
- *
- * Edit or create assignments with data from database
- * All styling in assignments.css
- */
-
 "use client";
 
 import { useState } from "react";
@@ -17,34 +6,56 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import AssignToInput from "./AssignToInput";
 import * as db from "../../../../Database";
+import type { Assignment } from "../../../../Database/type";
 import "../assignments.css";
 
 export default function AssignmentEditor() {
-    const { cid, aid } = useParams();
+    /**
+     * Extract route parameters
+     */
+    const params = useParams();
+    const cid = params.cid as string;
+    const aid = params.aid as string;
+
     const router = useRouter();
 
-    // Find assignment in database
-    const assignment = db.assignments.find((a: any) => a._id === aid);
+    /**
+     * database import
+     */
+    const typedAssignments = db.assignments as Assignment[];
 
-    // Determine if creating new or editing existing
+    /**
+     * Find the assignment in the database
+     */
+    const assignment = typedAssignments.find((a: Assignment) => a._id === aid);
+
+    /**
+     * new assignment or editing an existing one
+     */
     const isNew = aid === "new" || !assignment;
 
-    // State for assign to field
+    /**
+     * State for the "Assign to
+     */
     const [assignedTo, setAssignedTo] = useState<string[]>(
         isNew ? ['Everyone'] : ['Everyone']
     );
 
-    // Format dates for datetime-local input
+
     const formatDateForInput = (dateString: string): string => {
+        // Handle empty or invalid dates
         if (!dateString) return "";
+
         const date = new Date(dateString);
+
+        // cuts off everything after the minutes
         return date.toISOString().slice(0, 16);
     };
 
     return (
         <div id="wd-assignment-editor" className="p-4">
             <Form>
-                {/* Assignment Name */}
+                {/* Assignment Name Field */}
                 <Form.Group className="mb-3">
                     <Form.Label htmlFor="wd-name">
                         Assignment Name
@@ -56,7 +67,7 @@ export default function AssignmentEditor() {
                     />
                 </Form.Group>
 
-                {/* Description */}
+                {/* Description Field */}
                 <Form.Group className="mb-4">
                     <Form.Control
                         as="textarea"
@@ -66,7 +77,7 @@ export default function AssignmentEditor() {
                     />
                 </Form.Group>
 
-                {/* Points */}
+                {/* Points Field */}
                 <Row className="mb-3">
                     <Form.Label column sm={3} className="text-end">
                         Points
@@ -80,7 +91,7 @@ export default function AssignmentEditor() {
                     </Col>
                 </Row>
 
-                {/* Assignment Group */}
+                {/* Assignment Group Dropdown */}
                 <Row className="mb-3">
                     <Form.Label column sm={3} className="text-end" htmlFor="wd-group">
                         Assignment Group
@@ -95,7 +106,7 @@ export default function AssignmentEditor() {
                     </Col>
                 </Row>
 
-                {/* Display Grade As */}
+                {/* Display Grade As Dropdown */}
                 <Row className="mb-3">
                     <Form.Label column sm={3} className="text-end" htmlFor="wd-display-grade-as">
                         Display Grade as
@@ -111,7 +122,7 @@ export default function AssignmentEditor() {
                     </Col>
                 </Row>
 
-                {/* Submission Type */}
+                {/* Submission Type Section */}
                 <Row className="mb-3">
                     <Form.Label column sm={3} className="text-end">
                         Submission Type
@@ -138,7 +149,7 @@ export default function AssignmentEditor() {
                     </Col>
                 </Row>
 
-                {/* Submission Attempts */}
+                {/* Submission Attempts Dropdown */}
                 <Row className="mb-3">
                     <Form.Label column sm={3} className="text-end">
                         Submission Attempts
@@ -154,7 +165,7 @@ export default function AssignmentEditor() {
                     </Col>
                 </Row>
 
-                {/* Group Assignment */}
+                {/* Group Assignment Checkbox */}
                 <Row className="mb-3">
                     <Form.Label column sm={3} className="text-end">
                         Group Assignment
@@ -168,7 +179,7 @@ export default function AssignmentEditor() {
                     </Col>
                 </Row>
 
-                {/* Peer Reviews */}
+                {/* Peer Reviews Checkbox */}
                 <Row className="mb-3">
                     <Form.Label column sm={3} className="text-end">
                         Peer Reviews
@@ -197,6 +208,7 @@ export default function AssignmentEditor() {
                                 hideHelperText={true}
                             />
 
+                            {/* Due Date Input */}
                             <Form.Group className="mb-3">
                                 <Form.Label className="fw-bold" htmlFor="wd-due-date">
                                     Due
@@ -204,10 +216,11 @@ export default function AssignmentEditor() {
                                 <Form.Control
                                     type="datetime-local"
                                     id="wd-due-date"
-                                    defaultValue={isNew ? "" : formatDateForInput(assignment?.dueDate)}
+                                    defaultValue={isNew ? "" : formatDateForInput(assignment?.dueDate || "")}
                                 />
                             </Form.Group>
 
+                            {/* Available From and Until Date Inputs */}
                             <Row>
                                 <Col md={6}>
                                     <Form.Group className="mb-3">
@@ -217,7 +230,7 @@ export default function AssignmentEditor() {
                                         <Form.Control
                                             type="datetime-local"
                                             id="wd-available-from"
-                                            defaultValue={isNew ? "" : formatDateForInput(assignment?.availableDate)}
+                                            defaultValue={isNew ? "" : formatDateForInput(assignment?.availableDate || "")}
                                         />
                                     </Form.Group>
                                 </Col>
@@ -241,11 +254,14 @@ export default function AssignmentEditor() {
                 <hr className="my-4" />
 
                 <div className="d-flex justify-content-end gap-2">
+                    {/* Cancel Button */}
                     <Link href={`/Courses/${cid}/Assignments`}>
                         <Button variant="secondary">
                             Cancel
                         </Button>
                     </Link>
+
+                    {/* Save Button */}
                     <Button
                         variant="danger"
                         onClick={() => router.push(`/Courses/${cid}/Assignments`)}

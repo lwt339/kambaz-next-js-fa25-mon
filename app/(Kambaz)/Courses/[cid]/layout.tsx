@@ -28,10 +28,10 @@ export default function CourseLayout({
     const [showKambazNav, setShowKambazNav] = useState(false);
     const [showCourseNav, setShowCourseNav] = useState(false);
 
-    // Find the actual course from database
+    // database
     const course = courses.find((c) => c._id === cid);
 
-    // Canvas-style navigation items
+    // navigation items
     const canvasNavItems = [
         { id: "dashboard", label: "Dashboard", href: "/Dashboard", icon: AiOutlineDashboard },
         { id: "account", label: "Account", href: "/Account", icon: FaRegCircleUser },
@@ -45,7 +45,7 @@ export default function CourseLayout({
 
     return (
         <div id="wd-courses">
-            {/* COURSE HEADER WITH BREADCRUMB */}
+            {/* course header with breadcrumb */}
             <div className="d-flex align-items-center justify-content-between p-2">
                 <div className="d-flex align-items-center">
                     {/* Mobile menu button */}
@@ -57,12 +57,12 @@ export default function CourseLayout({
                         <FaAlignJustify className="fs-3" />
                     </button>
 
-                    {/* COURSE TITLE + BREADCRUMB (SAME LINE) */}
+                    {/* course title + breadcrumb*/}
                     <div className="d-flex align-items-center text-danger">
                         {/* Desktop icon */}
                         <FaAlignJustify className="me-3 fs-4 d-none d-md-inline" />
 
-                        {/* Clickable course title (Course ID + Name) */}
+                        {/* course title*/}
                         <Link
                             href={`/Courses/${cid}/Home`}
                             className="text-danger text-decoration-none hover-underline"
@@ -71,7 +71,7 @@ export default function CourseLayout({
                             {course?.number} {course?.name || `Course ${cid}`}
                         </Link>
 
-                        {/* Breadcrumb (shows only section path) */}
+                        {/* Breadcrumb*/}
                         <span style={{ fontSize: '1.5rem', fontWeight: 500 }}>
                             <Breadcrumb course={course} />
                         </span>
@@ -92,7 +92,7 @@ export default function CourseLayout({
 
             {/* Main content layout */}
             <div className="d-flex">
-                {/* Course Navigation Sidebar (Desktop) */}
+                {/* Course Navigation Sidebar*/}
                 <div className="d-none d-md-block">
                     <CourseNavigation />
                 </div>
@@ -103,7 +103,7 @@ export default function CourseLayout({
                 </div>
             </div>
 
-            {/* Main Kambaz Navigation Drawer (Mobile) */}
+            {/* Main Kambaz Navigation Drawer*/}
             <Offcanvas
                 show={showKambazNav}
                 onHide={() => setShowKambazNav(false)}
@@ -166,7 +166,7 @@ export default function CourseLayout({
                 </Offcanvas.Body>
             </Offcanvas>
 
-            {/* Course Navigation Drawer (Mobile) */}
+            {/* Course Navigation Drawer */}
             <Offcanvas
                 show={showCourseNav}
                 onHide={() => setShowCourseNav(false)}

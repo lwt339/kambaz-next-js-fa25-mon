@@ -6,9 +6,9 @@ export default function IfElse() {
             <h4>If Else</h4>
             <div className="p-3 bg-white border rounded">
 
-                {true1 && <p className="text-success">true1</p>}
+                {true1 && <p >true1</p>}
 
-                {!false1 ? <p className="text-info">!false1</p> : <p>false1</p>}
+                {!false1 ? <p >!false1</p> : <p>false1</p>}
             </div>
             <hr/>
         </div>

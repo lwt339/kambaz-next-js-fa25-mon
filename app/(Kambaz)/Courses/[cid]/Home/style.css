@@ -1,0 +1,129 @@
+
+#wd-home {
+    width: 100%;
+}
+
+#wd-home .d-flex {
+    gap: 1.5rem;
+}
+
+/* Main content area */
+#wd-home .flex-fill {
+    min-width: 0;
+}
+
+/*course status component*/
+#wd-course-status {
+    width: 320px;
+    padding: 1rem;
+}
+
+#wd-course-status h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Button styling within Course Status */
+#wd-course-status .btn {
+    font-size: 1rem;
+    padding: 0.625rem 1rem;
+}
+
+#wd-course-status .btn-secondary {
+    background-color: #c7cdd1;
+    border-color: #c7cdd1;
+    color: #000;
+}
+
+#wd-course-status .btn-secondary:hover {
+    background-color: #b8bec2;
+    border-color: #b8bec2;
+    color: #000;
+}
+
+#wd-course-status .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+#wd-course-status .btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Icon alignment in buttons */
+#wd-course-status .btn .fs-5 {
+    vertical-align: middle;
+}
+
+
+/* Large screens*/
+@media (min-width: 992px) {
+    #wd-home .d-flex {
+        justify-content: space-between;
+    }
+
+    /* available space */
+    #wd-home .flex-fill {
+        max-width: calc(100% - 344px);
+    }
+}
+
+/* Medium screens */
+@media (max-width: 991px) {
+    /* Course Status is hidden, modules take full width */
+    #wd-home .flex-fill {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Small screens  */
+@media (max-width: 767px) {
+    #wd-home {
+        padding: 0;
+    }
+
+    #wd-home .d-flex {
+        gap: 0;
+    }
+}
+
+/* utility classes for home */
+.mb-1 {
+    margin-bottom: 0.25rem !important;
+}
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.me-1 {
+    margin-right: 0.25rem !important;
+}
+
+.me-2 {
+    margin-right: 0.5rem !important;
+}
+
+.ms-4 {
+    margin-left: 1.5rem !important;
+}
+
+.w-50 {
+    width: 50% !important;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.text-start {
+    text-align: left !important;
+}
+
+.text-nowrap {
+    white-space: nowrap !important;
+}
