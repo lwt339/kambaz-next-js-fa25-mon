@@ -1,9 +1,11 @@
 import Link from "next/link";
+import TOC from "./TOC"
 
 export default function Labs() {
     return (
         <div id="wd-labs">
             <h1>Labs</h1>
+            <TOC/>
             <h2>Weiting Liu</h2>
             <h3>CS5610 Fall 2025 Section 04</h3>
             <ul>

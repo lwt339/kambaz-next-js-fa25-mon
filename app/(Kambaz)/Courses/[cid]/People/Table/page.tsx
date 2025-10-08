@@ -18,22 +18,20 @@ export default function PeopleTable() {
 
     /* Format a date-time */
     const formatDateTime = (dateString: string): string => {
-        // Create a Date object from the ISO string
-        // The Date constructor automatically parses ISO 8601 format
+        // Create a Date object from
         const date = new Date(dateString);
 
-        // Extract individual components of the date
-        // These methods return numbers that we'll format into strings
-        const year = date.getFullYear();           // e.g., 2025
-        const month = date.toLocaleDateString('en-US', { month: 'short' }); // e.g., "Oct"
-        const day = date.getDate();                // e.g., 2 (no leading zero)
+
+        const year = date.getFullYear();
+        const month = date.toLocaleDateString('en-US', { month: 'short' });
+        const day = date.getDate();
 
         // Format the time portion
-        // We use toLocaleTimeString with specific options to get 12-hour format
+
         const time = date.toLocaleTimeString('en-US', {
-            hour: 'numeric',      // "2" instead of "02"
-            minute: '2-digit',    // "32" (always two digits for minutes)
-            hour12: true          // Use AM/PM instead of 24-hour format
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
         });
 
         // Combine all parts with spaces
@@ -42,8 +40,10 @@ export default function PeopleTable() {
 
     /* Format the total activity  */
     const formatTotalActivity = (activityString: string): string => {
+        const parts = activityString.split(':');
+        const [hours = "0", minutes = "0", seconds = "0"] = parts;
 
-        return activityString;
+        return `${hours}h ${minutes}m ${seconds}s`;
     };
 
     return (
