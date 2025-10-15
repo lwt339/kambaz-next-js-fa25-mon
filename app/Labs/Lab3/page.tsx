@@ -38,10 +38,21 @@ import TodoList from "./todos/TodoList";
 import Link from "next/link";
 import {ListGroup, ListGroupItem} from "react-bootstrap";
 
+interface Todo {
+    id: string;
+    title: string;
+}
+
+interface RootState {
+    todosReducer: {
+        todos: Todo[];
+    };
+}
+
 export default function Lab3() {
 
     console.log('Hello World!');
-    const { todos } = useSelector((state: any) => state.todosReducer);
+    const { todos } = useSelector((state: RootState) => state.todosReducer);
 
     return (
         <div id="wd-lab3" className="container">
@@ -49,7 +60,7 @@ export default function Lab3() {
             <h2 className="mb-4">Lab 3 - Creating Single Page Applications with React</h2>
 
             <ListGroup>
-                {todos.map((todo: any) => (
+                {todos.map((todo: Todo) => (
                     <ListGroupItem key={todo.id}>
                         {todo.title}
                     </ListGroupItem>
