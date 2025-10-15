@@ -1,6 +1,6 @@
 // File: app/Labs/Lab4/ReduxExamples/HelloRedux/page.tsx
 // Shows how to read from Redux
-
+"use client";
 import { useSelector } from "react-redux";
 
 interface LabsRootState {
