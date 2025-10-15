@@ -1,5 +1,33 @@
 [
   {
+    "_id": "ADMIN001",
+    "username": "admin",
+    "password": "admin5610",
+    "firstName": "System",
+    "lastName": "Administrator",
+    "email": "admin@kambaz.northeastern.edu",
+    "dob": "1990-01-01",
+    "role": "ADMIN",
+    "loginId": "ADMIN001",
+    "section": "ALL",
+    "lastActivity": "2025-10-10T14:30:00",
+    "totalActivity": "500:00:00"
+  },
+  {
+    "_id": "000",
+    "username": "faculty",
+    "password": "123456",
+    "firstName": "Prof",
+    "lastName": "Faculty",
+    "email": "faculty@northeastern.edu",
+    "dob": "1990-03-15",
+    "role": "FACULTY",
+    "loginId": "123456789S",
+    "section": "SEC01",
+    "lastActivity": "2025-10-10T14:32:00",
+    "totalActivity": "20:23:15"
+  },
+  {
     "_id": "U001",
     "username": "alice_johnson",
     "password": "secure123",

@@ -1,10 +1,15 @@
+// File: app/Labs/Navigation.tsx
+// Labs sidebar navigation
+
 "use client";
+
 import { Nav, NavItem, NavLink } from "react-bootstrap";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function TOC() {
     const pathname = usePathname();
+
     return (
         <Nav variant="pills" className="flex-column">
             <NavItem>
@@ -37,6 +42,14 @@ export default function TOC() {
                     as={Link}
                     active={pathname === "/Labs/Lab3"}>
                     Lab 3
+                </NavLink>
+            </NavItem>
+            <NavItem>
+                <NavLink
+                    href="/Labs/Lab4"
+                    as={Link}
+                    active={pathname === "/Labs/Lab4"}>
+                    Lab 4
                 </NavLink>
             </NavItem>
             <NavItem>

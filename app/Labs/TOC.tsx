@@ -8,7 +8,7 @@ export default function TOC() {
     return (
         <Nav variant="pills">
             <NavItem>
-                <NavLink href="/Labs" as={Link} className={`nav-link ${pathname.endsWith("Labs") ? "active" : ""}`}>
+                <NavLink href="/Labs" as={Link} className={`nav-link ${pathname === ("Labs") ? "active" : ""}`}>
                     Labs</NavLink>
             </NavItem>
             <NavItem>
@@ -24,13 +24,17 @@ export default function TOC() {
                     Lab 3</NavLink>
             </NavItem>
             <NavItem>
+                <NavLink href="/Labs/Lab4" as={Link} className={`nav-link ${pathname.endsWith("Lab4") ? "active" : ""}`}>
+                    Lab 4</NavLink>
+            </NavItem>
+            <NavItem>
                 <NavLink href="/" as={Link}>Kambaz</NavLink>
             </NavItem>
             <NavItem>
            <NavLink
                id="wd-github"
                href="https://github.com/lwt339/kambaz-next-js-fa25-mon">
-               My GitHub Repository </NavLink>
+               My GitHub </NavLink>
             </NavItem>
         </Nav>
   );

@@ -1,4 +1,7 @@
-/* Course Interface */
+// File: app/(Kambaz)/Database/type.ts
+// All TypeScript interfaces for our database objects
+
+// Represents a single course
 export interface Course {
     _id: string;
     name: string;
@@ -13,7 +16,7 @@ export interface Course {
     color: string;
 }
 
-/* Module Interface */
+// Represents a module containing lessons
 export interface Module {
     _id: string;
     name: string;
@@ -22,7 +25,7 @@ export interface Module {
     lessons: Lesson[];
 }
 
-/* Lesson Interface */
+// Represents a lesson inside a module
 export interface Lesson {
     _id: string;
     name: string;
@@ -30,7 +33,7 @@ export interface Lesson {
     module: string;
 }
 
-/* Assignment Interface */
+// Represents an assignment or project
 export interface Assignment {
     _id: string;
     title: string;
@@ -39,10 +42,11 @@ export interface Assignment {
     points: number;
     dueDate: string;
     availableDate: string;
-    assignmentType: "ASSIGNMENT" | "PROJECT";
+    assignmentType: "ASSIGNMENT" | "PROJECTS";
+    editing?: boolean;
 }
 
-/* Quiz Interface */
+// Represents a quiz
 export interface Quiz {
     _id: string;
     title: string;
@@ -56,7 +60,7 @@ export interface Quiz {
     published: boolean;
 }
 
-/* Exam Interface */
+// Represents an exam
 export interface Exam {
     _id: string;
     title: string;
@@ -70,21 +74,7 @@ export interface Exam {
     published: boolean;
 }
 
-/* Project */
-export interface Project {
-    _id: string;
-    title: string;
-    course: string;
-    description: string;
-    points: number;
-    dueDate: string;
-    availableDate: string;
-    availableUntilDate: string;
-    group: boolean;
-    maxGroupSize: number;
-}
-
-/* User Interface */
+// Represents a user in the system
 export interface User {
     _id: string;
     username: string;
@@ -93,21 +83,21 @@ export interface User {
     lastName: string;
     email: string;
     dob: string;
-    role: "STUDENT" | "FACULTY" | "TA";
+    role: "STUDENT" | "FACULTY" | "TA" | "ADMIN";
     loginId: string;
     section: string;
     lastActivity: string;
     totalActivity: string;
 }
 
-/* Enrollment Interface */
+// Represents a user enrolled in a course
 export interface Enrollment {
     _id: string;
     user: string;
     course: string;
 }
 
-/* Grade Interface */
+// Represents a grade on an assignment, quiz, or exam
 export interface Grade {
     _id: string;
     student: string;
@@ -119,7 +109,18 @@ export interface Grade {
     status: "Submitted" | "Not Submitted" | "Completed";
 }
 
-/* Calendar Item */
+// Represents how much each category is worth
+export interface GradingWeights {
+    course: string;
+    weights: {
+        ASSIGNMENTS: number;
+        QUIZZES: number;
+        EXAMS: number;
+        PROJECTS: number;
+    };
+}
+
+// Unified type for calendar display
 export type CalendarItem = {
     _id: string;
     title: string;
@@ -131,8 +132,3 @@ export type CalendarItem = {
     questions?: number;
     timeLimit?: number;
 };
-
-/* Date object */
-export function parseDate(dateString: string): Date {
-    return new Date(dateString);
-}

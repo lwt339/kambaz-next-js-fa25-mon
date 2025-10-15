@@ -1,0 +1,343 @@
+/* File: app/(Kambaz)/Courses/[cid]/Home/home.css */
+/* Makes the home page look good with modules on the left and side panels on the right */
+
+/* Main container that holds everything together */
+#wd-home {
+    width: 100%;
+    gap: 1.5rem;
+}
+
+/* Left side where all the module content goes */
+#wd-home .flex-fill {
+    min-width: 0;
+}
+
+/* Course Status section at the top of the side panel */
+#wd-course-status {
+    width: 350px;
+    padding: 1rem;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+#wd-course-status h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* Buttons inside the course status section */
+#wd-course-status .btn {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    font-weight: 500;
+}
+
+#wd-course-status .btn-secondary {
+    background-color: #e9ecef;
+    border-color: #e9ecef;
+    color: #495057;
+}
+
+#wd-course-status .btn-secondary:hover {
+    background-color: #dee2e6;
+    border-color: #dee2e6;
+    color: #212529;
+}
+
+#wd-course-status .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+#wd-course-status .btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Make sure icons line up nicely with button text */
+#wd-course-status .btn .fs-5 {
+    vertical-align: middle;
+}
+
+/* Shared styling for all panels like To Do and Recent Feedback */
+.wd-panel {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.wd-panel h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 1rem;
+    margin: 0;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    color: #333;
+}
+
+.wd-panel-content {
+    padding: 0.5rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* What to show when a panel has nothing in it */
+.wd-empty-state {
+    padding: 2rem 1rem;
+    text-align: center;
+    color: #6c757d;
+}
+
+.wd-empty-icon {
+    font-size: 2rem;
+    color: #28a745;
+    margin-bottom: 0.5rem;
+}
+
+.wd-empty-state p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Each individual todo item in the list */
+.wd-todo-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.wd-todo-item:last-child {
+    border-bottom: none;
+}
+
+.wd-todo-icon {
+    color: #6c757d;
+    font-size: 1.125rem;
+    margin-top: 0.125rem;
+    flex-shrink: 0;
+}
+
+.wd-todo-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.wd-todo-link {
+    display: block;
+    color: #c82333;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-bottom: 0.125rem;
+    word-wrap: break-word;
+}
+
+.wd-todo-link:hover {
+    color: #bd2130;
+    text-decoration: underline;
+}
+
+.wd-todo-info {
+    font-size: 0.75rem;
+    color: #6c757d;
+    line-height: 1.4;
+}
+
+.wd-todo-remove {
+    background: none;
+    border: none;
+    color: #6c757d;
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.wd-todo-remove:hover {
+    color: #212529;
+}
+
+/* Styling specific to student todo panels */
+.wd-todo-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0.25rem;
+}
+
+.wd-todo-title {
+    flex: 1;
+    font-size: 0.875rem;
+    color: #c82333;
+    font-weight: 500;
+}
+
+.wd-todo-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75rem;
+    color: #6c757d;
+    padding-left: 1.75rem;
+}
+
+.wd-course-code {
+    margin-bottom: 0.125rem;
+}
+
+.wd-due-date {
+    color: #495057;
+}
+
+/* Each feedback item showing grades */
+.wd-feedback-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.wd-feedback-item:last-child {
+    border-bottom: none;
+}
+
+.wd-feedback-check {
+    color: #28a745;
+    font-size: 1.125rem;
+    margin-right: 0.5rem;
+}
+
+.wd-feedback-header {
+    display: flex;
+    align-items: center;
+}
+
+.wd-feedback-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.wd-feedback-title {
+    font-size: 0.875rem;
+    color: #c82333;
+    font-weight: 500;
+}
+
+.wd-feedback-info {
+    font-size: 0.75rem;
+    color: #6c757d;
+    line-height: 1.4;
+}
+
+.wd-feedback-details {
+    padding-left: 1.625rem;
+    margin-bottom: 0.25rem;
+}
+
+.wd-feedback-score {
+    padding-left: 1.625rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 0.25rem;
+}
+
+.wd-feedback-comment {
+    padding-left: 1.625rem;
+    font-size: 0.75rem;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Link at bottom when there's more stuff to show */
+.wd-panel-more {
+    padding: 0.75rem 0.5rem;
+    text-align: left;
+    color: #c82333;
+    font-size: 0.875rem;
+    cursor: pointer;
+    border-top: 1px solid #dee2e6;
+}
+
+.wd-panel-more:hover {
+    text-decoration: underline;
+}
+
+/* Make sure everything looks good on different screen sizes */
+@media (min-width: 1200px) {
+    #wd-home .d-flex {
+        justify-content: space-between;
+    }
+
+    #wd-home .flex-fill {
+        max-width: calc(100% - 380px);
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+    #wd-home .flex-fill {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    #wd-home {
+        padding: 0;
+        gap: 0;
+    }
+
+    #wd-home .flex-fill {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #wd-course-status {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .wd-panel {
+        margin-top: 1rem;
+    }
+}
+
+/* Nice looking scrollbar for panel content */
+.wd-panel-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.wd-panel-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.wd-panel-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.wd-panel-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Hide buttons that don't need to print */
+@media print {
+    .wd-todo-remove {
+        display: none;
+    }
+
+    #wd-course-status .btn {
+        display: none;
+    }
+}

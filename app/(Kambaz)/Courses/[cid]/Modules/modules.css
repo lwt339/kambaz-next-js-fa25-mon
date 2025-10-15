@@ -1,5 +1,4 @@
-
-/* modules container */
+/* File: app/(Kambaz)/Courses/[cid]/Modules/modules.css */
 
 #wd-modules {
     padding: 0;
@@ -10,7 +9,6 @@
 }
 
 /* module item */
-
 .wd-module {
     padding: 0;
     margin-bottom: 20px;
@@ -19,10 +17,9 @@
     border-radius: 0;
 }
 
-/* module header */
-
+/* module header - wider and taller */
 .wd-module-header {
-    padding: 12px 16px 12px 8px;
+    padding: 20px 20px 20px 12px;
     background-color: #c7cdd1 !important;
     display: flex;
     align-items: center;
@@ -58,14 +55,34 @@
     flex-shrink: 0;
 }
 
-/* lessons list */
+/* Icon hover effects */
+.wd-module-header .text-primary,
+.wd-module-header .text-danger,
+.wd-module-header .fs-2,
+.wd-module-header .fs-4 {
+    transition: transform 0.2s ease;
+}
 
+.wd-module-header .text-primary:hover,
+.wd-module-header .text-danger:hover,
+.wd-module-header .fs-2:hover,
+.wd-module-header .fs-4:hover {
+    transform: scale(1.25);
+}
+
+.wd-module-header .text-primary:active,
+.wd-module-header .text-danger:active,
+.wd-module-header .fs-2:active,
+.wd-module-header .fs-4:active {
+    transform: scale(1.35);
+}
+
+/* lessons list */
 .wd-lessons-list {
     border-radius: 0;
 }
 
-/* lesson item  */
-
+/* lesson item */
 .wd-lesson {
     padding: 12px 16px;
     display: flex;
@@ -102,7 +119,6 @@
 }
 
 /* no modules message */
-
 .wd-no-modules {
     text-align: center;
     padding: 60px 20px;
@@ -115,7 +131,6 @@
 }
 
 /* module controls */
-
 #wd-modules-controls {
     display: flex;
     flex-wrap: wrap;
@@ -124,17 +139,25 @@
     margin-bottom: 20px;
 }
 
-#wd-modules-controls::after {
-    content: "";
-    display: table;
-    clear: both;
+/* Button effects for top controls */
+#wd-modules-controls .btn {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#wd-modules-controls .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#wd-modules-controls .btn:active {
+    transform: scale(1.08);
 }
 
 /* responsive design */
-
 @media (max-width: 768px) {
     .wd-module-header {
         font-size: 0.9rem;
+        padding: 16px 12px;
     }
 
     .wd-lesson {
@@ -144,22 +167,4 @@
     #wd-modules-controls {
         justify-content: center;
     }
-}
-
-/* legacy support  */
-
-/* old class names */
-.wd-title {
-    padding: 12px 16px 12px 8px;
-    background-color: #c7cdd1 !important;
-    cursor: pointer;
-    user-select: none;
-}
-
-.wd-title:hover {
-    background-color: #b8bec2 !important;
-}
-
-.border-gray {
-    border: 1px solid #c7cdd1 !important;
 }

@@ -1,3 +1,6 @@
+// File: app/(Kambaz)/Courses/[cid]/People/page.tsx
+// Main people page wrapper
+
 import PeopleTable from "./Table/page";
 
 export default function People() {

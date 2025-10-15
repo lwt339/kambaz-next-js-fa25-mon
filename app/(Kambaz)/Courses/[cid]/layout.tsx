@@ -1,6 +1,11 @@
+// File: app/(Kambaz)/Courses/[cid]/layout.tsx
+// Course layout with enrollment protection - only enrolled users can access
+
 "use client";
 
-import { ReactNode, use, useState } from "react";
+import { ReactNode, use, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 import CourseNavigation from "./Navigation";
 import { FaAlignJustify, FaBars } from "react-icons/fa";
 import { FaRegCircleUser, FaInbox } from "react-icons/fa6";
@@ -13,26 +18,54 @@ import { Offcanvas, ListGroup } from "react-bootstrap";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Breadcrumb from "./Breadcrumb";
-import { courses } from "../../Database";
+import { Course, Enrollment } from "../../Database/type";
+import { RootState } from "../../store";
+import { IconType } from "react-icons";
 
-export default function CourseLayout({
-                                         children,
-                                         params
-                                     }: {
-    children: ReactNode,
-    params: Promise<{ cid: string }>
-}) {
+interface CourseLayoutProps {
+    children: ReactNode;
+    params: Promise<{ cid: string }>;
+}
+
+// What each nav item in the mobile drawer looks like
+interface NavItem {
+    id: string;
+    label: string;
+    href: string;
+    icon: IconType;
+}
+
+export default function CourseLayout({ children, params }: CourseLayoutProps) {
     const { cid } = use(params);
     const pathname = usePathname();
+    const router = useRouter();
 
-    const [showKambazNav, setShowKambazNav] = useState(false);
-    const [showCourseNav, setShowCourseNav] = useState(false);
+    // Get everything from Redux
+    const { courses } = useSelector((state: RootState) => state.coursesReducer);
+    const { currentUser } = useSelector((state: RootState) => state.accountReducer);
+    const { enrollments } = useSelector((state: RootState) => state.enrollmentsReducer);
 
-    // database
-    const course = courses.find((c) => c._id === cid);
+    // Track mobile drawer visibility
+    const [showKambazNav, setShowKambazNav] = useState<boolean>(false);
+    const [showCourseNav, setShowCourseNav] = useState<boolean>(false);
 
-    // navigation items
-    const canvasNavItems = [
+    // Find this specific course
+    const course = courses.find((c: Course) => c._id === cid);
+
+    // Check if current user is enrolled in this course
+    const isEnrolled = currentUser && enrollments.some(
+        (e: Enrollment) => e.user === currentUser._id && e.course === cid
+    );
+
+    // Enrollment protection - kick out users who aren't enrolled
+    useEffect(() => {
+        if (currentUser && !isEnrolled) {
+            router.push("/Dashboard");
+        }
+    }, [currentUser, isEnrolled, router]);
+
+    // Main navigation items for mobile drawer
+    const canvasNavItems: NavItem[] = [
         { id: "dashboard", label: "Dashboard", href: "/Dashboard", icon: AiOutlineDashboard },
         { id: "account", label: "Account", href: "/Account", icon: FaRegCircleUser },
         { id: "courses", label: "Courses", href: `/Courses/${cid}/Home`, icon: LiaBookSolid },
@@ -43,12 +76,39 @@ export default function CourseLayout({
         { id: "help", label: "Help", href: "/Help", icon: BiHelpCircle },
     ];
 
+    // Course doesn't exist - show error
+    if (!course) {
+        return (
+            <div id="wd-courses">
+                <div className="alert alert-warning m-4">
+                    <h4>Course Not Found</h4>
+                    <p>The course with ID &quot;{cid}&quot; could not be found.</p>                    <Link href="/Dashboard" className="btn btn-primary">
+                        Return to Dashboard
+                    </Link>
+                </div>
+            </div>
+        );
+    }
+
+    // User not enrolled - show access denied while redirecting
+    if (currentUser && !isEnrolled) {
+        return (
+            <div id="wd-courses">
+                <div className="alert alert-danger m-4">
+                    <h4>Access Denied</h4>
+                    <p>You must be enrolled in this course to access it.</p>
+                    <p>Redirecting to Dashboard...</p>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div id="wd-courses">
-            {/* course header with breadcrumb */}
+            {/* Top header with course name and breadcrumbs */}
             <div className="d-flex align-items-center justify-content-between p-2">
                 <div className="d-flex align-items-center">
-                    {/* Mobile menu button */}
+                    {/* Mobile menu button for main Kambaz navigation */}
                     <button
                         className="btn btn-link text-danger d-md-none p-0 me-3"
                         onClick={() => setShowKambazNav(true)}
@@ -57,28 +117,26 @@ export default function CourseLayout({
                         <FaAlignJustify className="fs-3" />
                     </button>
 
-                    {/* course title + breadcrumb*/}
                     <div className="d-flex align-items-center text-danger">
-                        {/* Desktop icon */}
                         <FaAlignJustify className="me-3 fs-4 d-none d-md-inline" />
 
-                        {/* course title*/}
+                        {/* Course name is clickable to get back home */}
                         <Link
                             href={`/Courses/${cid}/Home`}
                             className="text-danger text-decoration-none hover-underline"
                             style={{ fontSize: '1.5rem', fontWeight: 500 }}
                         >
-                            {course?.number} {course?.name || `Course ${cid}`}
+                            {course.number} {course.name}
                         </Link>
 
-                        {/* Breadcrumb*/}
+                        {/* Breadcrumb showing current section */}
                         <span style={{ fontSize: '1.5rem', fontWeight: 500 }}>
                             <Breadcrumb course={course} />
                         </span>
                     </div>
                 </div>
 
-                {/* Mobile course nav button */}
+                {/* Mobile menu button for course navigation */}
                 <button
                     className="btn btn-link text-secondary d-md-none p-0"
                     onClick={() => setShowCourseNav(true)}
@@ -90,25 +148,24 @@ export default function CourseLayout({
 
             <hr className="my-2" />
 
-            {/* Main content layout */}
+            {/* Main layout with sidebar and content */}
             <div className="d-flex">
-                {/* Course Navigation Sidebar*/}
+                {/* Course sidebar - hidden on mobile */}
                 <div className="d-none d-md-block">
                     <CourseNavigation />
                 </div>
 
-                {/* Main Content Area */}
+                {/* Main content where course pages render */}
                 <div className="flex-fill p-3">
                     {children}
                 </div>
             </div>
 
-            {/* Main Kambaz Navigation Drawer*/}
+            {/* Mobile drawer for main Kambaz navigation */}
             <Offcanvas
                 show={showKambazNav}
                 onHide={() => setShowKambazNav(false)}
                 placement="start"
-                className="canvas-nav-offcanvas"
                 style={{ width: '320px' }}
             >
                 <Offcanvas.Header className="border-bottom pb-3">
@@ -134,7 +191,7 @@ export default function CourseLayout({
 
                 <Offcanvas.Body className="p-0">
                     <ListGroup variant="flush">
-                        {canvasNavItems.map((item) => {
+                        {canvasNavItems.map((item: NavItem) => {
                             const isActive = pathname?.includes(item.href) ||
                                 (item.id === "courses" && pathname?.includes("/Courses/"));
 
@@ -166,7 +223,7 @@ export default function CourseLayout({
                 </Offcanvas.Body>
             </Offcanvas>
 
-            {/* Course Navigation Drawer */}
+            {/* Mobile drawer for course navigation */}
             <Offcanvas
                 show={showCourseNav}
                 onHide={() => setShowCourseNav(false)}

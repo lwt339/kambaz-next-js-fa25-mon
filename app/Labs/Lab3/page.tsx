@@ -2,6 +2,7 @@
 
 import WorkingWithLocation from "./WorkingWithLocation";
 
+import { useSelector } from "react-redux";
 import VariablesAndConstants from "./VariablesAndConstants";
 import VariableTypes from "./VariableTypes";
 import BooleanVariables from "./BooleanVariables";
@@ -35,15 +36,26 @@ import Highlight from "./Highlight";
 import PathParameters from "./PathParameters";
 import TodoList from "./todos/TodoList";
 import Link from "next/link";
+import {ListGroup, ListGroupItem} from "react-bootstrap";
 
 export default function Lab3() {
 
     console.log('Hello World!');
+    const { todos } = useSelector((state: any) => state.todosReducer);
 
     return (
         <div id="wd-lab3" className="container">
             <WorkingWithLocation />
             <h2 className="mb-4">Lab 3 - Creating Single Page Applications with React</h2>
+
+            <ListGroup>
+                {todos.map((todo: any) => (
+                    <ListGroupItem key={todo.id}>
+                        {todo.title}
+                    </ListGroupItem>
+                ))}
+            </ListGroup>
+            <hr />
 
 
             {/* Introduction to JavaScript */}

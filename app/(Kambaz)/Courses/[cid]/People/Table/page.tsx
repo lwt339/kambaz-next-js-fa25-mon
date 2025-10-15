@@ -1,49 +1,43 @@
+// File: app/(Kambaz)/Courses/[cid]/People/Table/page.tsx
+// Shows all users enrolled in this course with their info
+
 "use client";
 
 import React from "react";
 import { useParams } from "next/navigation";
 import { FaUserCircle } from "react-icons/fa";
 import * as db from "../../../../Database";
-import type { User, Enrollment } from "../../../../Database/type";
+import { User, Enrollment } from "../../../../Database/type";
 import "../people.css";
 
 export default function PeopleTable() {
-    /* Extract course ID */
+    // Get which course we're looking at
     const params = useParams();
     const cid = params.cid as string;
 
-    /* Type assertions for database imports  */
+    // Pull user and enrollment data from database
     const typedUsers = db.users as User[];
     const typedEnrollments = db.enrollments as Enrollment[];
 
-    /* Format a date-time */
+    // Format dates to look nice like "2024 Oct 15 3:45pm"
     const formatDateTime = (dateString: string): string => {
-        // Create a Date object from the ISO string
-        // The Date constructor automatically parses ISO 8601 format
         const date = new Date(dateString);
-
-        // Extract individual components of the date
-        // These methods return numbers that we'll format into strings
-        const year = date.getFullYear();           // e.g., 2025
-        const month = date.toLocaleDateString('en-US', { month: 'short' }); // e.g., "Oct"
-        const day = date.getDate();                // e.g., 2 (no leading zero)
-
-        // Format the time portion
-        // We use toLocaleTimeString with specific options to get 12-hour format
+        const year = date.getFullYear();
+        const month = date.toLocaleDateString('en-US', { month: 'short' });
+        const day = date.getDate();
         const time = date.toLocaleTimeString('en-US', {
-            hour: 'numeric',      // "2" instead of "02"
-            minute: '2-digit',    // "32" (always two digits for minutes)
-            hour12: true          // Use AM/PM instead of 24-hour format
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
         });
-
-        // Combine all parts with spaces
         return `${year} ${month} ${day} ${time}`;
     };
 
-    /* Format the total activity  */
+    // Format activity time like "2h 15m 30s"
     const formatTotalActivity = (activityString: string): string => {
-
-        return activityString;
+        const parts = activityString.split(':');
+        const [hours = "0", minutes = "0", seconds = "0"] = parts;
+        return `${hours}h ${minutes}m ${seconds}s`;
     };
 
     return (
@@ -60,7 +54,7 @@ export default function PeopleTable() {
                 </tr>
                 </thead>
                 <tbody>
-                {/* Filter and display users enrolled */}
+                {/* Show only users enrolled in this course */}
                 {typedUsers
                     .filter((usr: User) =>
                         typedEnrollments.some(
@@ -71,7 +65,7 @@ export default function PeopleTable() {
                     )
                     .map((user: User) => (
                         <tr key={user._id} className="wd-user-row">
-                            {/* Name */}
+                            {/* Name with icon */}
                             <td className="wd-full-name text-nowrap wd-name-cell">
                                 <FaUserCircle className="me-2 fs-1 text-secondary wd-user-icon" />
                                 <div className="wd-user-info">
@@ -86,14 +80,14 @@ export default function PeopleTable() {
                             {/* Login ID */}
                             <td className="wd-login-id wd-login-cell">{user.loginId}</td>
 
-                            {/* Section */}
+                            {/* Section badge */}
                             <td className="wd-section">
                                     <span className="wd-section-badge badge bg-light text-dark">
                                         {user.section}
                                     </span>
                             </td>
 
-                            {/* Role */}
+                            {/* Role badge with color coding */}
                             <td className="wd-role">
                                     <span className={`wd-role-badge badge ${
                                         user.role === 'FACULTY' ? 'bg-danger' :
@@ -104,14 +98,14 @@ export default function PeopleTable() {
                                     </span>
                             </td>
 
-                            {/* Last Activity */}
+                            {/* Last Activity timestamp */}
                             <td className="wd-last-activity">
                                 <div className="wd-activity-main">
                                     {formatDateTime(user.lastActivity)}
                                 </div>
                             </td>
 
-                            {/* Total Activity */}
+                            {/* Total Activity time */}
                             <td className="wd-total-activity">
                                 {formatTotalActivity(user.totalActivity)}
                             </td>

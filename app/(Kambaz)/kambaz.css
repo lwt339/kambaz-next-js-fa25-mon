@@ -95,6 +95,27 @@ body * {
 
 
 
+
+
+/* Simple underline hover for course navigation */
+.wd-nav-link {
+    transition: all 0.2s ease;
+}
+
+.wd-nav-link:hover {
+    text-decoration: underline !important;
+}
+
+/* Active state - black text, no underline */
+.wd-nav-link.active {
+    color: black !important;
+}
+
+.wd-nav-link.active:hover {
+    text-decoration: underline !important;
+}
+
+
 /* ACCOUNT SCREENS */
 
 /* Active State*/

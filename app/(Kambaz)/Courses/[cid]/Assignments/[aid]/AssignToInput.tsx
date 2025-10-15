@@ -1,13 +1,17 @@
+// app/(Kambaz)/Courses/[cid]/Assignments/[aid]/AssignToInput.tsx
+// Clean assignment input using CSS classes
 
 "use client";
 
-import { useState, KeyboardEvent, ChangeEvent } from "react";
+import { useState, KeyboardEvent, ChangeEvent, useRef, useEffect } from "react";
 import { Form } from "react-bootstrap";
+import { useParams } from "next/navigation";
+import * as db from "../../../../Database";
+import { User, Enrollment } from "../../../../Database/type";
+import "../assignments.css";
 
 interface AssignToInputProps {
-
     value: string[];
-
     onChange: (newValue: string[]) => void;
     placeholder?: string;
     label?: string;
@@ -19,135 +23,221 @@ interface AssignToInputProps {
 export default function AssignToInput({
                                           value,
                                           onChange,
-                                          placeholder = "Type a name and press Enter",
+                                          placeholder = "Type a name or select from dropdown",
                                           label,
                                           boldLabel = true,
-                                          helperText = "Type a name and press Enter to add. Click X to remove.",
+                                          helperText = "Select from dropdown or type a name and press Enter to add. Click X to remove.",
                                           hideHelperText = false
                                       }: AssignToInputProps) {
+    const params = useParams();
+    const cid = params?.cid as string;
 
     const [inputValue, setInputValue] = useState<string>('');
+    const [showDropdown, setShowDropdown] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
-    /**
-     * Remove an assignment from the list
-     */
-    const removeAssignment = (nameToRemove: string) => {
-        const newValue = value.filter(name => name !== nameToRemove);
-        onChange(newValue);
+    const typedUsers = db.users as User[];
+    const typedEnrollments = db.enrollments as Enrollment[];
+
+    const enrolledUserIds = typedEnrollments
+        .filter((e: Enrollment) => e.course === cid)
+        .map((e: Enrollment) => e.user);
+
+    const enrolledUsers = typedUsers.filter((u: User) => enrolledUserIds.includes(u._id));
+
+    const sortedUsers = [...enrolledUsers].sort((a, b) => {
+        const roleOrder = { FACULTY: 0, TA: 1, STUDENT: 2 };
+        const roleA = roleOrder[a.role as keyof typeof roleOrder] ?? 3;
+        const roleB = roleOrder[b.role as keyof typeof roleOrder] ?? 3;
+
+        if (roleA !== roleB) return roleA - roleB;
+
+        const nameA = `${a.firstName} ${a.lastName}`.toLowerCase();
+        const nameB = `${b.firstName} ${b.lastName}`.toLowerCase();
+        return nameA.localeCompare(nameB);
+    });
+
+    const usersByRole = {
+        FACULTY: sortedUsers.filter(u => u.role === "FACULTY"),
+        TA: sortedUsers.filter(u => u.role === "TA"),
+        STUDENT: sortedUsers.filter(u => u.role === "STUDENT")
     };
 
-// Handle keyboard input in the text field
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setShowDropdown(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const removeAssignment = (nameToRemove: string) => {
+        onChange(value.filter(name => name !== nameToRemove));
+    };
+
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-            // Prevent form submission when Enter is pressed
             e.preventDefault();
-
             const trimmedValue = inputValue.trim();
-
             if (trimmedValue && !value.includes(trimmedValue)) {
                 onChange([...value, trimmedValue]);
-                setInputValue(''); // Clear
+                setInputValue('');
             }
-        }
-        // Optional backspace
-        else if (e.key === 'Backspace' && inputValue === '' && value.length > 0) {
-            const lastAssignment = value[value.length - 1];
-            removeAssignment(lastAssignment);
+        } else if (e.key === 'Backspace' && inputValue === '' && value.length > 0) {
+            removeAssignment(value[value.length - 1]);
         }
     };
 
-    /**
-     * Update the input
-     */
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
     };
 
-    /**
-     * clicking in the container
-     */
     const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
         const input = e.currentTarget.querySelector('input');
-        if (input) {
-            input.focus();
-        }
+        input?.focus();
     };
 
+    const handleSelectUser = (user: User) => {
+        const userName = `${user.firstName} ${user.lastName}`;
+        if (!value.includes(userName)) {
+            onChange([...value, userName]);
+        }
+        setShowDropdown(false);
+        setInputValue('');
+    };
+
+    const handleSelectEveryone = () => {
+        if (!value.includes("Everyone")) {
+            onChange(["Everyone"]);
+        }
+        setShowDropdown(false);
+        setInputValue('');
+    };
+
+    const getRoleLabel = (role: string): string => {
+        const labels = {
+            FACULTY: "Faculty",
+            TA: "Teaching Assistants",
+            STUDENT: "Students"
+        };
+        return labels[role as keyof typeof labels] || role;
+    };
 
     return (
-        <Form.Group className="mb-3">
-            {/* Optiona */}
+        <Form.Group className="mb-3" ref={dropdownRef}>
             {label && (
                 <Form.Label className={boldLabel ? "fw-bold" : ""}>
                     {label}
                 </Form.Label>
             )}
 
-            <div
-                className="border rounded p-2 d-flex flex-wrap align-items-center gap-2 bg-white"
-                style={{
-                    minHeight: '38px',
-                    cursor: 'text'
-                }}
-                onClick={handleContainerClick}
-            >
+            <div className="position-relative">
+                <div className="wd-assign-container" onClick={handleContainerClick}>
+                    {value.map((name, index) => (
+                        <span key={index} className="badge bg-light text-dark border d-flex align-items-center gap-1 wd-assign-badge">
+                            {name}
+                            <button
+                                type="button"
+                                className="btn-close"
+                                aria-label={`Remove ${name}`}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    removeAssignment(name);
+                                }}
+                            />
+                        </span>
+                    ))}
 
-                {value.map((name, index) => (
-                    <span
-                        key={index}
-                        className="badge bg-light text-dark border d-flex align-items-center gap-1"
-                        style={{
-                            fontSize: '14px',
-                            fontWeight: 'normal',
-                            padding: '4px 8px'
-                        }}
-                    >
-                        {name}
+                    <input
+                        type="text"
+                        value={inputValue}
+                        onChange={handleInputChange}
+                        onKeyDown={handleKeyDown}
+                        onFocus={() => setShowDropdown(true)}
+                        placeholder={value.length === 0 ? placeholder : ""}
+                        className="wd-assign-input"
+                    />
+                </div>
 
-                        {/* Remove button*/}
-                        <button
-                            type="button"
-                            className="btn-close"
-                            aria-label={`Remove ${name}`}
-                            style={{
-                                fontSize: '10px',
-                                width: '12px',
-                                height: '12px'
-                            }}
-                            onClick={(e) => {
-                                e.stopPropagation(); // Prevent triggering container click
-                                removeAssignment(name);
-                            }}
-                        />
-                    </span>
-                ))}
+                {showDropdown && (
+                    <div className="wd-assign-dropdown">
+                        <div className="wd-assign-dropdown-everyone" onClick={handleSelectEveryone}>
+                            <div className="wd-assign-everyone-title">Everyone</div>
+                            <div className="wd-assign-everyone-subtitle">
+                                All enrolled users ({enrolledUsers.length} people)
+                            </div>
+                        </div>
 
+                        {usersByRole.FACULTY.length > 0 && (
+                            <>
+                                <div className="wd-assign-dropdown-role-header">
+                                    <strong className="text-muted small">{getRoleLabel("FACULTY")}</strong>
+                                </div>
+                                {usersByRole.FACULTY.map((user) => (
+                                    <div
+                                        key={user._id}
+                                        className="wd-assign-dropdown-user-item"
+                                        onClick={() => handleSelectUser(user)}
+                                    >
+                                        <div className="wd-assign-user-name">{user.firstName} {user.lastName}</div>
+                                        <div className="wd-assign-user-email">{user.email}</div>
+                                    </div>
+                                ))}
+                            </>
+                        )}
 
+                        {usersByRole.TA.length > 0 && (
+                            <>
+                                <div className="wd-assign-dropdown-role-header">
+                                    <strong className="text-muted small">{getRoleLabel("TA")}</strong>
+                                </div>
+                                {usersByRole.TA.map((user) => (
+                                    <div
+                                        key={user._id}
+                                        className="wd-assign-dropdown-user-item"
+                                        onClick={() => handleSelectUser(user)}
+                                    >
+                                        <div className="wd-assign-user-name">{user.firstName} {user.lastName}</div>
+                                        <div className="wd-assign-user-email">{user.email}</div>
+                                    </div>
+                                ))}
+                            </>
+                        )}
 
-                <input
-                    type="text"
-                    value={inputValue}
-                    onChange={handleInputChange}
-                    onKeyDown={handleKeyDown}
-                    placeholder={value.length === 0 ? placeholder : ""}
-                    style={{
-                        border: 'none',
-                        outline: 'none',
-                        flex: '1',
-                        minWidth: '120px',
-                        padding: '4px',
-                        fontSize: '14px',
-                        backgroundColor: 'transparent'
-                    }}
-                />
+                        {usersByRole.STUDENT.length > 0 && (
+                            <>
+                                <div className="wd-assign-dropdown-role-header">
+                                    <strong className="text-muted small">
+                                        {getRoleLabel("STUDENT")} ({usersByRole.STUDENT.length})
+                                    </strong>
+                                </div>
+                                {usersByRole.STUDENT.map((user) => (
+                                    <div
+                                        key={user._id}
+                                        className="wd-assign-dropdown-user-item"
+                                        onClick={() => handleSelectUser(user)}
+                                    >
+                                        <div className="wd-assign-user-name">{user.firstName} {user.lastName}</div>
+                                        <div className="wd-assign-user-email">{user.email}</div>
+                                    </div>
+                                ))}
+                            </>
+                        )}
+
+                        {enrolledUsers.length === 0 && (
+                            <div className="wd-assign-dropdown-empty text-muted">
+                                No enrolled users found for this course
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
 
-
-            {/* helper text*/}
             {!hideHelperText && (
-                <Form.Text className="text-muted">
-                    {helperText}
-                </Form.Text>
+                <Form.Text className="text-muted">{helperText}</Form.Text>
             )}
         </Form.Group>
     );
