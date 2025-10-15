@@ -38,9 +38,13 @@ export default function Modules() {
 
     // Toggle one module between collapsed and expanded
     const toggleModule = (moduleId: string) => {
-        setCollapsedModules(prev => {
+        setCollapsedModules((prev) => {
             const newSet = new Set(prev);
-            newSet.has(moduleId) ? newSet.delete(moduleId) : newSet.add(moduleId);
+            if (newSet.has(moduleId)) {
+                newSet.delete(moduleId);
+            } else {
+                newSet.add(moduleId);
+            }
             return newSet;
         });
     };

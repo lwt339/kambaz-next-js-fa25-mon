@@ -135,7 +135,7 @@ export default function Signin() {
                                         username: e.target.value
                                     });
                                 }}
-                                onKeyPress={handleKeyPress}
+                                onKeyDown={handleKeyPress}
                             />
                         </div>
 
@@ -154,7 +154,7 @@ export default function Signin() {
                                         password: e.target.value
                                     });
                                 }}
-                                onKeyPress={handleKeyPress}
+                                onKeyDown={handleKeyPress}
                             />
                         </div>
 

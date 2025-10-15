@@ -104,7 +104,7 @@ export default function Signup() {
                                         username: e.target.value
                                     });
                                 }}
-                                onKeyPress={handleKeyPress}
+                                onKeyDown={handleKeyPress}
                             />
                         </div>
 
@@ -123,7 +123,7 @@ export default function Signup() {
                                         password: e.target.value
                                     });
                                 }}
-                                onKeyPress={handleKeyPress}
+                                onKeyDown={handleKeyPress}
                             />
                         </div>
 

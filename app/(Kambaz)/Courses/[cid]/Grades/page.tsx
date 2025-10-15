@@ -3,7 +3,7 @@
 
 "use client";
 
-import { useState, useMemo } from "react";
+import {useState, useMemo, useCallback} from "react";
 import { useParams } from "next/navigation";
 import { useSelector } from "react-redux";
 import { Table, Button, Form, Row, Col, Badge, Dropdown } from "react-bootstrap";
@@ -111,6 +111,13 @@ export default function Grades() {
         }))
     ], [courseAssignments, courseQuizzes, courseExams]);
 
+    const getGradeForItem = useCallback(
+        (itemId: string): Grade | undefined => {
+            return relevantGrades.find((g: Grade) => g.assignment === itemId);
+        },
+        [relevantGrades]
+    );
+
     const filteredItems = useMemo(() => {
         let result = allItems.filter((item: GradeItem) =>
             item.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -151,11 +158,9 @@ export default function Grades() {
         });
 
         return result;
-    }, [allItems, searchTerm, typeFilter, statusFilter, sortField, sortOrder]);
+    }, [allItems, searchTerm, typeFilter, statusFilter, sortField, sortOrder, getGradeForItem]);
 
-    const getGradeForItem = (itemId: string): Grade | undefined => {
-        return relevantGrades.find((g: Grade) => g.assignment === itemId);
-    };
+
 
     const calculatePercentage = (score: number | null, maxPoints: number): string => {
         if (score === null || score === undefined || maxPoints === 0) return "—";
