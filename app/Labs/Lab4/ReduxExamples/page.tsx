@@ -1,6 +1,8 @@
 // File: app/Labs/Lab4/ReduxExamples/page.tsx
 // Container for all Redux examples
 
+"use client";
+
 import React from "react";
 import HelloRedux from "./HelloRedux/page";
 import CounterRedux from "./CounterRedux/page";
