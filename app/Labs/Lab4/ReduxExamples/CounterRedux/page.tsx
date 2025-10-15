@@ -1,5 +1,6 @@
 // File: app/Labs/Lab4/ReduxExamples/CounterRedux/page.tsx
 // Counter using Redux
+"use client";
 
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement } from "./counterReducer";
