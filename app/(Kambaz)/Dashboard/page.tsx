@@ -66,7 +66,7 @@ export default function Dashboard() {
         credits: 4,
         instructor: "Staff",
         description: "New Description",
-        image: "/images/reactjs.jpg",
+        image: "/images/cs5150.jpg",
         color: "#dc3545"
     });
 
