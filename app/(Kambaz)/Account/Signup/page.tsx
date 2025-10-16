@@ -167,7 +167,7 @@ export default function Signup() {
 
                 <div className="mt-3 p-3 bg-light border rounded shadow-sm" style={{ maxWidth: '400px' }}>
                     <div className="mb-2">
-                        <span className="fw-bold" style={{ color: '#3185FC' }}>Users</span>
+                        <span className="fw-bold" style={{ color: '#3185FC' }}>Users </span>
                     </div>
                     <div className="small">
                         <div className="mb-2 py-2 border-bottom">
