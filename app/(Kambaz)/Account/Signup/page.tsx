@@ -164,6 +164,27 @@ export default function Signup() {
                     </Form>
                 </div>
             </div>
+
+                <div className="mt-3 p-3 bg-light border rounded shadow-sm" style={{ maxWidth: '400px' }}>
+                    <div className="mb-2">
+                        <span className="fw-bold" style={{ color: '#3185FC' }}>Users</span>
+                    </div>
+                    <div className="small">
+                        <div className="mb-2 py-2 border-bottom">
+                            <span className="fw-bold" style={{ color: '#443850' }}>Admin: Full access to all system features </span>
+                        </div>
+                        <div className="mb-2 py-2 border-bottom">
+                            <span className="fw-bold" style={{ color: '#FF4F79' }}>Student: Read-only access to enrolled courses.</span>
+                        </div>
+                        <div className="mb-2 py-2 border-bottom">
+                            <span className="fw-bold" style={{ color: '#EFAAC4' }}>Faculty: can edit courses, modules, and assignments</span>
+                        </div>
+                        <div className="py-2">
+                            <span className="fw-bold" style={{ color: '#B07BAC' }}>TA (Teaching Assistant): can edit courses, modules, and assignments</span>
+                        </div>
+                    </div>
+                </div>
+
         </div>
     );
 }

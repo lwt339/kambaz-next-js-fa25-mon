@@ -1,5 +1,7 @@
 // File: app/(Kambaz)/Account/Profile/page.tsx
 // Profile screen where users can view and edit their personal information
+// File: app/(Kambaz)/Account/Profile/page.tsx
+// Profile screen where users can view and edit their personal information
 
 "use client";
 

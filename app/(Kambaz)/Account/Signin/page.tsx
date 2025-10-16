@@ -169,19 +169,44 @@ function SigninForm() {
             </Form>
 
             {/* Show some test accounts for easy testing */}
-            <div className="mt-3 p-3 bg-light border rounded">
-                <small className="text-muted">
-                    <strong>Test Users:</strong>
-                    <br />
-                    Admin: admin | admin5610
-                    <br />
-                    Student: alice_johnson | secure123
-                    <br />
-                    Faculty: prof_smith | faculty456
-                    <br />
-                    TA: ta_chen | teaching789
-                    <br />
-                </small>
+            <div className="mt-3 p-4 bg-light border rounded shadow-sm" style={{ minWidth: '450px' }}>
+                <div className="mb-2">
+                    <span className="fw-bold" style={{ color: '#3185FC' }}>Test Users</span>
+                </div>
+                <div className="small">
+                    <div className="mb-2 py-2 border-bottom">
+                        <span className="fw-bold" style={{ color: '#443850' }}>Admin:</span>
+                        <div className="ms-3">
+                            <span className="text-muted">username:</span> <span className="fw-bold" style={{ color: '#443850' }}>admin</span>
+                            <span className="mx-2 text-muted">|</span>
+                            <span className="text-muted">password:</span> <span className="fw-bold" style={{ color: '#443850' }}>admin5610</span>
+                        </div>
+                    </div>
+                    <div className="mb-2 py-2 border-bottom">
+                        <span className="fw-bold" style={{ color: '#FF4F79' }}>Student:</span>
+                        <div className="ms-3">
+                            <span className="text-muted">username:</span> <span className="fw-bold" style={{ color: '#FF4F79' }}>vicky</span>
+                            <span className="mx-2 text-muted">|</span>
+                            <span className="text-muted">password:</span> <span className="fw-bold" style={{ color: '#FF4F79' }}>student123</span>
+                        </div>
+                    </div>
+                    <div className="mb-2 py-2 border-bottom">
+                        <span className="fw-bold" style={{ color: '#EFAAC4' }}>Faculty:</span>
+                        <div className="ms-3">
+                            <span className="text-muted">username:</span> <span className="fw-bold" style={{ color: '#EFAAC4' }}>prof</span>
+                            <span className="mx-2 text-muted">|</span>
+                            <span className="text-muted">password:</span> <span className="fw-bold" style={{ color: '#EFAAC4' }}>faculty123</span>
+                        </div>
+                    </div>
+                    <div className="py-2">
+                        <span className="fw-bold" style={{ color: '#B07BAC' }}>TA:</span>
+                        <div className="ms-3">
+                            <span className="text-muted">username:</span> <span className="fw-bold" style={{ color: '#B07BAC' }}>ta_chen</span>
+                            <span className="mx-2 text-muted">|</span>
+                            <span className="text-muted">password:</span> <span className="fw-bold" style={{ color: '#B07BAC' }}>ta789</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
