@@ -98,8 +98,8 @@ function SigninForm() {
             {redirect && (
                 <Alert variant="warning" className="mb-3">
                     <Alert.Heading className="h6">
-                        <i className="bi bi-exclamation-triangle-fill me-2"></i>
-                        Authentication Required
+                        <i className="bi bi-exclamation-triangle-fill"></i>
+                        <strong>Authentication Required</strong>
                     </Alert.Heading>
                     <p className="mb-0">
                         {redirect === "dashboard"
